@@ -175,6 +175,19 @@
     outline:2px solid var(--accent);
     outline-offset:3px;
   }
+  @media (max-width:480px){
+    .header-row{
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      padding-block:14px;
+    }
+    nav.pages{
+      justify-content:center;
+      width:100%;
+      gap:clamp(12px,4vw,22px);
+    }
+  }
 
   /* ---------- pages ---------- */
   main{ display:block; }
