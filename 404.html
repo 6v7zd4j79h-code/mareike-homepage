@@ -305,14 +305,5 @@
 </div>
 <script src="assets/app.js"></script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-<script>
-(function(){
-  var alt = (location.hash || '').replace('#','').split('?')[0];
-  var seiten = ["home", "ueber-mich", "angebote", "podcast", "kontakt", "breathwork", "audio-optin", "audio-datei", "funktionsmodus-test", "impressum", "datenschutz", "entlastung", "makeup"];
-  if(alt && seiten.indexOf(alt) !== -1 && alt !== 'home'){
-    location.replace(alt + '/');
-  }
-})();
-</script>
 </body>
 </html>
