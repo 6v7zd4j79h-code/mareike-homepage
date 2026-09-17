@@ -144,14 +144,36 @@
           <p class="eyebrow">Kontaktformular</p>
           <h2 style="font-size:clamp(22px,3vw,28px);">Ich freue mich, dich kennenzulernen</h2>
         </div>
-        <form class="contact" onsubmit="return false;">
+        <form class="contact" id="angebote-form">
           <div class="field"><label for="ang-vorname">Vorname</label><input id="ang-vorname" name="vorname" type="text" placeholder="Dein Vorname"></div>
           <div class="field"><label for="ang-nachname">Nachname</label><input id="ang-nachname" name="nachname" type="text" placeholder="Dein Nachname"></div>
-          <div class="field full"><label for="ang-email">E-Mail</label><input id="ang-email" name="email" type="email" placeholder="deine@email.de"></div>
-          <div class="field full"><label for="ang-nachricht">Nachricht</label><textarea id="ang-nachricht" name="nachricht" placeholder="Erzähl mir kurz, worum es geht …"></textarea></div>
+          <div class="field full"><label for="ang-email">E-Mail*</label><input id="ang-email" name="email" type="email" required placeholder="deine@email.de"></div>
+          <div class="field full"><label for="ang-nachricht">Nachricht*</label><textarea id="ang-nachricht" name="nachricht" required placeholder="Erzähl mir kurz, worum es geht …"></textarea></div>
           <div class="submit-row"><button class="btn solid" type="submit" style="border-color:var(--deep); background:var(--deep); color:var(--on-deep);">Senden</button></div>
-          <p class="form-note">Design-Entwurf — dieses Formular ist ein Platzhalter und noch nicht angebunden.</p>
+          <p class="form-note">&Ouml;ffnet dein E-Mail-Programm mit einer vorausgef&uuml;llten Nachricht an mich.</p>
         </form>
+        <script>
+          (function(){
+            var f = document.getElementById('angebote-form');
+            if(!f) return;
+            f.addEventListener('submit', function(e){
+              e.preventDefault();
+              var vorname = f.vorname.value.trim();
+              var nachname = f.nachname.value.trim();
+              var email = f.email.value.trim();
+              var nachricht = f.nachricht.value.trim();
+              var name = (vorname + ' ' + nachname).trim();
+              var subject = 'Anfrage \u00fcber die Website' + (name ? ', ' + name : '');
+              var zeilen = [];
+              if(name) zeilen.push('Name: ' + name);
+              if(email) zeilen.push('E-Mail: ' + email);
+              zeilen.push('');
+              zeilen.push(nachricht);
+              window.location.href = 'mailto:info@mareikekrohnen.de?subject='
+                + encodeURIComponent(subject) + '&body=' + encodeURIComponent(zeilen.join('\n'));
+            });
+          })();
+        </script>
       </div>
     </div>
 
@@ -167,7 +189,7 @@
   </div>
   <div class="wrap" style="max-width:340px; padding-block:8px 22px; border-bottom:1px solid rgba(241,237,226,0.14); margin-bottom:20px; text-align:center;">
     <p class="eyebrow" style="margin-bottom:4px; font-size:10.5px;">Newsletter</p>
-    <p style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:14.5px; color:var(--on-deep); margin-bottom:14px;">Für alles, was zwischen den Zeilen entsteht.</p>
+    <p style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:14.5px; color:var(--on-deep); margin-bottom:14px;">Ab und zu ein Brief von mir. Eine Szene aus meinem Alltag, eine Erkenntnis, eine Einladung.</p>
 
     <div id="sib-form-container">
       <div id="error-message" class="sib-form-message-panel" style="font-family:'Jost',sans-serif; font-size:11px; color:#e8b4b4; margin-bottom:8px;">
@@ -222,7 +244,7 @@
     </a>
   </div>
   <div class="wrap" style="margin-top:2px; opacity:.7; font-size:11px;">
-    Branding &amp; Webdesign by Mareike Krohnen
+    Gestaltung und Aufbau von mir selbst
   </div>
 </footer>
 
@@ -231,7 +253,7 @@
     <button type="button" class="rfm-popup-close" id="rfm-popup-close" aria-label="Schließen">&times;</button>
     <p class="eyebrow" style="margin-bottom:8px;">Kostenloses Audio</p>
     <h3 style="font-weight:300; margin-bottom:12px;">Dein Atem als Werkzeug</h3>
-    <p style="font-size:15px; line-height:1.6; color:var(--muted); margin-bottom:20px;">Eine kurze, kostenlose &Uuml;bung zum Anh&ouml;ren &mdash; lern deinen Atem als erstes Werkzeug f&uuml;r deinen K&ouml;rper kennen.</p>
+    <p style="font-size:15px; line-height:1.6; color:var(--muted); margin-bottom:20px;">Eine kurze, kostenlose &Uuml;bung zum Anh&ouml;ren. Lern deinen Atem als erstes Werkzeug f&uuml;r deinen K&ouml;rper kennen.</p>
     <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
       <button type="button" class="btn solid" style="border-color:var(--deep); background:var(--deep); color:var(--on-deep);" id="rfm-popup-cta">Kostenlos anfordern</button>
       <button type="button" class="btn line" id="rfm-popup-dismiss">Vielleicht sp&auml;ter</button>
