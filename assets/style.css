@@ -973,3 +973,61 @@
     scroll-behavior:auto !important;
   }
   html[data-bewegung="reduziert"] .reveal{ opacity:1 !important; transform:none !important; }
+
+  /* ============================================================
+     LAUFBAND (Hinweis auf den naechsten Termin)
+     Bewegter Text braucht laut Barrierefreiheit immer eine
+     Moeglichkeit anzuhalten. Deshalb der Pause-Knopf.
+     ============================================================ */
+  .laufband{
+    position:relative; z-index:50;
+    background:var(--accent); color:var(--on-deep);
+    display:flex; align-items:center; gap:10px;
+    padding:0 10px 0 0; overflow:hidden;
+  }
+  .laufband-fenster{ flex:1; overflow:hidden; }
+  .laufband-spur{
+    display:flex; width:max-content; gap:0;
+    animation:laufband 34s linear infinite;
+  }
+  .laufband.pausiert .laufband-spur{ animation-play-state:paused; }
+  .laufband a{
+    display:inline-flex; align-items:center; gap:10px;
+    white-space:nowrap; padding:9px 34px 9px 0;
+    font-family:"Jost",sans-serif; font-size:13.5px; letter-spacing:.06em;
+    color:inherit; text-decoration:none;
+  }
+  .laufband a:hover{ text-decoration:underline; }
+  .laufband a strong{ font-weight:500; letter-spacing:.1em; text-transform:uppercase; }
+  @keyframes laufband{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  .laufband-pause{
+    flex:none; width:26px; height:26px; display:grid; place-items:center;
+    background:transparent; border:1px solid rgba(241,237,226,.5); border-radius:50%;
+    color:inherit; cursor:pointer; padding:0;
+  }
+  .laufband-pause:hover{ border-color:var(--on-deep); }
+  .laufband-pause svg{ width:11px; height:11px; }
+
+  /* Wer Bewegung reduziert hat, bekommt den Hinweis still und mittig */
+  @media (prefers-reduced-motion: reduce){
+    .laufband-spur{ animation:none; width:auto; justify-content:center; }
+    .laufband-spur a:nth-child(n+2){ display:none; }
+    .laufband-pause{ display:none; }
+    .laufband a{ padding-right:0; white-space:normal; text-align:center; }
+    .laufband{ justify-content:center; padding:0 16px; }
+  }
+  :root[data-bewegung="reduziert"] .laufband-spur{ animation:none; width:auto; justify-content:center; }
+  :root[data-bewegung="reduziert"] .laufband-spur a:nth-child(n+2){ display:none; }
+  :root[data-bewegung="reduziert"] .laufband-pause{ display:none; }
+  :root[data-bewegung="reduziert"] .laufband a{ padding-right:0; white-space:normal; text-align:center; }
+  :root[data-bewegung="reduziert"] .laufband{ justify-content:center; padding:0 16px; }
+
+  /* Die beiden runden Knoepfe stehen immer nebeneinander. */
+  .header-aktionen{ display:flex; align-items:center; gap:10px; flex:none; }
+  .header-aktionen .sound-toggle, .header-aktionen .ansicht-toggle{ margin:0; }
+  @media (max-width:480px){
+    .header-aktionen{ margin-top:2px; }
+  }

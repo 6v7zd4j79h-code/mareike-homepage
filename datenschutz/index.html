@@ -25,6 +25,14 @@
 </head>
 <body data-basis="../">
 <a class="sprungmarke" href="#inhalt">Zum Inhalt springen</a>
+<div class="laufband" id="laufband">
+  <div class="laufband-fenster">
+    <div class="laufband-spur"><a href="../breathwork/"><strong>15.10.</strong> Breathwork Erfahrungsraum &middot; online &middot; kostenfrei &middot; 19:30 Uhr</a><a href="../breathwork/"><strong>15.10.</strong> Breathwork Erfahrungsraum &middot; online &middot; kostenfrei &middot; 19:30 Uhr</a><a href="../breathwork/"><strong>15.10.</strong> Breathwork Erfahrungsraum &middot; online &middot; kostenfrei &middot; 19:30 Uhr</a><a href="../breathwork/"><strong>15.10.</strong> Breathwork Erfahrungsraum &middot; online &middot; kostenfrei &middot; 19:30 Uhr</a><a href="../breathwork/"><strong>15.10.</strong> Breathwork Erfahrungsraum &middot; online &middot; kostenfrei &middot; 19:30 Uhr</a><a href="../breathwork/"><strong>15.10.</strong> Breathwork Erfahrungsraum &middot; online &middot; kostenfrei &middot; 19:30 Uhr</a></div>
+  </div>
+  <button class="laufband-pause" id="laufband-pause" type="button" aria-label="Laufband anhalten" aria-pressed="false">
+    <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><rect x="2" y="1.5" width="3" height="9"></rect><rect x="7" y="1.5" width="3" height="9"></rect></svg>
+  </button>
+</div>
 <header class="site">
   <div class="wrap header-row">
     <a class="brandmark" aria-label="Rooted Feminine Method — Startseite" href="../">
@@ -38,7 +46,8 @@
       <a href="../podcast/">Podcast</a>
       <a href="../kontakt/">Kontakt</a>
     </nav>
-    <button class="sound-toggle" id="bg-music-toggle" type="button" aria-pressed="false" aria-label="Hintergrundmusik abspielen">
+    <div class="header-aktionen">
+      <button class="sound-toggle" id="bg-music-toggle" type="button" aria-pressed="false" aria-label="Hintergrundmusik abspielen">
       <svg id="bg-music-icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M4 9v6h4l5 5V4L8 9H4Z"></path>
         <path d="M16 9l5 6M21 9l-5 6"></path>
@@ -55,6 +64,7 @@
         <circle cx="12" cy="12" r="2.6"></circle>
       </svg>
     </button>
+    </div>
     <div class="ansicht-panel" id="ansicht-panel" hidden>
       <p class="ansicht-titel">Darstellung</p>
       <div class="ansicht-zeile">
