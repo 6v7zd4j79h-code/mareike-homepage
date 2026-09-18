@@ -225,3 +225,50 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
     if(knopf.getAttribute('aria-pressed') !== 'true') band.classList.remove('pausiert');
   });
 })();
+
+// ============================================================
+// Das Brevo-Formular-Skript wird erst geladen, wenn jemand ein
+// Formular wirklich benutzt. Vorher geht nichts an Brevo, und
+// die Seite laedt schneller. Eingebaut am 18.09.2026.
+// ============================================================
+(function(){
+  var felder = document.querySelectorAll('[id^="sib-form-container"]');
+  if(!felder.length) return;
+  var schonGeladen = false;
+  function laden(){
+    if(schonGeladen) return;
+    schonGeladen = true;
+    var s = document.createElement('script');
+    s.defer = true;
+    s.src = 'https://sibforms.com/forms/end-form/build/main.js';
+    document.body.appendChild(s);
+  }
+  felder.forEach(function(k){
+    k.addEventListener('focusin', laden, {once:false});
+    k.addEventListener('pointerdown', laden, {once:false});
+  });
+})();
+
+// ============================================================
+// Spotify-Player erst auf Klick laden. Vorher geht nichts an
+// Spotify, deshalb braucht die Seite dafuer keine Zustimmung.
+// ============================================================
+(function(){
+  var platz = document.getElementById('spotify-platz');
+  var knopf = document.getElementById('spotify-laden');
+  if(!platz || !knopf) return;
+  knopf.addEventListener('click', function(){
+    var rahmen = document.createElement('iframe');
+    rahmen.src = platz.getAttribute('data-quelle');
+    rahmen.setAttribute('title', 'Podcast-Player: Seelenklang und Kämpferherz');
+    rahmen.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture');
+    rahmen.setAttribute('allowfullscreen', '');
+    rahmen.setAttribute('loading', 'lazy');
+    platz.innerHTML = '';
+    platz.style.padding = '0';
+    platz.style.minHeight = '0';
+    platz.style.border = 'none';
+    platz.appendChild(rahmen);
+    rahmen.focus();
+  });
+})();

@@ -18,9 +18,7 @@
 <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="../site.webmanifest">
 <meta name="theme-color" content="#26332B">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts.css">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body data-basis="../">
@@ -115,8 +113,11 @@
 
     <div class="band cream">
       <div class="wrap" style="max-width:640px; padding-block:0 64px;">
-        <div style="border-radius:14px; overflow:hidden; box-shadow:0 18px 40px -18px rgba(16,22,15,0.25);">
-          <iframe src="https://open.spotify.com/embed/show/32Z4B4VJRqfHJy60SV8ovK?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="display:block;" title="Podcast-Player: Seelenklang &amp; K&auml;mpferherz"></iframe>
+        <div class="spotify-platz" id="spotify-platz"
+             data-quelle="https://open.spotify.com/embed/show/32Z4B4VJRqfHJy60SV8ovK?utm_source=generator">
+          <p class="spotify-text">Der Player kommt von Spotify. Wenn du ihn l&auml;dst, erf&auml;hrt Spotify, dass du hier bist, und kann Daten in deinem Browser speichern.</p>
+          <button class="btn solid spotify-knopf" type="button" id="spotify-laden">Player laden</button>
+          <p class="spotify-alternative"><a class="flink" href="https://open.spotify.com/show/32Z4B4VJRqfHJy60SV8ovK" target="_blank" rel="noopener">Oder direkt bei Spotify anh&ouml;ren</a></p>
         </div>
         <p style="text-align:center; margin-top:18px;">
           <a class="cta-link" href="https://open.spotify.com/show/32Z4B4VJRqfHJy60SV8ovK" target="_blank" rel="noopener">Auf Spotify anh&ouml;ren
@@ -212,6 +213,5 @@
   </div>
 </div>
 <script src="../assets/app.js"></script>
-<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html>
