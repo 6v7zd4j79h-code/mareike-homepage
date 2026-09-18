@@ -19,8 +19,9 @@
     --deep: #26332B;
     --deep-2: #313F35;
     --ink: #27332C;
-    --muted: #7C8578;
+    --muted: #60675D;
     --line: #C9D0C0;
+    --line-strong: #788664;
     --accent: #55684D;
     --on-deep: #F1EDE2;
     --on-deep-muted: #AEB8A6;
@@ -37,6 +38,7 @@
       --ink: #E6E9DE;
       --muted: #93A088;
       --line: #35402F;
+      --line-strong: #657A59;
       --accent: #9BB08B;
       --on-deep: #EDEAD9;
       --on-deep-muted: #8FA084;
@@ -118,6 +120,7 @@
     justify-content:space-between;
     gap:16px;
     padding-block:16px;
+    position:relative;
   }
   .brandmark{
     display:flex;
@@ -646,7 +649,7 @@
   .field{ display:flex; flex-direction:column; gap:8px; text-align:left; }
   .field label{
     font-family:"Jost",sans-serif;
-    font-size:11.5px;
+    font-size:12.5px;
     letter-spacing:.14em;
     text-transform:uppercase;
     color:var(--muted);
@@ -656,12 +659,12 @@
     font-size:17px;
     padding:12px 4px;
     border:none;
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid var(--line-strong);
     background:transparent;
     color:var(--ink);
   }
   .field textarea{ resize:vertical; min-height:96px; }
-  .field input::placeholder, .field textarea::placeholder{ color:var(--muted); opacity:.7; }
+  .field input::placeholder, .field textarea::placeholder{ color:var(--muted); opacity:1; }
   form.contact .submit-row{ grid-column:1/-1; display:flex; justify-content:center; margin-top:6px; }
   .form-note{
     grid-column:1/-1;
@@ -723,7 +726,7 @@
   .fm-quiz .fm-progress-shell{ max-width:100%; margin:0 0 32px; }
   .fm-quiz .fm-progress-track{ height:2px; background:var(--line); overflow:hidden; }
   .fm-quiz .fm-progress-fill{ height:100%; background:var(--accent); transition:width .45s cubic-bezier(.4,0,.2,1); }
-  .fm-quiz .fm-progress-label{ margin-top:10px; font-family:"Jost",sans-serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+  .fm-quiz .fm-progress-label{ margin-top:10px; font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
 
   .fm-quiz .fm-meta{ font-family:"Jost",sans-serif; font-size:12px; letter-spacing:.04em; color:var(--muted); margin-top:2px; }
 
@@ -743,7 +746,7 @@
   .fm-quiz .fm-options .fm-option:last-child{ border-bottom:1px solid var(--line); }
   .fm-quiz .fm-option:hover{ padding-left:14px; color:var(--accent); }
   .fm-quiz .fm-option-letter{
-    flex:none; font-family:"Jost",sans-serif; font-size:11px; letter-spacing:.06em; color:var(--muted); padding-top:4px; width:16px;
+    flex:none; font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.06em; color:var(--muted); padding-top:4px; width:16px;
   }
   .fm-quiz .fm-option.is-selected{ padding-left:14px; color:var(--accent); }
   .fm-quiz .fm-option.is-selected .fm-option-letter{ color:var(--accent); }
@@ -753,7 +756,7 @@
   .fm-quiz input[type="range"]{ width:100%; appearance:none; height:1px; background:var(--line); outline:none; margin:22px 0; }
   .fm-quiz input[type="range"]::-webkit-slider-thumb{ appearance:none; width:14px; height:14px; border-radius:50%; background:var(--accent); border:none; cursor:pointer; }
   .fm-quiz input[type="range"]::-moz-range-thumb{ width:14px; height:14px; border-radius:50%; background:var(--accent); border:none; cursor:pointer; }
-  .fm-quiz .fm-scale-labels{ display:flex; justify-content:space-between; gap:12px; font-family:"Jost",sans-serif; font-size:11.5px; letter-spacing:.02em; color:var(--muted); margin-top:2px; }
+  .fm-quiz .fm-scale-labels{ display:flex; justify-content:space-between; gap:12px; font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.02em; color:var(--muted); margin-top:2px; }
   .fm-quiz .fm-scale-labels span{ max-width:46%; }
   .fm-quiz .fm-scale-labels span:last-child{ text-align:right; }
 
@@ -764,7 +767,7 @@
   .fm-quiz .fm-result-emoji{ font-size:2.6rem; line-height:1; margin-bottom:12px; }
   .fm-quiz .fm-result-tier{ font-size:clamp(26px,4vw,36px); font-weight:300; margin:8px 0 4px; }
   .fm-quiz .fm-badges{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:16px; }
-  .fm-quiz .fm-badge{ font-family:"Jost",sans-serif; font-size:11px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:7px 14px; border:1px solid currentColor; }
+  .fm-quiz .fm-badge{ font-family:"Jost",sans-serif; font-size:12.5px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:7px 14px; border:1px solid currentColor; }
 
   .fm-quiz .fm-save{ text-align:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding-block:26px; margin:34px 0; }
   .fm-quiz .fm-save-desc{ color:var(--muted); font-size:15px; line-height:1.6; max-width:46ch; margin:0 auto; }
@@ -773,7 +776,7 @@
   .fm-quiz .fm-divider{ height:0; border:none; border-top:1px solid var(--line); margin:36px 0; }
   .fm-quiz .fm-section-title{ font-family:"Cormorant Garamond", serif; font-style:italic; font-weight:500; font-size:1.25em; margin:1.6em 0 .6em; color:var(--ink); }
   .fm-quiz .fm-retake{ text-align:center; margin-top:30px; }
-  .fm-quiz .fm-footer-note{ text-align:center; font-family:"Jost",sans-serif; font-size:11px; letter-spacing:.03em; color:var(--muted); margin-top:30px; }
+  .fm-quiz .fm-footer-note{ text-align:center; font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.03em; color:var(--muted); margin-top:30px; }
 
   .fm-quiz{
     --fm-fuchs:#B9784A; --fm-fuchs-soft:#EFDFC9;
@@ -875,3 +878,98 @@
   a.brandmark{ text-decoration:none; }
   a.flink{ text-decoration:none; color:inherit; }
   a.cta-link, a.btn{ text-decoration:none; }
+
+  /* ============================================================
+     BARRIEREFREIHEIT
+     Sprungmarke, Darstellungs-Schalter (Schrift, Kontrast,
+     Bewegung). Eingebaut am 18.09.2026.
+     ============================================================ */
+
+  /* Sprungmarke: nur sichtbar, wenn jemand mit der Tastatur hierher kommt */
+  .sprungmarke{
+    position:absolute; left:-9999px; top:0; z-index:1000;
+    background:var(--deep); color:var(--on-deep);
+    padding:14px 22px; font-family:"Jost",sans-serif;
+    font-size:14px; letter-spacing:.08em; text-decoration:none;
+  }
+  .sprungmarke:focus{ left:0; }
+  main:focus{ outline:none; }
+
+  /* Der Schalter im Kopfbereich, sieht aus wie der Ton-Schalter */
+  .ansicht-toggle{
+    width:34px; height:34px; flex:none; display:grid; place-items:center;
+    border:1px solid var(--on-deep-muted); border-radius:50%;
+    background:transparent; color:var(--on-deep-muted); cursor:pointer;
+    transition:color .2s ease, border-color .2s ease; margin-left:10px;
+  }
+  .ansicht-toggle:hover, .ansicht-toggle[aria-expanded="true"]{
+    color:var(--on-deep); border-color:var(--on-deep);
+  }
+  .ansicht-toggle svg{ width:17px; height:17px; }
+
+  .ansicht-panel{
+    position:absolute; right:24px; top:100%; margin-top:8px; z-index:900;
+    background:var(--bg); color:var(--ink);
+    border:1px solid var(--line-strong); box-shadow:var(--shadow);
+    padding:20px 22px; width:min(330px, calc(100vw - 32px)); text-align:left;
+  }
+  .ansicht-panel[hidden]{ display:none; }
+  .ansicht-titel{
+    font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted); margin:0 0 14px;
+  }
+  .ansicht-zeile{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px; margin-bottom:12px; font-size:15px;
+  }
+  .ansicht-knoepfe{ display:flex; gap:6px; flex:none; }
+  .ansicht-knoepfe button{
+    font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.04em;
+    padding:6px 10px; cursor:pointer;
+    border:1px solid var(--line-strong); background:transparent; color:var(--ink);
+  }
+  .ansicht-knoepfe button[aria-pressed="true"]{
+    background:var(--deep); border-color:var(--deep); color:var(--on-deep);
+  }
+  .ansicht-hinweis{
+    font-size:13px; line-height:1.5; color:var(--muted);
+    margin:14px 0 0; padding-top:12px; border-top:1px solid var(--line);
+  }
+  @media (max-width:760px){
+    .ansicht-panel{ right:16px; left:16px; width:auto; }
+  }
+
+  /* --- Schriftgroesse --- */
+  html[data-schrift="gross"]{ font-size:118%; }
+  html[data-schrift="groesser"]{ font-size:136%; }
+
+  /* --- Staerkerer Kontrast ---
+     :root statt html, damit es den Dunkelmodus ueberstimmt. --- */
+  :root[data-kontrast="hoch"]{
+    --bg:#FFFDF8; --panel:#EDF1E8; --panel-2:#F4F7F0;
+    --ink:#141A16; --muted:#3F463C; --line:#9AA492; --line-strong:#5C6653;
+    --accent:#33412D; --deep:#141A16; --deep-2:#1C241D;
+    --on-deep:#FFFFFF; --on-deep-muted:#D8DED2;
+  }
+  :root[data-kontrast="hoch"] img{ filter:contrast(1.06); }
+  :root[data-kontrast="hoch"] .band.deep .wrap::before{ background:rgba(0,0,0,.25); }
+
+  @media (prefers-color-scheme: dark){
+    :root[data-kontrast="hoch"]:not([data-theme="light"]){
+      --bg:#0B0F0C; --panel:#161D17; --panel-2:#121813;
+      --ink:#FFFFFF; --muted:#CBD5C3; --line:#59654F; --line-strong:#8E9E84;
+      --accent:#BCD4AB; --deep:#000000; --deep-2:#0A0E0A;
+      --on-deep:#FFFFFF; --on-deep-muted:#DDE4D7;
+    }
+  }
+
+  /* --- Bewegung reduzieren --- */
+  html[data-bewegung="reduziert"] *,
+  html[data-bewegung="reduziert"] *::before,
+  html[data-bewegung="reduziert"] *::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  html[data-bewegung="reduziert"] .reveal{ opacity:1 !important; transform:none !important; }

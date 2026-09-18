@@ -129,3 +129,70 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
     document.querySelectorAll('[data-goto]').forEach(function(btn){
     });
   })();
+
+// ============================================================
+// Darstellung anpassen: Schrift, Kontrast, Bewegung.
+// Die Auswahl bleibt im Browser der Besucherin gespeichert,
+// es wird nichts uebertragen. Eingebaut am 18.09.2026.
+// ============================================================
+(function(){
+  var SCHLUESSEL = 'rfm-ansicht';
+  var wurzel = document.documentElement;
+  var knopf  = document.getElementById('ansicht-toggle');
+  var panel  = document.getElementById('ansicht-panel');
+  if(!knopf || !panel) return;
+
+  var standard = { schrift:'normal', kontrast:'aus', bewegung:'normal' };
+
+  function lesen(){
+    try{
+      var roh = localStorage.getItem(SCHLUESSEL);
+      if(!roh) return Object.assign({}, standard);
+      return Object.assign({}, standard, JSON.parse(roh));
+    }catch(e){ return Object.assign({}, standard); }
+  }
+  function schreiben(w){
+    try{ localStorage.setItem(SCHLUESSEL, JSON.stringify(w)); }catch(e){}
+  }
+
+  function anwenden(w){
+    ['schrift','kontrast','bewegung'].forEach(function(art){
+      var wert = w[art];
+      if(wert && wert !== standard[art]) wurzel.setAttribute('data-'+art, wert);
+      else wurzel.removeAttribute('data-'+art);
+      panel.querySelectorAll('[data-'+art+']').forEach(function(b){
+        b.setAttribute('aria-pressed', b.getAttribute('data-'+art) === wert ? 'true' : 'false');
+      });
+    });
+  }
+
+  var wahl = lesen();
+  anwenden(wahl);
+
+  panel.querySelectorAll('button[data-schrift], button[data-kontrast], button[data-bewegung]').forEach(function(b){
+    b.addEventListener('click', function(){
+      ['schrift','kontrast','bewegung'].forEach(function(art){
+        if(b.hasAttribute('data-'+art)) wahl[art] = b.getAttribute('data-'+art);
+      });
+      anwenden(wahl);
+      schreiben(wahl);
+    });
+  });
+
+  function oeffnen(auf){
+    panel.hidden = !auf;
+    knopf.setAttribute('aria-expanded', auf ? 'true' : 'false');
+    if(auf){
+      var erster = panel.querySelector('button');
+      if(erster) erster.focus();
+    }
+  }
+  knopf.addEventListener('click', function(){ oeffnen(panel.hidden); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !panel.hidden){ oeffnen(false); knopf.focus(); }
+  });
+  document.addEventListener('click', function(e){
+    if(panel.hidden) return;
+    if(!panel.contains(e.target) && !knopf.contains(e.target)) oeffnen(false);
+  });
+})();

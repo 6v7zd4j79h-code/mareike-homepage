@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body data-basis="../">
+<a class="sprungmarke" href="#inhalt">Zum Inhalt springen</a>
 <header class="site">
   <div class="wrap header-row">
     <a class="brandmark" aria-label="Rooted Feminine Method — Startseite" href="../">
@@ -48,11 +49,43 @@
         <path d="M19 6a8.5 8.5 0 0 1 0 12"></path>
       </svg>
     </button>
+    <button class="ansicht-toggle" id="ansicht-toggle" type="button" aria-expanded="false" aria-controls="ansicht-panel" aria-label="Darstellung anpassen, Schrift und Kontrast">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"></path>
+        <circle cx="12" cy="12" r="2.6"></circle>
+      </svg>
+    </button>
+    <div class="ansicht-panel" id="ansicht-panel" hidden>
+      <p class="ansicht-titel">Darstellung</p>
+      <div class="ansicht-zeile">
+        <span id="lbl-schrift">Schriftgr&ouml;&szlig;e</span>
+        <span class="ansicht-knoepfe" role="group" aria-labelledby="lbl-schrift">
+          <button type="button" data-schrift="normal" aria-pressed="true">Normal</button>
+          <button type="button" data-schrift="gross" aria-pressed="false">Gro&szlig;</button>
+          <button type="button" data-schrift="groesser" aria-pressed="false">Sehr gro&szlig;</button>
+        </span>
+      </div>
+      <div class="ansicht-zeile">
+        <span id="lbl-kontrast">St&auml;rkerer Kontrast</span>
+        <span class="ansicht-knoepfe" role="group" aria-labelledby="lbl-kontrast">
+          <button type="button" data-kontrast="aus" aria-pressed="true">Aus</button>
+          <button type="button" data-kontrast="hoch" aria-pressed="false">An</button>
+        </span>
+      </div>
+      <div class="ansicht-zeile">
+        <span id="lbl-bewegung">Bewegung reduzieren</span>
+        <span class="ansicht-knoepfe" role="group" aria-labelledby="lbl-bewegung">
+          <button type="button" data-bewegung="normal" aria-pressed="true">Aus</button>
+          <button type="button" data-bewegung="reduziert" aria-pressed="false">An</button>
+        </span>
+      </div>
+      <p class="ansicht-hinweis">Die Einstellung bleibt in deinem Browser gespeichert. Es werden keine Daten an mich oder Dritte &uuml;bertragen.</p>
+    </div>
   </div>
 </header>
 
 <audio id="bg-music" loop preload="none" src="../assets/media/bg-music.mp3"></audio>
-<main>
+<main id="inhalt" tabindex="-1">
 <section class="page is-active" id="page-funktionsmodus-test" data-page="funktionsmodus-test">
 
     <div class="band cream">
