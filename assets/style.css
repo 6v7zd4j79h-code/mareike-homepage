@@ -77,7 +77,7 @@
 
   .eyebrow{
     font-family:"Jost", "Cormorant Garamond", sans-serif;
-    font-size:12px;
+    font-size:0.7812rem;
     font-weight:500;
     letter-spacing:0.22em;
     text-transform:uppercase;
@@ -135,7 +135,7 @@
   }
   .brandmark svg, .brandmark img{ width:30px; height:30px; flex:none; object-fit:contain; }
   .brandmark .word{
-    font-size:16px;
+    font-size:1rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
   }
@@ -146,7 +146,7 @@
   }
   nav.pages button{
     font-family:"Jost", sans-serif;
-    font-size:12.5px;
+    font-size:0.7812rem;
     letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--on-deep-muted);
@@ -230,23 +230,23 @@
   }
   .hero .mark{ width:72px; height:72px; opacity:.95; object-fit:contain; filter:drop-shadow(0 2px 10px rgba(0,0,0,0.5)); }
   .cta-mark{ width:46px; height:46px; opacity:.85; object-fit:contain; margin-bottom:2px; }
-  .hero .kicker{ font-size:13px; }
+  .hero .kicker{ font-size:0.8125rem; }
   .hero h1{
-    font-size:clamp(34px,6vw,58px);
+    font-size:clamp(2.125rem,6vw,3.625rem);
     letter-spacing:0.05em;
     text-transform:uppercase;
     font-weight:300;
   }
   .hero .tagline{
     font-family:"Jost", sans-serif;
-    font-size:clamp(13px,1.6vw,15px);
+    font-size:clamp(0.8125rem,1.6vw,0.9375rem);
     letter-spacing:0.32em;
     text-transform:uppercase;
     color:var(--on-deep-muted);
   }
   .hero .byline{
     font-style:italic;
-    font-size:clamp(17px,2.2vw,21px);
+    font-size:clamp(1.0625rem,2.2vw,1.3125rem);
     color:var(--on-deep);
     max-width:34ch;
   }
@@ -264,10 +264,10 @@
   .page-hero .script{
     font-style:italic;
     font-weight:400;
-    font-size:clamp(30px,5vw,46px);
+    font-size:clamp(1.875rem,5vw,2.875rem);
   }
   .page-hero h1, .page-hero h2{
-    font-size:clamp(24px,3.6vw,34px);
+    font-size:clamp(1.5rem,3.6vw,2.125rem);
     font-weight:300;
     letter-spacing:0.01em;
   }
@@ -279,7 +279,7 @@
     display:flex;
     flex-direction:column;
     gap:18px;
-    font-size:clamp(17px,2vw,19px);
+    font-size:clamp(1.0625rem,2vw,1.1875rem);
     line-height:1.7;
   }
   .prose.center{ text-align:center; }
@@ -291,14 +291,14 @@
     text-align:center;
     align-items:center;
   }
-  .stack-head h2{ font-size:clamp(26px,4vw,38px); font-weight:300; }
+  .stack-head h2{ font-size:clamp(1.625rem,4vw,2.375rem); font-weight:300; }
 
   .pull{
     max-width:44ch;
     margin-inline:auto;
     text-align:center;
     font-style:italic;
-    font-size:clamp(20px,2.6vw,26px);
+    font-size:clamp(1.25rem,2.6vw,1.625rem);
     line-height:1.5;
   }
 
@@ -307,7 +307,7 @@
     align-items:center;
     gap:6px;
     font-family:"Jost", sans-serif;
-    font-size:12.5px;
+    font-size:0.7812rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
     color:var(--muted);
@@ -324,7 +324,7 @@
     gap:10px;
     margin-top:8px;
     font-family:"Jost", sans-serif;
-    font-size:12.5px;
+    font-size:0.7812rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     text-decoration:none;
@@ -343,7 +343,7 @@
     align-items:center;
     justify-content:center;
     font-family:"Jost", sans-serif;
-    font-size:12.5px;
+    font-size:0.7812rem;
     letter-spacing:0.16em;
     text-transform:uppercase;
     padding:16px 34px;
@@ -377,9 +377,9 @@
     text-align:center;
     align-items:center;
   }
-  .pillar .num{ font-family:"Jost",sans-serif; font-size:20px; font-weight:300; color:var(--muted); display:inline-block; transform:scaleX(1.7); }
-  .pillar h3{ font-size:clamp(19px,2.4vw,22px); letter-spacing:0.06em; text-transform:uppercase; font-weight:500; }
-  .pillar p{ font-size:16px; line-height:1.6; max-width:30ch; }
+  .pillar .num{ font-family:"Jost",sans-serif; font-size:1.25rem; font-weight:300; color:var(--muted); display:inline-block; transform:scaleX(1.7); }
+  .pillar h3{ font-size:clamp(1.1875rem,2.4vw,1.375rem); letter-spacing:0.06em; text-transform:uppercase; font-weight:500; }
+  .pillar p{ font-size:1rem; line-height:1.6; max-width:30ch; }
 
   /* ---------- stats ---------- */
   .stats{
@@ -389,13 +389,13 @@
     text-align:center;
   }
   .stat .figure{
-    font-size:clamp(36px,5vw,52px);
+    font-size:clamp(2.25rem,5vw,3.25rem);
     font-weight:300;
     font-variant-numeric:tabular-nums;
   }
   .stat .label{
     margin-top:8px;
-    font-size:15px;
+    font-size:0.9375rem;
     color:var(--on-deep-muted);
     line-height:1.5;
     max-width:24ch;
@@ -418,10 +418,10 @@
     box-shadow:var(--shadow);
   }
   .band.panel .offer{ background:var(--panel-2); }
-  .offer .tag{ font-size:12px; }
-  .offer h3{ font-size:clamp(20px,2.6vw,23px); font-weight:500; letter-spacing:0.01em; }
-  .offer .meta{ font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.06em; color:var(--muted); }
-  .offer p{ font-size:16px; line-height:1.65; flex:1; }
+  .offer .tag{ font-size:0.7812rem; }
+  .offer h3{ font-size:clamp(1.25rem,2.6vw,1.4375rem); font-weight:500; letter-spacing:0.01em; }
+  .offer .meta{ font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.06em; color:var(--muted); }
+  .offer p{ font-size:1rem; line-height:1.65; flex:1; }
   .offer .cta-link{ align-self:flex-start; }
 
   /* ---------- split (about teaser / bio) ---------- */
@@ -441,7 +441,7 @@
     color:var(--on-deep);
   }
   .monogram span{
-    font-size:clamp(64px,9vw,96px);
+    font-size:clamp(4rem,9vw,6rem);
     font-style:italic;
   }
   .photo-frame{
@@ -562,9 +562,9 @@
     color:var(--muted);
   }
   .offer-row .thumb.empty img{ width:54%; height:54%; object-fit:contain; opacity:.8; }
-  .offer-row h3{ font-size:clamp(21px,2.6vw,25px); font-weight:500; margin-bottom:6px; }
-  .offer-row .meta{ font-family:"Jost",sans-serif; font-size:12px; letter-spacing:.08em; color:var(--muted); display:block; margin-bottom:10px; }
-  .offer-row p{ font-size:16.5px; line-height:1.65; max-width:56ch; }
+  .offer-row h3{ font-size:clamp(1.3125rem,2.6vw,1.5625rem); font-weight:500; margin-bottom:6px; }
+  .offer-row .meta{ font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.08em; color:var(--muted); display:block; margin-bottom:10px; }
+  .offer-row p{ font-size:1.0312rem; line-height:1.65; max-width:56ch; }
   .offer-row .cta-link{ margin-top:12px; }
   @media (max-width:640px){
     .offer-row{ grid-template-columns:1fr; }
@@ -609,7 +609,7 @@
   .feature-list li{
     padding-left:26px;
     position:relative;
-    font-size:16.5px;
+    font-size:1.0312rem;
     line-height:1.6;
   }
   .feature-list li::before{
@@ -622,7 +622,7 @@
     padding:16px 18px;
     background:var(--panel);
     border-radius:12px;
-    font-size:14px;
+    font-size:0.875rem;
     line-height:1.6;
     text-align:left;
   }
@@ -649,14 +649,14 @@
   .field{ display:flex; flex-direction:column; gap:8px; text-align:left; }
   .field label{
     font-family:"Jost",sans-serif;
-    font-size:12.5px;
+    font-size:0.7812rem;
     letter-spacing:.14em;
     text-transform:uppercase;
     color:var(--muted);
   }
   .field input, .field textarea{
     font-family:"Cormorant Garamond", serif;
-    font-size:17px;
+    font-size:1.0625rem;
     padding:12px 4px;
     border:none;
     border-bottom:1px solid var(--line-strong);
@@ -670,7 +670,7 @@
     grid-column:1/-1;
     text-align:center;
     font-family:"Jost",sans-serif;
-    font-size:12px;
+    font-size:0.7812rem;
     letter-spacing:.03em;
     color:var(--muted);
     margin-top:-4px;
@@ -692,7 +692,7 @@
   #sib-form-container input.input{
     width:100%;
     font-family:"Cormorant Garamond", serif;
-    font-size:14px;
+    font-size:0.875rem;
     padding:7px 2px;
     border:none;
     border-bottom:1px solid rgba(241,237,226,0.25);
@@ -709,7 +709,7 @@
     padding-block:40px;
     text-align:center;
     font-family:"Jost",sans-serif;
-    font-size:12.5px;
+    font-size:0.7812rem;
     letter-spacing:.04em;
     display:flex;
     flex-direction:column;
@@ -726,27 +726,27 @@
   .fm-quiz .fm-progress-shell{ max-width:100%; margin:0 0 32px; }
   .fm-quiz .fm-progress-track{ height:2px; background:var(--line); overflow:hidden; }
   .fm-quiz .fm-progress-fill{ height:100%; background:var(--accent); transition:width .45s cubic-bezier(.4,0,.2,1); }
-  .fm-quiz .fm-progress-label{ margin-top:10px; font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+  .fm-quiz .fm-progress-label{ margin-top:10px; font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
 
-  .fm-quiz .fm-meta{ font-family:"Jost",sans-serif; font-size:12px; letter-spacing:.04em; color:var(--muted); margin-top:2px; }
+  .fm-quiz .fm-meta{ font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.04em; color:var(--muted); margin-top:2px; }
 
   .fm-quiz form.contact{ margin-inline:0; max-width:none; }
-  .fm-quiz .fm-error{ font-family:"Jost",sans-serif; font-size:12px; color:#b3261e; min-height:1em; }
+  .fm-quiz .fm-error{ font-family:"Jost",sans-serif; font-size:0.7812rem; color:#b3261e; min-height:1em; }
 
-  .fm-quiz .fm-q-text{ font-size:clamp(21px,3vw,27px); font-weight:300; line-height:1.32; margin-bottom:30px; }
+  .fm-quiz .fm-q-text{ font-size:clamp(1.3125rem,3vw,1.6875rem); font-weight:300; line-height:1.32; margin-bottom:30px; }
 
   .fm-quiz .fm-options{ display:flex; flex-direction:column; margin-bottom:6px; }
   .fm-quiz .fm-option{
     display:flex; gap:16px; align-items:baseline; text-align:left; width:100%;
     background:none; border:none; border-top:1px solid var(--line);
     padding:18px 2px; cursor:pointer; color:var(--ink);
-    font-family:"Cormorant Garamond", serif; font-size:17px; line-height:1.5;
+    font-family:"Cormorant Garamond", serif; font-size:1.0625rem; line-height:1.5;
     transition:padding-left .15s ease, color .15s ease;
   }
   .fm-quiz .fm-options .fm-option:last-child{ border-bottom:1px solid var(--line); }
   .fm-quiz .fm-option:hover{ padding-left:14px; color:var(--accent); }
   .fm-quiz .fm-option-letter{
-    flex:none; font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.06em; color:var(--muted); padding-top:4px; width:16px;
+    flex:none; font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.06em; color:var(--muted); padding-top:4px; width:16px;
   }
   .fm-quiz .fm-option.is-selected{ padding-left:14px; color:var(--accent); }
   .fm-quiz .fm-option.is-selected .fm-option-letter{ color:var(--accent); }
@@ -756,7 +756,7 @@
   .fm-quiz input[type="range"]{ width:100%; appearance:none; height:1px; background:var(--line); outline:none; margin:22px 0; }
   .fm-quiz input[type="range"]::-webkit-slider-thumb{ appearance:none; width:14px; height:14px; border-radius:50%; background:var(--accent); border:none; cursor:pointer; }
   .fm-quiz input[type="range"]::-moz-range-thumb{ width:14px; height:14px; border-radius:50%; background:var(--accent); border:none; cursor:pointer; }
-  .fm-quiz .fm-scale-labels{ display:flex; justify-content:space-between; gap:12px; font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.02em; color:var(--muted); margin-top:2px; }
+  .fm-quiz .fm-scale-labels{ display:flex; justify-content:space-between; gap:12px; font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.02em; color:var(--muted); margin-top:2px; }
   .fm-quiz .fm-scale-labels span{ max-width:46%; }
   .fm-quiz .fm-scale-labels span:last-child{ text-align:right; }
 
@@ -765,18 +765,18 @@
 
   .fm-quiz .fm-result-hero{ text-align:center; }
   .fm-quiz .fm-result-emoji{ font-size:2.6rem; line-height:1; margin-bottom:12px; }
-  .fm-quiz .fm-result-tier{ font-size:clamp(26px,4vw,36px); font-weight:300; margin:8px 0 4px; }
+  .fm-quiz .fm-result-tier{ font-size:clamp(1.625rem,4vw,2.25rem); font-weight:300; margin:8px 0 4px; }
   .fm-quiz .fm-badges{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:16px; }
-  .fm-quiz .fm-badge{ font-family:"Jost",sans-serif; font-size:12.5px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:7px 14px; border:1px solid currentColor; }
+  .fm-quiz .fm-badge{ font-family:"Jost",sans-serif; font-size:0.7812rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:7px 14px; border:1px solid currentColor; }
 
   .fm-quiz .fm-save{ text-align:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding-block:26px; margin:34px 0; }
-  .fm-quiz .fm-save-desc{ color:var(--muted); font-size:15px; line-height:1.6; max-width:46ch; margin:0 auto; }
+  .fm-quiz .fm-save-desc{ color:var(--muted); font-size:0.9375rem; line-height:1.6; max-width:46ch; margin:0 auto; }
   .fm-quiz .fm-save-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:16px; }
 
   .fm-quiz .fm-divider{ height:0; border:none; border-top:1px solid var(--line); margin:36px 0; }
   .fm-quiz .fm-section-title{ font-family:"Cormorant Garamond", serif; font-style:italic; font-weight:500; font-size:1.25em; margin:1.6em 0 .6em; color:var(--ink); }
   .fm-quiz .fm-retake{ text-align:center; margin-top:30px; }
-  .fm-quiz .fm-footer-note{ text-align:center; font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.03em; color:var(--muted); margin-top:30px; }
+  .fm-quiz .fm-footer-note{ text-align:center; font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.03em; color:var(--muted); margin-top:30px; }
 
   .fm-quiz{
     --fm-fuchs:#B9784A; --fm-fuchs-soft:#EFDFC9;
@@ -821,7 +821,7 @@
     right:12px;
     background:none;
     border:none;
-    font-size:22px;
+    font-size:1.375rem;
     line-height:1;
     color:var(--muted);
     cursor:pointer;
@@ -866,7 +866,7 @@
      Die Navigation besteht jetzt aus echten Links statt aus Knoepfen.
      Diese Regeln geben den Links exakt das Aussehen der alten Knoepfe. */
   nav.pages a{
-    font-family:"Jost",sans-serif; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.14em; text-transform:uppercase;
     background:none; border:none; padding:6px 0; cursor:pointer; position:relative;
     color:var(--on-deep-muted); text-decoration:none; transition:color .2s ease;
   }
@@ -890,7 +890,7 @@
     position:absolute; left:-9999px; top:0; z-index:1000;
     background:var(--deep); color:var(--on-deep);
     padding:14px 22px; font-family:"Jost",sans-serif;
-    font-size:14px; letter-spacing:.08em; text-decoration:none;
+    font-size:0.875rem; letter-spacing:.08em; text-decoration:none;
   }
   .sprungmarke:focus{ left:0; }
   main:focus{ outline:none; }
@@ -915,16 +915,16 @@
   }
   .ansicht-panel[hidden]{ display:none; }
   .ansicht-titel{
-    font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.14em;
+    font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.14em;
     text-transform:uppercase; color:var(--muted); margin:0 0 14px;
   }
   .ansicht-zeile{
     display:flex; align-items:center; justify-content:space-between;
-    gap:12px; margin-bottom:12px; font-size:15px;
+    gap:12px; margin-bottom:12px; font-size:0.9375rem;
   }
   .ansicht-knoepfe{ display:flex; gap:6px; flex:none; }
   .ansicht-knoepfe button{
-    font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.04em;
+    font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.04em;
     padding:6px 10px; cursor:pointer;
     border:1px solid var(--line-strong); background:transparent; color:var(--ink);
   }
@@ -932,16 +932,19 @@
     background:var(--deep); border-color:var(--deep); color:var(--on-deep);
   }
   .ansicht-hinweis{
-    font-size:13px; line-height:1.5; color:var(--muted);
+    font-size:0.8125rem; line-height:1.5; color:var(--muted);
     margin:14px 0 0; padding-top:12px; border-top:1px solid var(--line);
   }
   @media (max-width:760px){
     .ansicht-panel{ right:16px; left:16px; width:auto; }
   }
 
-  /* --- Schriftgroesse --- */
-  html[data-schrift="gross"]{ font-size:118%; }
-  html[data-schrift="groesser"]{ font-size:136%; }
+  /* --- Schriftgroesse ---
+     Wirkt auf alle Groessen, weil die Seite in rem rechnet.
+     Bei clamp-Werten bremst der vw-Anteil das Wachstum, deshalb
+     sind die Stufen bewusst kraeftig gewaehlt. --- */
+  :root[data-schrift="gross"]{ font-size:125%; }
+  :root[data-schrift="groesser"]{ font-size:150%; }
 
   /* --- Staerkerer Kontrast ---
      :root statt html, damit es den Dunkelmodus ueberstimmt. --- */
@@ -988,13 +991,13 @@
   .laufband-fenster{ flex:1; overflow:hidden; }
   .laufband-spur{
     display:flex; width:max-content; gap:0;
-    animation:laufband 34s linear infinite;
+    animation:laufband 22s linear infinite;
   }
   .laufband.pausiert .laufband-spur{ animation-play-state:paused; }
   .laufband a{
     display:inline-flex; align-items:center; gap:10px;
     white-space:nowrap; padding:9px 34px 9px 0;
-    font-family:"Jost",sans-serif; font-size:13.5px; letter-spacing:.06em;
+    font-family:"Jost",sans-serif; font-size:0.8438rem; letter-spacing:.06em;
     color:inherit; text-decoration:none;
   }
   .laufband a:hover{ text-decoration:underline; }
@@ -1042,9 +1045,9 @@
     display:grid; gap:16px; place-items:center; min-height:200px;
     align-content:center;
   }
-  .spotify-text{ margin:0; max-width:44ch; font-size:16px; line-height:1.55; }
+  .spotify-text{ margin:0; max-width:44ch; font-size:1rem; line-height:1.55; }
   .spotify-knopf{ border-color:var(--deep); background:var(--deep); color:var(--on-deep); }
-  .spotify-alternative{ margin:0; font-size:14.5px; }
+  .spotify-alternative{ margin:0; font-size:0.9062rem; }
   .spotify-platz iframe{
     display:block; width:100%; height:352px; border:0; border-radius:14px;
   }
