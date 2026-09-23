@@ -250,6 +250,34 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
 })();
 
 // ============================================================
+// Eigene Brevo-Formulare (id="sib-form-xyz", nicht "sib-form").
+// Das Brevo-Skript bedient nur EIN Formular pro Seite, und das ist
+// der Newsletter unten. Weitere Formulare schicken wir deshalb
+// selbst im Hintergrund ab und zeigen die Meldung auf der Seite.
+// Ohne das landet man auf der nackten Brevo-Adresse (23.09.2026).
+// ============================================================
+(function(){
+  document.querySelectorAll('form[id^="sib-form-"]').forEach(function(form){
+    var name = form.id.replace('sib-form-','');
+    var ok = document.getElementById('success-message-' + name);
+    var fehler = document.getElementById('error-message-' + name);
+    var knopf = form.querySelector('[type="submit"]') || document.querySelector('[form="' + form.id + '"]');
+    function zeige(el){ [ok, fehler].forEach(function(x){ if(x) x.style.display = (x === el) ? 'block' : 'none'; }); }
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      if(knopf) knopf.disabled = true;
+      fetch(form.getAttribute('action') + '?isAjax=1', { method:'POST', body:new FormData(form), credentials:'include' })
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          if(d && d.success){ zeige(ok); form.style.display = 'none'; if(ok) ok.scrollIntoView({block:'center', behavior:'smooth'}); }
+          else { zeige(fehler); if(knopf) knopf.disabled = false; }
+        })
+        .catch(function(){ zeige(fehler); if(knopf) knopf.disabled = false; });
+    });
+  });
+})();
+
+// ============================================================
 // Zustimmung zu externen Inhalten (Spotify).
 // Beim ersten Besuch fragt ein Banner einmal fuer die ganze Seite.
 // "Erlauben": der Player laedt danach ueberall direkt.

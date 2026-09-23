@@ -118,15 +118,16 @@
 
         <!-- Brevo-Formular „Brand your Voice“ (Liste 19), eingesetzt 23.09.2026 -->
         <div id="sib-form-container-byv">
-          <div id="error-message-byv" class="sib-form-message-panel" style="font-family:'Jost',sans-serif; font-size:0.7812rem; color:#b3261e; margin-bottom:10px;">
+          <div id="error-message-byv" class="sib-form-message-panel" role="alert" style="border-left:3px solid #b3261e; padding:10px 0 10px 20px; margin:8px 0 16px; font-size:1.05rem; line-height:1.6; color:var(--ink); text-align:left;">
             Deine Anmeldung konnte nicht gespeichert werden. Bitte versuche es erneut.
           </div>
-          <div id="success-message-byv" class="sib-form-message-panel" style="font-family:'Jost',sans-serif; font-size:0.7812rem; color:#2f6b3a; margin-bottom:10px;">
-            Fast geschafft. Best&auml;tige kurz deine E-Mail, dann kommst du direkt zu deinem Guide.
+          <div id="success-message-byv" class="sib-form-message-panel" role="status" style="border-left:3px solid var(--accent); padding:14px 0 14px 20px; margin:8px 0 10px; text-align:left;">
+            <p style="font-size:1.35rem; line-height:1.3; color:var(--ink); margin:0 0 8px;">Fast geschafft.</p>
+            <p style="font-size:1.05rem; line-height:1.6; color:var(--ink); margin:0;">Ich hab dir gerade eine Mail geschickt. Klick dort einmal auf &bdquo;Ja, zu meinem Guide&ldquo;, dann kommst du direkt zu deinem PDF. Falls nichts ankommt, schau kurz in den Spam-Ordner.</p>
           </div>
 
           <form id="sib-form-byv" class="contact" method="POST" action="https://ac66b6a3.sibforms.com/serve/MUIFANCPnDOZe3AeT73m1UuSyaQ5nN-9FyWddLP0s-af0fiGb9fDkDiqBZZTQyOGApMcqfOGM4bvYDMFE1nJb8R1gpsD0sVDehqrTpI-DCwVOrGPTbyWbvJWalcS8ZXISMSfx3WhApSydNMlXqAUfzi4VGhLKt1rZV3-yv-2lZCS6WrCP0iAv9pJpqpbYmfr1LsdnQ-aq9RQ14m6BQ==" data-type="subscription">
-            <div class="field full"><label for="EMAIL_BYV">E-Mail-Adresse*</label><input type="text" id="EMAIL_BYV" name="EMAIL" autocomplete="off" value="" placeholder="deine@email.de" data-required="true" required></div>
+            <div class="field full"><label for="EMAIL_BYV">E-Mail-Adresse*</label><input type="email" id="EMAIL_BYV" name="EMAIL" autocomplete="email" value="" placeholder="deine@email.de" data-required="true" required></div>
             <div class="field"><label for="VORNAME_BYV">Vorname*</label><input type="text" id="VORNAME_BYV" name="VORNAME" maxlength="200" autocomplete="off" placeholder="Dein Vorname" data-required="true" required></div>
             <div class="field"><label for="NACHNAME_BYV">Nachname*</label><input type="text" id="NACHNAME_BYV" name="NACHNAME" maxlength="200" autocomplete="off" placeholder="Dein Nachname" data-required="true" required></div>
 
