@@ -261,6 +261,8 @@
   var TYP_LABEL = { reguliert:"Reguliert", instabil:"Instabil", ueberbelastet:"Überbelastet" };
 
 
+  var DIENST = "https://rooted-tarot.rooted-tarot.workers.dev";
+
   // ---------- state ----------
   var state = {
     screen: "intro", // intro | contact | question | result
@@ -364,7 +366,7 @@
     var intro = el("div","prose");
     intro.style.marginBottom = "28px";
     intro.appendChild(el("p","eyebrow", "Bevor es losgeht"));
-    intro.appendChild(el("p", null, "Trag deinen Namen und deine E-Mail-Adresse ein, dein Ergebnis wird dir direkt im Anschluss angezeigt."));
+    intro.appendChild(el("p", null, "Trag deinen Namen und deine E-Mail-Adresse ein. Du bekommst dann kurz eine Mail zum Best&auml;tigen, und mit einem Klick darin geht es direkt los. Dein Ergebnis siehst du am Ende sofort hier auf der Seite."));
     c.appendChild(intro);
 
     var form = el("form","contact");
@@ -424,16 +426,19 @@
       }
       errBox.textContent = "";
       state.contact = { vorname:vorname, nachname:nachname, email:email };
-      // Double-Opt-in-Mail im Hintergrund, der Test wartet nicht darauf
-      state.optin = true;
-      try {
-        fetch("https://rooted-tarot.rooted-tarot.workers.dev/kontakt", {
-          method:"POST", headers:{ "Content-Type":"application/json" },
-          body: JSON.stringify({ email:email, vorname:vorname, nachname:nachname, einwilligung:true })
-        }).catch(function(){});
-      } catch(e) {}
-      state.screen = "question"; state.qIndex = 0;
-      render();
+      // Erst Double-Opt-in: Brevo schickt die Mail, der Knopf darin fuehrt zurueck in den Test
+      nextBtn.disabled = true;
+      fetch(DIENST + "/kontakt", {
+        method:"POST", headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ email:email, vorname:vorname, nachname:nachname, einwilligung:true })
+      }).then(function(r){
+        if(!r.ok) throw new Error("fehler");
+        state.screen = "warten";
+        render();
+      }).catch(function(){
+        nextBtn.disabled = false;
+        errBox.innerHTML = "Das hat gerade nicht geklappt. Bitte versuch es gleich noch einmal.";
+      });
     };
     row.appendChild(backBtn);
     row.appendChild(nextBtn);
@@ -563,15 +568,6 @@
     var info = TIER_INFO[r.tier];
     var accent = TIER_ACCENT[r.tier];
 
-    if(state.optin){
-      var hinweis = el("div", null,
-        "<p style=\"font-size:1.35rem; line-height:1.3; color:var(--ink); margin:0 0 8px;\">Fast geschafft.</p>" +
-        "<p style=\"font-size:1.05rem; line-height:1.6; color:var(--ink); margin:0;\">Ich hab dir gerade eine Mail geschickt. Klick dort einmal auf &bdquo;Ja, das bin ich&ldquo;, dann darf ich dir zu deinem Ergebnis schreiben. Falls nichts ankommt, schau kurz in den Spam-Ordner.</p>");
-      hinweis.setAttribute("role","status");
-      hinweis.style.cssText = "border-left:3px solid var(--accent); padding:14px 0 14px 20px; margin:0 0 28px; text-align:left;";
-      c.appendChild(hinweis);
-    }
-
     var hero = el("div","fm-result-hero");
     hero.appendChild(el("div","fm-result-emoji", info.emoji));
     hero.appendChild(el("p","eyebrow","Dein Ergebnis, " + esc(state.contact.vorname)));
@@ -659,9 +655,37 @@
     c.appendChild(retake);
   }
 
+  // Nach dem Absenden: warten auf den Klick in der Bestaetigungsmail
+  function renderWarten(){
+    var c = document.getElementById("fmCard");
+    c.innerHTML = "";
+    var box = el("div", null,
+      "<p style=\"font-size:1.35rem; line-height:1.3; color:var(--ink); margin:0 0 8px;\">Fast geschafft.</p>" +
+      "<p style=\"font-size:1.05rem; line-height:1.6; color:var(--ink); margin:0;\">Ich hab dir gerade eine Mail geschickt. Klick dort einmal auf &bdquo;Ja, das bin ich&ldquo;, dann geht es direkt mit deinem Selbsttest los. Falls nichts ankommt, schau kurz in den Spam-Ordner.</p>");
+    box.setAttribute("role","status");
+    box.style.cssText = "border-left:3px solid var(--accent); padding:14px 0 14px 20px; text-align:left;";
+    c.appendChild(box);
+  }
+
+  // Rueckkehr aus der Bestaetigungsmail (?t=...): Name holen und direkt mit den Fragen starten
+  function tryLoadFromMail(){
+    var m = /[?&]t=([0-9a-f]{32})/.exec(location.search);
+    if(!m) return false;
+    try{ history.replaceState(null, "", location.pathname + location.hash); }catch(e){}
+    fetch(DIENST + "/kontakt?t=" + m[1]).then(function(r){ return r.ok ? r.json() : null; }).then(function(d){
+      if(d && d.email){
+        state.contact = { vorname:d.vorname || "", nachname:d.nachname || "", email:d.email };
+        state.screen = "question"; state.qIndex = 0;
+      }
+      render();
+    }).catch(function(){ render(); });
+    return true;
+  }
+
   function render(){
     setProgress();
     if(state.screen === "intro") renderIntro();
+    else if(state.screen === "warten") renderWarten();
     else if(state.screen === "contact") renderContact();
     else if(state.screen === "question") renderQuestion();
     else if(state.screen === "result") renderResult();
@@ -671,8 +695,10 @@
     }
   }
 
-  tryLoadFromHash();
-  render();
+  if(!tryLoadFromMail()){
+    tryLoadFromHash();
+    render();
+  }
 })();
 </script>
 
