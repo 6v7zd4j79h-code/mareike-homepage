@@ -227,40 +227,17 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
 })();
 
 // ============================================================
-// Das Brevo-Formular-Skript wird erst geladen, wenn jemand ein
-// Formular wirklich benutzt. Vorher geht nichts an Brevo, und
-// die Seite laedt schneller. Eingebaut am 18.09.2026.
+// Alle Brevo-Formulare, auch der Newsletter unten (id="sib-form"),
+// schicken wir selbst im Hintergrund ab und zeigen die Meldung auf
+// der Seite. Das Brevo-Skript wird nicht mehr geladen: nachgeladen
+// hat es sich nicht mehr ans Formular gehaengt, der Newsletter hat
+// dadurch nichts abgeschickt (gefunden 24.09.2026).
 // ============================================================
 (function(){
-  var felder = document.querySelectorAll('[id^="sib-form-container"]');
-  if(!felder.length) return;
-  var schonGeladen = false;
-  function laden(){
-    if(schonGeladen) return;
-    schonGeladen = true;
-    var s = document.createElement('script');
-    s.defer = true;
-    s.src = 'https://sibforms.com/forms/end-form/build/main.js';
-    document.body.appendChild(s);
-  }
-  felder.forEach(function(k){
-    k.addEventListener('focusin', laden, {once:false});
-    k.addEventListener('pointerdown', laden, {once:false});
-  });
-})();
-
-// ============================================================
-// Eigene Brevo-Formulare (id="sib-form-xyz", nicht "sib-form").
-// Das Brevo-Skript bedient nur EIN Formular pro Seite, und das ist
-// der Newsletter unten. Weitere Formulare schicken wir deshalb
-// selbst im Hintergrund ab und zeigen die Meldung auf der Seite.
-// Ohne das landet man auf der nackten Brevo-Adresse (23.09.2026).
-// ============================================================
-(function(){
-  document.querySelectorAll('form[id^="sib-form-"]').forEach(function(form){
-    var name = form.id.replace('sib-form-','');
-    var ok = document.getElementById('success-message-' + name);
-    var fehler = document.getElementById('error-message-' + name);
+  document.querySelectorAll('form[id^="sib-form"]').forEach(function(form){
+    var name = form.id === 'sib-form' ? '' : '-' + form.id.replace('sib-form-','');
+    var ok = document.getElementById('success-message' + name);
+    var fehler = document.getElementById('error-message' + name);
     var knopf = form.querySelector('[type="submit"]') || document.querySelector('[form="' + form.id + '"]');
     function zeige(el){ [ok, fehler].forEach(function(x){ if(x) x.style.display = (x === el) ? 'block' : 'none'; }); }
     form.addEventListener('submit', function(ev){
