@@ -117,6 +117,16 @@
       </div>
     </div>
 
+    <script>
+      // Nach der Zahlung haengt Stripe die Kaufnummer an (?sid=...). Damit schickt der Dienst
+      // die Mail „Schoen, dass wir loslegen“ und legt die Kundin in Brevo ab. Pro Kauf nur einmal.
+      (function(){
+        var m = /[?&]sid=(cs_[A-Za-z0-9_]+)/.exec(location.search);
+        if(!m) return;
+        fetch("https://rooted-tarot.rooted-tarot.workers.dev/begleitung?sid=" + m[1]).catch(function(){});
+        try{ history.replaceState(null, "", location.pathname); }catch(e){}
+      })();
+    </script>
   </section>
 </main>
 <footer class="site">
