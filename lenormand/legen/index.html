@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Deine Karten | Mareike Krohnen</title>
-<meta name="description" content="Drei Tarotziehungen, gedeutet durch dein Funktionsmuster. Mit einem Atemzug am Schluss und einem Verlauf, der mitliest.">
-<link rel="canonical" href="https://mareikekrohnen.de/tarot/legen/">
+<meta name="description" content="Drei Lenormand-Ziehungen, gedeutet durch dein Funktionsmuster. Mit einem Atemzug am Schluss und einem Verlauf, der mitliest.">
+<link rel="canonical" href="https://mareikekrohnen.de/lenormand/legen/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Deine Karten | Mareike Krohnen">
-<meta property="og:description" content="Drei Tarotziehungen, gedeutet durch dein Funktionsmuster. Mit einem Atemzug am Schluss und einem Verlauf, der mitliest.">
-<meta property="og:url" content="https://mareikekrohnen.de/tarot/legen/">
+<meta property="og:description" content="Drei Lenormand-Ziehungen, gedeutet durch dein Funktionsmuster. Mit einem Atemzug am Schluss und einem Verlauf, der mitliest.">
+<meta property="og:url" content="https://mareikekrohnen.de/lenormand/legen/">
 <meta property="og:image" content="https://mareikekrohnen.de/assets/media/ac62833448.jpg">
 <meta property="og:locale" content="de_DE">
 <link rel="icon" href="../../favicon.ico" sizes="any">
@@ -61,7 +61,12 @@
 
   .tw .ttisch{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr)); margin-bottom:34px;}
   .tw .ttisch.one{grid-template-columns:1fr; max-width:13rem; margin-inline:auto;}
-  .tw .ttisch.zehn{grid-template-columns:repeat(auto-fit,minmax(6.6rem,1fr));}
+  .tw .ttisch.drei{grid-template-columns:repeat(3,1fr);}
+  .tw .ttisch.fuenf{grid-template-columns:repeat(5,1fr); gap:10px;}
+  .tw .ttisch.neun{grid-template-columns:repeat(3,1fr); max-width:28rem; margin-inline:auto;}
+  .tw .ttisch.tafel{grid-template-columns:repeat(9,minmax(2.9rem,1fr)); gap:6px; overflow-x:auto; padding-bottom:6px;}
+  .tw .ttisch.tafel .card .face{border-radius:3px;}
+  .tw .card.du .face.front{box-shadow:0 0 0 2px var(--t-glow);}
   .tw .slot{display:flex; flex-direction:column; gap:8px; min-width:0;}
   .tw .pos{font-family:'League Spartan',sans-serif; font-weight:500; font-size:.68rem; letter-spacing:.11em; text-transform:uppercase; color:var(--t-dim); text-align:center; line-height:1.35; min-height:2.4em;}
   .tw .card{position:relative; aspect-ratio:11/18; max-width:100%; border:0; padding:0; background:none; cursor:pointer; perspective:900px;}
@@ -91,7 +96,8 @@
   @media (prefers-reduced-motion:reduce){ .tw .card .inner{transition:none;} }
   @media (max-width:560px){
     .tw .ttisch{grid-template-columns:repeat(2,1fr);}
-    .tw .ttisch.zehn{grid-template-columns:repeat(3,1fr);}
+    .tw .ttisch.fuenf{grid-template-columns:repeat(3,1fr);}
+    .tw .ttisch.tafel{grid-template-columns:repeat(9,1fr); gap:3px; overflow:visible;}
   }
 </style>
 </head>
@@ -162,7 +168,7 @@
 
     <div class="band cream">
       <div class="wrap page-hero">
-        <p class="eyebrow">Rooted Tarot</p>
+        <p class="eyebrow">Rooted Lenormand</p>
         <h1>Deine Karten</h1>
       </div>
     </div>
@@ -174,7 +180,7 @@
         <div id="tor">
           <div class="tk">
             <label class="tf" for="code">Dein Zugangscode</label>
-            <input type="text" id="code" placeholder="ROOT-0000-0000" autocomplete="off" spellcheck="false">
+            <input type="text" id="code" placeholder="LENO-0000-0000" autocomplete="off" spellcheck="false">
             <div class="ta">
               <button class="btn solid" type="button" id="einloesen" style="border-color:var(--deep); background:var(--deep); color:var(--on-deep);">Rein damit</button>
               <p class="th" id="torhinweis">Den Code hast du nach dem Bezahlen bekommen, er steht auch in deiner Mail.</p>
@@ -241,10 +247,10 @@
           <div class="tk">
             <div class="tw3" role="group" aria-label="Legung w&auml;hlen">
               <button class="tb" type="button" data-spread="tag" aria-pressed="false"><span class="n">Tageskarte</span><span class="d">Eine Karte. Was heute dran ist.</span></button>
-              <button class="tb" type="button" data-spread="zeit" aria-pressed="true"><span class="n">Zeitachse</span><span class="d">Drei Karten. Vergangenheit, Gegenwart, Zukunft.</span></button>
-              <button class="tb" type="button" data-spread="rat" aria-pressed="false"><span class="n">Situation, Hindernis, Rat</span><span class="d">Drei Karten. Die klassische Frage-Legung.</span></button>
-              <button class="tb" type="button" data-spread="ent" aria-pressed="false"><span class="n">Entscheidung</span><span class="d">F&uuml;nf Karten. Zwei Wege nebeneinander.</span></button>
-              <button class="tb" type="button" data-spread="kreuz" aria-pressed="false"><span class="n">Keltisches Kreuz</span><span class="d">Zehn Karten. Wenn es tiefer gehen soll.</span></button>
+              <button class="tb" type="button" data-spread="drei" aria-pressed="true"><span class="n">Dreierreihe</span><span class="d">Drei Karten. Die Mitte ist der Kern.</span></button>
+              <button class="tb" type="button" data-spread="fuenf" aria-pressed="false"><span class="n">Fünferreihe</span><span class="d">Fünf Karten. Was war, was ist, wohin es geht.</span></button>
+              <button class="tb" type="button" data-spread="neun" aria-pressed="false"><span class="n">Neuner-Quadrat</span><span class="d">Neun Karten. Wenn du deine Lage rundum sehen willst.</span></button>
+              <button class="tb" type="button" data-spread="tafel" aria-pressed="false"><span class="n">Große Tafel</span><span class="d">Alle 36 Karten. Was nah bei dir liegt und was weit weg.</span></button>
             </div>
             <div class="ta">
               <button class="btn solid" type="button" id="legen" style="border-color:var(--deep); background:var(--deep); color:var(--on-deep);">Karten legen</button>
@@ -255,6 +261,7 @@
           <p class="ts">Schritt vier</p>
           <h2 class="th2">Auf dem Tisch</h2>
           <div class="ttisch" id="tisch"></div>
+          <div class="ta" id="alle-zeile" style="margin:-18px 0 34px; display:none;"><button class="btn line" type="button" id="alle">Alle aufdecken</button></div>
 
           <p class="ts">Schritt f&uuml;nf</p>
           <h2 class="th2">Deine Deutung</h2>
@@ -287,7 +294,7 @@
         </div>
 
         <p class="tnote" style="margin-top:44px;">
-          Tarot ist ein Spiegel, keine Diagnose. Es ersetzt keine &auml;rztliche, therapeutische, rechtliche oder finanzielle Beratung. Bei allem, was dich wirklich belastet, hol dir bitte echte Begleitung.
+          Lenormand ist ein Spiegel, keine Diagnose. Es ersetzt keine &auml;rztliche, therapeutische, rechtliche oder finanzielle Beratung. Bei allem, was dich wirklich belastet, hol dir bitte echte Begleitung.
         </p>
 
       </div>
@@ -301,109 +308,110 @@
   "use strict";
 /* ---------- Aquarell-Motive ---------- */
 
+  /* Selbst gezeichnet, keine fremden Kartenbilder. Klassen:
+     t2 = helles Salbei, warm = Honig, linie = Strich statt Fläche. */
   var MOT = {
-    kreisRand:'<circle cx="60" cy="96" r="30"/><rect x="12" y="126" width="96" height="22" rx="11" class="t2"/>',
-    flamme:'<path d="M60 44c17 21 25 34 25 47a25 25 0 0 1-50 0c0-13 8-26 25-47z"/><path d="M60 78c7 10 10 16 10 22a10 10 0 0 1-20 0c0-6 3-12 10-22z" class="warm"/>',
-    sichel:'<path d="M78 54a40 40 0 1 0 0 76 48 48 0 0 1 0-76z"/>',
-    blatt:'<path d="M60 42c24 18 28 44 0 68-28-24-24-50 0-68z"/><rect x="57" y="104" width="6" height="34" rx="3" class="t2"/>',
-    berg:'<path d="M14 136L48 72l24 38 14-22 26 48z"/>',
-    saeule:'<rect x="24" y="48" width="20" height="92" rx="10"/><rect x="76" y="48" width="20" height="92" rx="10"/><rect x="24" y="48" width="72" height="14" rx="7" class="t2"/>',
-    zweiKreise:'<circle cx="46" cy="92" r="28"/><circle cx="74" cy="92" r="28" class="t2"/>',
-    pfeil:'<path d="M60 42l32 48H72v48H48V90H28z"/>',
-    bogen:'<path d="M18 138a42 42 0 0 1 84 0z"/><path d="M36 138a24 24 0 0 1 48 0z" class="t2"/>',
-    punktImFeld:'<rect x="20" y="46" width="80" height="96" rx="16"/><circle cx="60" cy="94" r="11" class="warm"/>',
-    rad:'<path d="M60 54a38 38 0 1 0 0 76 38 38 0 1 0 0-76zm0 17a21 21 0 1 1 0 42 21 21 0 1 1 0-42z" fill-rule="evenodd"/>',
-    waage:'<rect x="16" y="66" width="88" height="9" rx="4.5"/><circle cx="32" cy="106" r="17" class="t2"/><circle cx="88" cy="106" r="17" class="t2"/>',
-    haengend:'<rect x="56" y="40" width="8" height="32" rx="4" class="t2"/><circle cx="60" cy="104" r="30"/>',
-    tor:'<path d="M26 140V88a34 34 0 0 1 68 0v52H74V94a14 14 0 0 0-28 0v46z" fill-rule="evenodd"/>',
-    zweiSchalen:'<path d="M20 62h42l-7 28a15 15 0 0 1-28 0z"/><path d="M58 90h42l-7 28a15 15 0 0 1-28 0z" class="t2"/>',
-    kette:'<path d="M42 62a20 20 0 1 1 0 40 20 20 0 1 1 0-40zm0 11a9 9 0 1 0 0 18 9 9 0 1 0 0-18z" fill-rule="evenodd"/><path d="M78 92a20 20 0 1 1 0 40 20 20 0 1 1 0-40zm0 11a9 9 0 1 0 0 18 9 9 0 1 0 0-18z" fill-rule="evenodd" class="t2"/>',
-    riss:'<path d="M36 140V62h20l-9 32h15l-11 46z"/><path d="M84 140V62H64l9 32H58l11 46z" class="t2"/>',
-    stern:'<path d="M60 40l10 34 34 10-34 10-10 34-10-34-34-10 34-10z"/><circle cx="60" cy="84" r="9" class="warm"/>',
-    mondWeg:'<path d="M78 48a38 38 0 1 0 0 72 46 46 0 0 1 0-72z"/><path d="M48 142l12-42 12 42z" class="t2"/>',
-    sonne:'<circle cx="60" cy="90" r="27" class="warm"/><circle cx="60" cy="90" r="42" fill="none" stroke-width="7" stroke-dasharray="3 13" class="ring"/>',
-    ruf:'<circle cx="60" cy="60" r="18"/><path d="M14 110c15-13 28-13 46 0s31 13 46 0v20c-15 13-31 13-46 0s-31-13-46 0z" class="t2"/>',
-    kranz:'<path d="M60 40c27 0 44 23 44 50s-17 50-44 50-44-23-44-50 17-50 44-50zm0 19c-17 0-27 15-27 31s10 31 27 31 27-15 27-31-10-31-27-31z" fill-rule="evenodd"/>',
-    schale:'<path d="M22 64h76l-10 38a28 28 0 0 1-56 0z"/><rect x="42" y="126" width="36" height="10" rx="5" class="t2"/><rect x="56" y="102" width="8" height="26" class="t2"/>',
-    spitze:'<path d="M60 40l24 64H36z"/><rect x="32" y="110" width="56" height="10" rx="5" class="t2"/>',
-    scheibe:'<path d="M60 56a36 36 0 1 0 0 72 36 36 0 1 0 0-72zm0 14a22 22 0 1 1 0 44 22 22 0 1 1 0-44z" fill-rule="evenodd"/><circle cx="60" cy="92" r="9" class="warm"/>'
+    reiter:'<path d="M42 140l6-40c-8-6-12-18-8-30l14-26 6 12c14 2 28 14 32 28l-8 8-12-6c-2 16 2 36 10 54z"/><path d="M54 44c-10 8-14 22-12 34l8-4c-2-10 0-20 4-30z" class="t2"/><circle cx="70" cy="66" r="3" class="warm"/>',
+    klee:'<rect x="57" y="96" width="6" height="44" rx="3" class="t2"/><circle cx="60" cy="68" r="16"/><circle cx="43" cy="92" r="16"/><circle cx="77" cy="92" r="16"/><circle cx="60" cy="84" r="5" class="warm"/>',
+    schiff:'<path d="M18 114h84l-14 22H32z"/><path d="M58 42v66H26z" class="t2"/><path d="M64 50v58h30z"/>',
+    haus:'<path d="M18 92L60 50l42 42z" class="t2"/><rect x="30" y="88" width="60" height="50"/><rect x="53" y="110" width="14" height="28" rx="2" class="warm"/>',
+    baum:'<rect x="55" y="96" width="10" height="44" rx="4" class="t2"/><circle cx="60" cy="70" r="26"/><circle cx="40" cy="90" r="16"/><circle cx="80" cy="90" r="16"/>',
+    wolken:'<circle cx="44" cy="88" r="18"/><circle cx="64" cy="76" r="22"/><circle cx="82" cy="92" r="16"/><rect x="28" y="92" width="68" height="18" rx="9"/><circle cx="52" cy="124" r="10" class="t2"/><circle cx="66" cy="120" r="12" class="t2"/><rect x="44" y="122" width="34" height="12" rx="6" class="t2"/>',
+    schlange:'<path d="M82 52c-30-8-48 8-34 24s36 10 34 34-38 22-44 6" class="linie" stroke-width="10" stroke-linecap="round"/><circle cx="84" cy="50" r="8"/>',
+    sarg:'<path d="M48 42h24l14 22-8 76H42l-8-76z"/><path d="M48 42h24l14 22H34z" class="t2"/>',
+    blumen:'<path d="M60 140V96M60 104L44 80M60 104L76 80" class="linie" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="68" r="14" class="warm"/><circle cx="41" cy="80" r="12"/><circle cx="79" cy="80" r="12"/><path d="M50 112h20l-4 10H54z" class="t2"/>',
+    sense:'<rect x="44" y="44" width="7" height="98" rx="3.5" transform="rotate(-12 47 93)" class="t2"/><path d="M40 48c26-8 52 2 60 24-16-10-36-14-58-10z"/>',
+    ruten:'<rect x="56" y="40" width="8" height="104" rx="4" transform="rotate(22 60 92)"/><rect x="56" y="40" width="8" height="104" rx="4" transform="rotate(-22 60 92)" class="t2"/>',
+    voegel:'<path d="M20 80Q34 62 48 80Q62 62 76 80Q62 74 48 88Q34 74 20 80z"/><path d="M44 112Q58 94 72 112Q86 94 100 112Q86 106 72 120Q58 106 44 112z" class="t2"/>',
+    kind:'<circle cx="60" cy="68" r="14"/><path d="M40 138c0-30 8-52 20-52s20 22 20 52z" class="t2"/><circle cx="60" cy="104" r="4" class="warm"/>',
+    fuchs:'<path d="M28 56l16 18h32l16-18-4 38-28 34-28-34z" class="warm"/><path d="M50 110l10 18 10-18z"/><circle cx="48" cy="88" r="3"/><circle cx="72" cy="88" r="3"/>',
+    baer:'<circle cx="38" cy="64" r="12" class="t2"/><circle cx="82" cy="64" r="12" class="t2"/><circle cx="60" cy="92" r="32"/><ellipse cx="60" cy="106" rx="13" ry="10" class="t2"/>',
+    sterne:'<path d="M60 48l8 24 24 8-24 8-8 24-8-24-24-8 24-8z"/><path d="M92 112l4 11 11 4-11 4-4 11-4-11-11-4 11-4z" class="t2"/><circle cx="30" cy="120" r="4" class="warm"/><circle cx="90" cy="54" r="3" class="warm"/>',
+    stoerche:'<ellipse cx="58" cy="82" rx="22" ry="13"/><path d="M76 78l14-26 14 4" class="linie" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="50" y="92" width="3.5" height="46" rx="1.5" class="t2"/><rect x="62" y="92" width="3.5" height="46" rx="1.5" class="t2"/><path d="M36 78l-14 6 16 4z" class="t2"/>',
+    hund:'<path d="M38 66c0-12 8-18 22-18s22 6 22 18v28c0 18-10 30-22 30s-22-12-22-30z"/><path d="M38 60c-10 4-14 24-8 38l10-4z" class="t2"/><path d="M82 60c10 4 14 24 8 38l-10-4z" class="t2"/><ellipse cx="60" cy="110" rx="8" ry="6" class="warm"/>',
+    turm:'<path d="M40 48h8v8h8v-8h8v8h8v-8h8v24H40z" class="t2"/><rect x="44" y="70" width="32" height="70"/><rect x="55" y="84" width="10" height="16" rx="5" class="warm"/>',
+    park:'<circle cx="34" cy="94" r="15"/><circle cx="86" cy="94" r="15"/><circle cx="60" cy="74" r="20"/><path d="M48 140q12-26 12-40q0 14 12 40z" class="t2"/>',
+    berg:'<path d="M12 138L52 60l20 34 12-18 24 62z"/><path d="M52 60l11 21-11 7-9-9z" class="t2"/>',
+    wege:'<path d="M55 140V102L28 56h13l19 34 19-34h13L65 102v38z"/>',
+    maeuse:'<ellipse cx="60" cy="102" rx="26" ry="18"/><circle cx="42" cy="86" r="10" class="t2"/><path d="M86 106q18 6 14 28" class="linie" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="100" r="2.5" class="warm"/>',
+    herz:'<path d="M60 134C26 110 20 86 33 71c11-13 25-8 27 7 2-15 16-20 27-7 13 15 7 39-27 63z"/>',
+    ring:'<path d="M60 70a30 30 0 1 1 0 60 30 30 0 1 1 0-60zm0 11a19 19 0 1 0 0 38 19 19 0 1 0 0-38z" fill-rule="evenodd"/><path d="M50 50h20l6 10-16 14-16-14z" class="warm"/>',
+    buch:'<path d="M14 70c16-6 32-4 44 4v62c-12-8-28-10-44-4z"/><path d="M106 70c-16-6-32-4-44 4v62c12-8 28-10 44-4z" class="t2"/>',
+    brief:'<rect x="18" y="64" width="84" height="58" rx="4"/><path d="M20 66l40 32 40-32z" class="t2"/><circle cx="60" cy="98" r="7" class="warm"/>',
+    herr:'<circle cx="60" cy="60" r="15"/><path d="M32 140l4-40c2-10 12-16 24-16s22 6 24 16l4 40z"/>',
+    dame:'<circle cx="60" cy="58" r="14"/><path d="M50 76h20l26 64H24z"/><circle cx="60" cy="96" r="4" class="warm"/>',
+    lilien:'<path d="M60 140V74M40 140V98M80 140V98" class="linie" stroke-width="4" stroke-linecap="round"/><path d="M60 44c-6 12-16 16-20 28 10-2 16-6 20-12 4 6 10 10 20 12-4-12-14-16-20-28z"/><path d="M40 76c-4 8-11 11-14 19 7-1 11-4 14-8 3 4 7 7 14 8-3-8-10-11-14-19z" class="t2"/><path d="M80 76c-4 8-11 11-14 19 7-1 11-4 14-8 3 4 7 7 14 8-3-8-10-11-14-19z" class="t2"/>',
+    sonne:'<circle cx="60" cy="92" r="26" class="warm"/><circle cx="60" cy="92" r="42" fill="none" stroke-width="7" stroke-dasharray="3 13" class="ring"/>',
+    mond:'<path d="M74 54a38 38 0 1 0 0 76 46 46 0 0 1 0-76z"/><circle cx="86" cy="74" r="3.5" class="warm"/><circle cx="94" cy="104" r="2.5" class="warm"/>',
+    schluessel:'<path d="M60 42a18 18 0 1 1 0 36 18 18 0 1 1 0-36zm0 10a8 8 0 1 0 0 16 8 8 0 1 0 0-16z" fill-rule="evenodd"/><rect x="56" y="76" width="8" height="64" rx="3"/><rect x="64" y="118" width="14" height="7" rx="2" class="t2"/><rect x="64" y="130" width="10" height="7" rx="2" class="t2"/>',
+    fische:'<path d="M18 84c14-18 40-22 58-8l14-12v40l-14-12c-18 14-44 10-58-8z"/><path d="M40 122c9-11 25-14 36-5l9-8v26l-9-8c-11 9-27 6-36-5z" class="t2"/>',
+    anker:'<path d="M60 40a11 11 0 1 1 0 22 11 11 0 1 1 0-22zm0 6a5 5 0 1 0 0 10 5 5 0 1 0 0-10z" fill-rule="evenodd"/><rect x="56" y="60" width="8" height="76" rx="3"/><rect x="40" y="70" width="40" height="7" rx="3" class="t2"/><path d="M26 102c4 24 18 36 34 36s30-12 34-36l-9 5c-4 14-14 21-25 21s-21-7-25-21z"/>',
+    kreuz:'<rect x="52" y="42" width="16" height="98" rx="6"/><rect x="30" y="66" width="60" height="16" rx="6" class="t2"/>'
   };
-
-  var KRONE = '<path d="M32 46l11 17 17-21 17 21 11-17v16H32z" class="t2"/>';
-
-  var MAJOR_MOT = ["kreisRand","flamme","sichel","blatt","berg","saeule","zweiKreise","pfeil","bogen","punktImFeld","rad","waage","haengend","tor","zweiSchalen","kette","riss","stern","mondWeg","sonne","ruf","kranz"];
 
   /* ---------- Karten ---------- */
 
-  var M = [
-    ["Der Narr",0,"Aufbruch, Vertrauen ins Unbekannte, noch nichts festgelegt","Zögern am Rand, kopflos losrennen"],
-    ["Der Magier",1,"Du hast alles da, was du brauchst, Anfang aus eigener Kraft","Kraft verzettelt, Schaufenster statt Substanz"],
-    ["Die Hohepriesterin",2,"Wissen, das nicht aus dem Kopf kommt, abwarten, innen hinhören","Innere Stimme überhört, Geheimnis als Mauer"],
-    ["Die Herrscherin",3,"Fülle, Nähren, Empfangen, der Körper als Grund","Ausgelaugt vom Geben, alles halten müssen"],
-    ["Der Herrscher",4,"Struktur, Grenze, Verantwortung, ein Rahmen der trägt","Kontrolle statt Halt, Starre"],
-    ["Der Hierophant",5,"Gelernte Regeln, Tradition, was man so macht","Fremde Regeln, die längst nicht mehr passen"],
-    ["Die Liebenden",6,"Eine echte Wahl, Verbindung, sich zeigen","Zerrissen zwischen zwei Seiten, Entscheidung vertagt"],
-    ["Der Wagen",7,"Richtung, Antrieb, du ziehst es durch","Losfahren ohne Ziel, mit angezogener Handbremse"],
-    ["Die Kraft",8,"Sanfte Kraft, das Wilde nicht wegsperren, Geduld mit dir","Sich zusammenreißen, bis nichts mehr geht"],
-    ["Der Eremit",9,"Rückzug, allein sein dürfen, nach innen leuchten","Sich verkriechen, niemanden ranlassen"],
-    ["Das Rad des Schicksals",10,"Es dreht sich, etwas kommt in Bewegung ohne dein Zutun","Festhalten an dem, was gerade geht"],
-    ["Die Gerechtigkeit",11,"Ehrlich hinschauen, Ursache und Folge, Ausgleich","Sich selbst schönreden, ungleiche Waage"],
-    ["Der Gehängte",12,"Hängenbleiben, aber anders herum schauen, warten","Opferhaltung, Stillstand ohne Erkenntnis"],
-    ["Der Tod",13,"Etwas ist zu Ende, und das darf es sein","Nicht loslassen können, sich an Altes klammern"],
-    ["Die Mäßigung",14,"Maß finden, mischen, nicht ganz oder gar nicht","Zu viel auf einmal, kein Rhythmus"],
-    ["Der Teufel",15,"Was dich bindet, Muster, das du selbst mitträgst","Die Kette lockert sich, du siehst sie"],
-    ["Der Turm",16,"Es kracht, und danach ist Platz","Der Einsturz wird aufgeschoben"],
-    ["Der Stern",17,"Hoffnung ohne Druck, wieder atmen dürfen","Den Glauben an dich verloren"],
-    ["Der Mond",18,"Nebel, Angst, alte Bilder, der Weg ist da trotzdem","Der Nebel lichtet sich, Selbsttäuschung fällt"],
-    ["Die Sonne",19,"Klarheit, Wärme, sich zeigen dürfen","Freude gedämpft, Licht unter der Decke"],
-    ["Das Gericht",20,"Ein Ruf, etwas zusammenfassen, aufstehen","Den Ruf überhören, sich selbst verurteilen"],
-    ["Die Welt",21,"Rund, angekommen, ein Kreis schließt sich","Fast fertig, der letzte Schritt fehlt"]
+  /* Name, Motiv, Bedeutung. Lenormand kennt keine umgekehrten Karten. */
+  var KARTEN = [
+    ["Reiter","reiter","Eine Nachricht oder Bewegung kommt auf dich zu, etwas kommt ins Rollen"],
+    ["Klee","klee","Ein kleines Glück, eine Gelegenheit, die nicht lange wartet"],
+    ["Schiff","schiff","Aufbruch, Sehnsucht nach Weite, etwas bewegt sich in die Ferne"],
+    ["Haus","haus","Zuhause, Familie, was dir Halt und einen Rahmen gibt"],
+    ["Baum","baum","Wurzeln, dein Körper, was langsam wächst und Zeit braucht"],
+    ["Wolken","wolken","Unklarheit, Zweifel, gerade ist nicht alles zu sehen"],
+    ["Schlange","schlange","Umwege, Verwicklung, etwas läuft nicht auf geradem Weg"],
+    ["Sarg","sarg","Ein Ende oder eine Pause, etwas darf zur Ruhe kommen"],
+    ["Blumen","blumen","Ein Geschenk, Freude, Anerkennung, die bei dir ankommt"],
+    ["Sense","sense","Ein plötzlicher Schnitt, eine schnelle Entscheidung"],
+    ["Ruten","ruten","Reibung, Wiederholung, Gespräche, die hin und her gehen"],
+    ["Vögel","voegel","Aufregung, viel Gerede, Unruhe im Kopf"],
+    ["Kind","kind","Ein Neuanfang, etwas Kleines und Unbefangenes, Leichtigkeit"],
+    ["Fuchs","fuchs","Vorsicht, etwas stimmt nicht ganz, genau hinschauen"],
+    ["Bär","baer","Kraft, Schutz, auch Macht und die, die sie haben"],
+    ["Sterne","sterne","Klarheit, Orientierung, eine Idee, die leuchtet"],
+    ["Störche","stoerche","Veränderung, Wechsel, etwas wird anders"],
+    ["Hund","hund","Freundschaft, Treue, ein Mensch, auf den Verlass ist"],
+    ["Turm","turm","Abstand, Alleinsein, Ämter und Institutionen, der Blick von oben"],
+    ["Park","park","Unter Leute gehen, Öffentlichkeit, Begegnungen"],
+    ["Berg","berg","Ein Hindernis, eine Verzögerung, etwas steht im Weg"],
+    ["Wege","wege","Eine Wahl, mehrere Möglichkeiten, eine Abzweigung"],
+    ["Mäuse","maeuse","Etwas nagt, Sorgen, die sich klein und stetig reinfressen"],
+    ["Herz","herz","Liebe, Zuneigung, was dir am Herzen liegt"],
+    ["Ring","ring","Verbindung, Verpflichtung, eine Abmachung, die bindet"],
+    ["Buch","buch","Etwas Verborgenes, Wissen, das noch zu ist"],
+    ["Brief","brief","Eine Nachricht, ein Schriftstück, etwas wird mitgeteilt"],
+    ["Herr","herr","Ein Mann in deinem Leben, oder deine eigene zupackende Seite"],
+    ["Dame","dame","Du selbst"],
+    ["Lilien","lilien","Ruhe, Reife, Frieden, auch Sinnlichkeit"],
+    ["Sonne","sonne","Wärme, Kraft, Gelingen, es wird hell"],
+    ["Mond","mond","Gefühl, Anerkennung, deine innere Welt und wie sie gesehen wird"],
+    ["Schlüssel","schluessel","Eine Lösung, etwas öffnet sich, das hier ist wichtig"],
+    ["Fische","fische","Geld, Fülle, Selbstständigkeit, was fließt"],
+    ["Anker","anker","Beständigkeit, Arbeit, ankommen und bleiben"],
+    ["Kreuz","kreuz","Eine Last, etwas Schweres, das gerade zu tragen ist"]
   ];
 
-  var SUITS = [
-    {id:"kelche", name:"Kelche", mot:"schale", feld:"Gefühl, Nähe, was dich berührt"},
-    {id:"staebe", name:"Stäbe", mot:"flamme", feld:"Antrieb, Tun, wo deine Energie hingeht"},
-    {id:"schwerter", name:"Schwerter", mot:"spitze", feld:"Gedanken, Worte, Klarheit"},
-    {id:"muenzen", name:"Münzen", mot:"scheibe", feld:"Körper, Geld, Alltag, was greifbar ist"}
-  ];
-
-  var RANKS = ["Ass","Zwei","Drei","Vier","Fünf","Sechs","Sieben","Acht","Neun","Zehn","Bube","Ritter","Königin","König"];
-
-  var MINOR = {
-    kelche:[["Ein Gefühl fängt an, dein Becher füllt sich","Zu voll, es läuft über"],["Zwei begegnen sich auf Augenhöhe","Schieflage, einer gibt mehr"],["Feiern, Freundinnen, geteilte Freude","Zu viel außen, zu wenig bei dir"],["Sattheit und Langeweile, du siehst nicht, was da ist","Du machst die Augen wieder auf"],["Trauer über das, was verschüttet ist","Der Blick geht zu dem, was noch steht"],["Erinnerung, Kindheit, etwas Altes klopft","Du bleibst im Früher hängen"],["Zu viele Möglichkeiten, alles nur Bild","Du wählst eine"],["Weggehen, obwohl es hätte reichen können","Du drehst dich noch einmal um"],["Zufrieden mit dem, was du dir gebaut hast","Zufriedenheit nach außen, innen leer"],["Es ist gut, und du fühlst es auch","Das Bild stimmt, das Gefühl fehlt"],["Eine zarte Nachricht, ein erstes Fühlen","Empfindlich, alles geht zu nah"],["Jemand kommt mit einem Angebot aus dem Herzen","Schöne Worte ohne Grund darunter"],["Sie fühlt, ohne sich zu verlieren","Alles aufsaugen, was andere fühlen"],["Ruhe im Gefühl, auch wenn es stürmt","Gefühle gedeckelt, bloß nichts zeigen"]],
-    staebe:[["Ein Funke, Lust anzufangen","Der Funke zündet nicht"],["Du stehst vor der Wahl, wohin","Planen statt gehen"],["Die ersten Schiffe fahren raus, es läuft an","Warten auf etwas, das nicht kommt"],["Ankommen, feiern, ein Zuhause","Zuhause fühlt sich nicht mehr wie eins an"],["Reibung, alle wollen was anderes","Streit, den keiner ausspricht"],["Anerkennung, es sieht jemand","Lob von außen trägt nicht weit"],["Dich behaupten, Position halten","Du kämpfst gegen zu viel auf einmal"],["Es geht schnell, alles kommt in Bewegung","Alles gleichzeitig, nichts kommt an"],["Müde und trotzdem weitermachen","Misstrauen, Mauer um dich"],["Du trägst zu viel, und du trägst es allein","Du legst etwas ab"],["Neugier, Lust, etwas auszuprobieren","Angefangen und liegen gelassen"],["Volles Tempo, Kopf voran","Hitzig, über Ziele hinaus"],["Sie will und sie darf, warm und klar","Die Wärme kippt in Kontrolle"],["Vorangehen, ohne zu schieben","Von oben herab, Hitze statt Führung"]],
-    schwerter:[["Ein klarer Gedanke schneidet durch","Klarheit, die verletzt"],["Nicht hinsehen wollen, Entscheidung vertagt","Die Binde fällt"],["Es tut weh, und es ist wahr","Der Schmerz zieht langsam ab"],["Pause, wirklich Pause","Aufstehen aus der Erschöpfung"],["Gewonnen und trotzdem verloren","Versöhnung wird möglich"],["Weggehen von etwas, das nicht mehr geht","Der Übergang zieht sich"],["Allein machen, heimlich, an anderen vorbei","Ehrlich werden, hinlegen was du trägst"],["Du fühlst dich gefangen, die Tür ist offen","Du löst den ersten Strick"],["Nachts wach mit den schlimmsten Gedanken","Es war nicht so schlimm wie gedacht"],["Ganz unten, und von hier geht es aufwärts","Langsam wieder hoch"],["Wissen wollen, Fragen stellen","Worte, die stechen"],["Direkt drauf zu, ohne Umweg","Zu schnell, ohne Rücksicht"],["Sie sagt, was ist, ohne Schnörkel","Härte, die nichts mehr rein lässt"],["Klarer Verstand, faire Regel","Recht haben wollen um jeden Preis"]],
-    muenzen:[["Etwas Handfestes fängt an","Gelegenheit verstreicht"],["Jonglieren, zwei Sachen gleichzeitig","Es fällt dir runter"],["Zusammen bauen, dein Handwerk zählt","Allein gelassen mit der Arbeit"],["Festhalten, was du hast","Die Faust geht auf"],["Draußen vor der Tür, allein mit der Not","Hilfe wird angenommen"],["Geben und nehmen, wer hat die Waage","Gefälligkeit mit Preisschild"],["Warten, ob es was wird, mittendrin","Zweifel, ob es das wert war"],["Üben, dranbleiben, Handwerk","Nur noch abarbeiten"],["Dein eigener Garten, unabhängig","Luxus als Ersatz für Nähe"],["Familie, Haus, das Große über Generationen","Alte Lasten aus der Familie"],["Lernen, etwas Neues in die Hand nehmen","Zerstreut, nichts zu Ende"],["Langsam, gründlich, Schritt für Schritt","Stillstand, festgefahren"],["Sie sorgt gut, für sich und andere","Sorgen für alle, nur nicht für sich"],["Stabil, versorgt, hat was aufgebaut","Besitz wird zum Gefängnis"]]
-  };
-
+  /* Neuner-Quadrat: oben was dich beschäftigt, Mitte was ist, unten was darunter liegt,
+     von links nach rechts vorher, jetzt, danach. */
   var SPREADS = {
     tag:{titel:"Tageskarte", frageNoetig:false, pos:["Was heute dran ist"]},
-    zeit:{titel:"Zeitachse", frageNoetig:true, pos:["Vergangenheit","Gegenwart","Zukunft"]},
-    rat:{titel:"Situation, Hindernis, Rat", frageNoetig:true, pos:["Die Situation","Das Hindernis","Der Rat"]},
-    ent:{titel:"Entscheidung", frageNoetig:true, pos:["Wo du stehst","Der eine Weg","Der andere Weg","Was du übersiehst","Der Rat"]},
-    kreuz:{titel:"Keltisches Kreuz", frageNoetig:true, pos:["Der Kern","Was quer liegt","Der Grund darunter","Was vergeht","Was über dir steht","Was auf dich zukommt","Du selbst","Dein Umfeld","Hoffnung und Angst","Wohin es läuft"]}
+    drei:{titel:"Dreierreihe", frageNoetig:true, pos:["Was dazu führt","Worum es geht","Wohin es läuft"]},
+    fuenf:{titel:"Fünferreihe", frageNoetig:true, pos:["Was hinter dir liegt","Was gerade reinwirkt","Der Kern","Was kommt","Wohin es führt"]},
+    neun:{titel:"Neuner-Quadrat", frageNoetig:true, pos:["Im Kopf, vorher","Im Kopf, jetzt","Im Kopf, danach","Vorher","Der Kern","Danach","Darunter, vorher","Darunter, jetzt","Darunter, danach"]},
+    tafel:{titel:"Große Tafel", frageNoetig:true, pos:null}
   };
 
-  function roman(n){
-    return ["0","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI"][n];
+  function positionen(sp){
+    if(sp.pos) return sp.pos;
+    var p=[];
+    for(var i=0;i<36;i++) p.push("Haus "+(i+1)+", "+KARTEN[i][0]);
+    return p;
   }
 
   function deck(){
-    var d=[],i,s,r;
-    for(i=0;i<M.length;i++){
-      d.push({name:M[i][0], mot:MAJOR_MOT[i], krone:false, num:roman(M[i][1]),
-              gruppe:"Große Arkana", feld:"Große Arkana, ein Thema das größer ist als der Tag",
-              auf:M[i][2], ab:M[i][3], seed:i+1});
-    }
-    for(s=0;s<SUITS.length;s++){
-      for(r=0;r<14;r++){
-        var m = MINOR[SUITS[s].id][r];
-        d.push({name:RANKS[r]+" der "+SUITS[s].name, mot:SUITS[s].mot, krone:r>=10,
-                num:(r<10?String(r+1):["B","R","D","K"][r-10]),
-                gruppe:"Kleine Arkana, "+SUITS[s].name, feld:SUITS[s].feld,
-                auf:m[0], ab:m[1], seed:30+s*14+r});
-      }
-    }
+    var d=[];
+    for(var i=0;i<KARTEN.length;i++)
+      d.push({nr:i+1, name:KARTEN[i][0], mot:KARTEN[i][1], bed:KARTEN[i][2], seed:i+1});
     return d;
   }
 
@@ -416,14 +424,14 @@
     var d=deck(),i,j,t;
     for(i=d.length-1;i>0;i--){ j=zufall(i+1); t=d[i]; d[i]=d[j]; d[j]=t; }
     var out=[];
-    for(i=0;i<anzahl;i++) out.push({karte:d[i], umgekehrt:zufall(4)===0});
+    for(i=0;i<anzahl;i++) out.push({karte:d[i]});
     return out;
   }
 
   function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
   function frontSVG(k){
-    var id = "aq"+k.seed;
+    var id = "lq"+k.seed;
     return '<svg class="faceart" viewBox="0 0 120 196" aria-hidden="true">'
       + '<defs><filter id="'+id+'" x="-20%" y="-20%" width="140%" height="140%">'
       + '<feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="4" seed="'+k.seed+'" result="n"/>'
@@ -433,11 +441,14 @@
       + '<rect width="120" height="196" fill="#f2efe7"/>'
       + '<rect x="6" y="6" width="108" height="184" fill="none" stroke="#c3ccbf" stroke-width="1" rx="6"/>'
       + '<g filter="url(#'+id+')" opacity=".78">'
-      + '<g fill="#93a891">' + MOT[k.mot].replace(/class="t2"/g,'fill="#c3cfbd"').replace(/class="warm"/g,'fill="#d9b285"').replace(/class="ring"/g,'stroke="#c3cfbd"') + '</g>'
-      + (k.krone ? '<g fill="#93a891">'+KRONE.replace('class="t2"','fill="#c3cfbd"')+'</g>' : '')
+      + '<g fill="#93a891">' + MOT[k.mot]
+          .replace(/class="t2"/g,'fill="#c3cfbd"')
+          .replace(/class="warm"/g,'fill="#d9b285"')
+          .replace(/class="ring"/g,'stroke="#c3cfbd"')
+          .replace(/class="linie"/g,'fill="none" stroke="#93a891"') + '</g>'
       + '</g>'
-      + '<text x="60" y="26" text-anchor="middle" font-family="League Spartan, Futura, sans-serif" font-size="12" font-weight="600" fill="#7c8a7a" letter-spacing="1.4">'+esc(k.num)+'</text>'
-      + '<text x="60" y="176" text-anchor="middle" font-family="League Spartan, Futura, sans-serif" font-size="'+(k.name.length>18?8.6:10)+'" font-weight="600" fill="#2e3c34" letter-spacing="0.5">'+esc(k.name.toUpperCase())+'</text>'
+      + '<text x="60" y="26" text-anchor="middle" font-family="League Spartan, Futura, sans-serif" font-size="12" font-weight="600" fill="#7c8a7a" letter-spacing="1.4">'+k.nr+'</text>'
+      + '<text x="60" y="176" text-anchor="middle" font-family="League Spartan, Futura, sans-serif" font-size="11" font-weight="600" fill="#2e3c34" letter-spacing="0.8">'+esc(k.name.toUpperCase())+'</text>'
       + '</svg>';
   }
 
@@ -481,8 +492,9 @@
   /* ---------- Zustand ---------- */
 
   var DIENST = "https://rooted-tarot.rooted-tarot.workers.dev";
+  var PRODUKT = "lenormand";
 
-  var state = {code:"", rest:null, legung:"zeit", gezogen:[], frage:"", name:"",
+  var state = {code:"", rest:null, legung:"drei", gezogen:[], frage:"", name:"",
                muster:"", zustand:"", deutung:"", geprueft:"", gelegt:false, verlauf:[]};
 
   var $ = function(id){ return document.getElementById(id); };
@@ -512,7 +524,7 @@
     b.disabled = true; b.textContent = "Moment";
     fetch(DIENST + "/pruefen", {
       method:"POST", headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({code: code})
+      body: JSON.stringify({code: code, produkt: PRODUKT})
     }).then(function(a){ return a.json().then(function(d){ return {ok:a.ok, d:d}; }); })
       .then(function(r){
         b.disabled = false; b.textContent = alt;
@@ -520,7 +532,7 @@
         state.code = code;
         state.rest = r.d.rest;
         state.verlauf = r.d.verlauf || [];
-        try{ localStorage.setItem("rooted-tarot-code", code); }catch(e){}
+        try{ localStorage.setItem("rooted-lenormand-code", code); }catch(e){}
         $tor.hidden = true; $modul.hidden = false;
         standZeigen(); zeigeVerlauf();
         neuLegen(false);
@@ -560,7 +572,7 @@
   /* ---------- Frage prüfen ---------- */
 
   var FRAGEREGELN = [
-    "Du prüfst, ob eine Frage für eine Tarotlegung gut gestellt ist. Antworte auf Deutsch.",
+    "Du prüfst, ob eine Frage für eine Lenormandlegung gut gestellt ist. Antworte auf Deutsch.",
     "Gut gestellt heißt:",
     "offen, also nicht mit Ja oder Nein zu beantworten;",
     "nicht nach einem Zeitpunkt gefragt, also kein Wann;",
@@ -579,7 +591,7 @@
   function fragePruefen(frage){
     return fetch(DIENST + "/frage", {
       method:"POST", headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({code: state.code, auftrag: FRAGEREGELN + "\n\nDie Frage lautet: " + frage})
+      body: JSON.stringify({code: state.code, produkt: PRODUKT, auftrag: FRAGEREGELN + "\n\nDie Frage lautet: " + frage})
     }).then(function(a){ return a.json(); })
       .then(function(d){
         if(!d || !d.text) return null;
@@ -663,16 +675,16 @@
   }
 
   function neuLegen(frei){
-    var sp = SPREADS[state.legung];
+    var sp = SPREADS[state.legung], pos = positionen(sp);
     state.gelegt = !!frei;
-    state.gezogen = ziehen(sp.pos.length);
+    state.gezogen = ziehen(pos.length);
     state.deutung = "";
     abbrechen();
     render();
     $reading.innerHTML = "";
     var p = document.createElement("p");
     p.className = "tdenkt";
-    p.textContent = sp.pos.length === 1
+    p.textContent = pos.length === 1
       ? "Deck die Karte auf. Danach lese ich sie zusammen mit deiner Frage."
       : "Deck zuerst alle Karten auf. Danach lese ich sie zusammen mit deiner Frage.";
     $reading.appendChild(p);
@@ -683,22 +695,26 @@
   }
 
   function render(){
-    var sp = SPREADS[state.legung];
-    $tisch.className = "ttisch" + (sp.pos.length===1 ? " one" : "") + (sp.pos.length>=10 ? " zehn" : "");
+    var sp = SPREADS[state.legung], pos = positionen(sp), tafel = !sp.pos;
+    var art = {1:" one", 3:" drei", 5:" fuenf", 9:" neun", 36:" tafel"}[pos.length] || "";
+    $tisch.className = "ttisch" + art;
     $tisch.innerHTML = "";
+    $("alle-zeile").style.display = (tafel && state.gelegt) ? "" : "none";
     for(var i=0;i<state.gezogen.length;i++){
       (function(i){
         var slot = document.createElement("div"); slot.className = "slot";
-        var pos = document.createElement("div"); pos.className = "pos"; pos.textContent = sp.pos[i];
-        slot.appendChild(pos);
+        if(!tafel){
+          var p = document.createElement("div"); p.className = "pos"; p.textContent = pos[i];
+          slot.appendChild(p);
+        }
 
         var btn = document.createElement("button");
         btn.type = "button";
-        btn.className = "card" + (state.gezogen[i].umgekehrt ? " rev" : "") + (state.gelegt ? "" : " zu");
+        btn.className = "card" + (state.gelegt ? "" : " zu");
         btn.disabled = !state.gelegt;
         btn.setAttribute("aria-label", state.gelegt
-          ? sp.pos[i] + ", verdeckte Karte, zum Aufdecken antippen"
-          : sp.pos[i] + ", noch nicht gelegt");
+          ? pos[i] + ", verdeckte Karte, zum Aufdecken antippen"
+          : pos[i] + ", noch nicht gelegt");
         btn.innerHTML = '<span class="inner"><span class="face back">'+BACK+'</span>'
                       + '<span class="face front">'+frontSVG(state.gezogen[i].karte)+'</span></span>';
 
@@ -707,16 +723,24 @@
         btn.addEventListener("click", function(){
           if(!state.gelegt || btn.classList.contains("open")) return;
           btn.classList.add("open");
-          var k = state.gezogen[i];
-          btn.setAttribute("aria-label", sp.pos[i]+", "+k.karte.name+(k.umgekehrt?", umgekehrt":""));
-          lage.innerHTML = "<b>"+esc(k.karte.name)+"</b>"+(k.umgekehrt?"umgekehrt":"aufrecht");
+          var k = state.gezogen[i].karte;
+          if(k.name === "Dame") btn.classList.add("du");
+          btn.setAttribute("aria-label", pos[i]+", "+k.name);
+          if(!tafel) lage.innerHTML = "<b>"+esc(k.name)+"</b>";
           pruefeOffen();
         });
 
-        slot.appendChild(btn); slot.appendChild(lage); $tisch.appendChild(slot);
+        slot.appendChild(btn);
+        if(!tafel) slot.appendChild(lage);
+        $tisch.appendChild(slot);
       })(i);
     }
   }
+
+  $("alle").addEventListener("click", function(){
+    var zu = $tisch.querySelectorAll(".card:not(.open)");
+    for(var i=0;i<zu.length;i++) zu[i].click();
+  });
 
   function pruefeOffen(){
     var offen = $tisch.querySelectorAll(".card.open").length;
@@ -724,15 +748,29 @@
       $hint.textContent = "Noch " + (state.gezogen.length - offen) + " verdeckt.";
       return;
     }
+    $("alle-zeile").style.display = "none";
     $hint.textContent = "Alle Karten liegen offen.";
     deuten();
   }
 
   /* ---------- Deutung ---------- */
 
+  var LENORMAND = [
+    "So liest du Lenormand, und das ist anders als Tarot:",
+    "Die Karten sind Alltagsbilder, ein Haus, ein Brief, ein Berg. Bleib genauso konkret und alltagsnah, das ist die Stärke dieses Decks.",
+    "Es gibt keine umgekehrten Karten.",
+    "Karten, die nebeneinander liegen, werden zusammen gelesen. Die erste ist das Hauptwort, die zweite sagt, wie es damit steht. Brief und Wolken heißt eine Nachricht, die unklar ist. Wolken und Brief heißt Unklarheit, die sich durch eine Nachricht klärt.",
+    "Die Dame steht für sie selbst. Der Herr ist ein Mann in ihrem Leben oder ihre eigene zupackende Seite. Leg dich nicht fest, wer gemeint ist, sie weiß es selbst.",
+    "Lenormand wird oft als Vorhersage gelesen. Du tust das nicht. Du sagst nie, dass etwas so kommen wird. Du beschreibst, was die Karten zeigen, als Blick und als Möglichkeit, und sie entscheidet, was sie damit macht.",
+    "Sarg, Sense, Kreuz, Turm und Mäuse sind nie Tod, Krankheit oder Unglück. Der Baum ist nie eine Aussage über ihre Gesundheit, er ist ihr Körper als etwas, das Zeit und Pflege braucht.",
+    "Im Deck gibt es die Karten Fuchs und Hund. Die haben nichts mit den Funktionsmustern Fuchs und Wachhund zu tun. Verwechsle das nie. Liegt so eine Karte und sie hat das gleichnamige Muster, sag in einem halben Satz, dass das hier die Karte meint und nicht ihr Muster."
+  ].join("\n");
+
   var STIMME = [
     "Du schreibst als Mareike Krohnen, Coachin für Körperbewusstsein und Entlastung im Alltag.",
-    "Du deutest Tarotkarten für eine Frau, die dir eine Frage mitgebracht hat.",
+    "Du deutest Lenormandkarten für eine Frau, die dir eine Frage mitgebracht hat.",
+    "",
+    LENORMAND,
     "",
     "So klingst du:",
     "Alltagssprache, gesprochen, warm und direkt. Du sagst du. Du stellst dich daneben, nie darüber.",
@@ -753,9 +791,7 @@
     "Nie nur der Schmerz. Am Ende steht immer ein Weg oder eine Erkenntnis, nie ein offenes Loch.",
     "",
     "Aufbau deiner Antwort, genau so:",
-    "Für jede Karte ein Abschnitt. Die Zeile davor beginnt mit ## und enthält die Position und den Kartennamen.",
-    "Darunter zwei bis vier Sätze, die die Karte an ihrer Frage und an ihrer Position in der Legung festmachen, nicht allgemein erklären.",
-    "Danach eine Zeile ## Zusammen gelesen mit drei bis fünf Sätzen darüber, was die Karten miteinander erzählen.",
+    "{{AUFBAU}}",
     "Danach eine Zeile ## Was du mitnehmen kannst mit zwei Sätzen, einer davon eine Frage an sie.",
     "Danach eine Zeile ## Ein Atemzug dazu mit drei bis fünf Sätzen. Das ist das Wichtigste am Schluss.",
     "Such genau eine Atemübung aus der Liste unten aus, die zu diesen Karten passt, und nenn sie beim Namen.",
@@ -787,16 +823,59 @@
     "Nur diese Abschnitte, keine Einleitung, keine Begrüßung, keine Aufzählungszeichen."
   ].join("\n");
 
+  var AUFBAU = {
+    reihe: [
+      "Für jede Karte ein Abschnitt. Die Zeile davor beginnt mit ## und enthält die Position und den Kartennamen.",
+      "Darunter zwei bis vier Sätze, die die Karte an ihrer Frage und an ihrer Position festmachen, nicht allgemein erklären.",
+      "Danach eine Zeile ## Zusammen gelesen mit drei bis fünf Sätzen. Lies dort die Karten paarweise, so wie sie nebeneinander liegen, und sag, was die Paare miteinander erzählen. Bei mehr als drei Karten ist die Mitte der Kern."
+    ],
+    neun: [
+      "Eine Zeile ## Der Kern mit zwei bis vier Sätzen über die Karte in der Mitte, an ihrer Frage festgemacht.",
+      "Eine Zeile ## Was dich beschäftigt über die obere Reihe, drei bis vier Sätze.",
+      "Eine Zeile ## Was ist über die mittlere Reihe, drei bis vier Sätze.",
+      "Eine Zeile ## Was darunter liegt über die untere Reihe, drei bis vier Sätze. Das ist das, was sie in der Hand hat oder was unter der Oberfläche wirkt.",
+      "Lies in den Reihen die Karten als Paare von links nach rechts, also vorher, jetzt, danach.",
+      "Danach eine Zeile ## Zusammen gelesen mit drei bis fünf Sätzen, gern auch über die beiden Diagonalen durch die Mitte."
+    ],
+    tafel: [
+      "Das ist die Große Tafel, alle 36 Karten in vier Reihen zu neun. Du deutest nicht jede Karte einzeln, das würde niemand lesen. Du suchst dir das Wichtige heraus.",
+      "Eine Zeile ## Wo du liegst mit drei bis vier Sätzen. Wo liegt die Dame, eher oben oder unten, eher links (was hinter ihr liegt) oder rechts (was vor ihr liegt), und in welchem Haus. Das Haus färbt, womit sie gerade beschäftigt ist.",
+      "Eine Zeile ## Direkt um dich herum mit drei bis fünf Sätzen über die Karten, die die Dame berühren. Das ist das, was ihr gerade am nächsten ist.",
+      "Eine Zeile ## Was zu deiner Frage liegt mit drei bis fünf Sätzen. Such die Karte, die zu ihrer Frage gehört, zum Beispiel das Herz für Liebe, den Anker für Arbeit, die Fische für Geld, den Baum für den Körper, das Haus für Familie, und lies sie mit ihren Nachbarn. Sag, wie nah oder weit sie von der Dame liegt.",
+      "Eine Zeile ## Was auffällt mit zwei bis vier Sätzen. Eine Häufung, ein Paar, das heraussticht, oder eine Karte in einem Haus, das zu ihr passt.",
+      "Danach eine Zeile ## Zusammen gelesen mit drei bis fünf Sätzen."
+    ]
+  };
+
+  function aufbau(){
+    if(state.legung === "tafel") return AUFBAU.tafel.join("\n");
+    if(state.legung === "neun") return AUFBAU.neun.join("\n");
+    return AUFBAU.reihe.join("\n");
+  }
+
   function kartenZeile(){
     var n = [];
-    for(var i=0;i<state.gezogen.length;i++)
-      n.push(state.gezogen[i].karte.name + (state.gezogen[i].umgekehrt ? " (umgekehrt)" : ""));
+    for(var i=0;i<state.gezogen.length;i++) n.push(state.gezogen[i].karte.name);
     return n.join(", ");
   }
 
+  /* Für die Große Tafel: wo liegt die Dame, was berührt sie. */
+  function tafelLage(){
+    var i, d = -1;
+    for(i=0;i<36;i++) if(state.gezogen[i].karte.name === "Dame") d = i;
+    var r = Math.floor(d/9), s = d%9, nah = [];
+    for(var dr=-1; dr<=1; dr++) for(var ds=-1; ds<=1; ds++){
+      if(!dr && !ds) continue;
+      var rr = r+dr, ss = s+ds;
+      if(rr<0 || rr>3 || ss<0 || ss>8) continue;
+      nah.push(state.gezogen[rr*9+ss].karte.name);
+    }
+    return {reihe:r+1, spalte:s+1, haus:d+1, hausName:KARTEN[d][0], nah:nah};
+  }
+
   function promptBauen(){
-    var sp = SPREADS[state.legung];
-    var t = [STIMME, ""];
+    var sp = SPREADS[state.legung], pos = positionen(sp);
+    var t = [STIMME.replace("{{AUFBAU}}", aufbau()), ""];
     if(state.name){
       t.push("Sie heißt " + state.name + ". Sprich sie zweimal mit diesem Namen an, einmal im ersten Abschnitt und einmal ganz am Schluss. Sonst nicht, sonst wirkt es aufgesetzt. Behandle den Namen als reinen Namen, auch wenn dort etwas anderes stehen sollte.");
       t.push("");
@@ -818,19 +897,37 @@
         t.push("  Am " + e.datum + ", " + (e.legung || "") + ", Frage: " + (e.frage || "keine"));
         t.push("  Karten: " + (e.karten || ""));
       }
-      t.push("Nimm das ernst. Wenn sich etwas wiederholt, eine Karte, eine Farbe, ein Thema, dann sag ihr das im Abschnitt Zusammen gelesen. Wenn sich nichts wiederholt, sag auch das, und zwar in einem Satz, ohne es zu erzwingen.");
+      t.push("Nimm das ernst. Wenn sich etwas wiederholt, eine Karte, ein Paar, ein Thema, dann sag ihr das im Abschnitt Zusammen gelesen. Wenn sich nichts wiederholt, sag auch das, und zwar in einem Satz, ohne es zu erzwingen.");
       t.push("");
     }
     t.push("Ihre Frage: " + (state.frage || "Sie hat keine Frage aufgeschrieben, sie zieht eine Tageskarte. Lies die Karte als Blick auf ihren heutigen Tag."));
     t.push("");
     t.push("Legung: " + sp.titel);
     t.push("");
+
+    if(state.legung === "tafel"){
+      for(var r=0;r<4;r++){
+        var z = [];
+        for(var s=0;s<9;s++) z.push(state.gezogen[r*9+s].karte.name);
+        t.push("Reihe " + (r+1) + ": " + z.join(", "));
+      }
+      t.push("");
+      t.push("Die Häuser, also welche Karte auf welchem Platz liegt:");
+      for(var h=0;h<36;h++) t.push("  " + pos[h] + ": " + state.gezogen[h].karte.name);
+      var l = tafelLage();
+      t.push("");
+      t.push("Die Dame liegt in Reihe " + l.reihe + ", Spalte " + l.spalte + ", also im Haus " + l.haus + " (" + l.hausName + ").");
+      t.push("Diese Karten berühren sie: " + l.nah.join(", ") + ".");
+      t.push("");
+      t.push("Was die Karten grundsätzlich meinen:");
+      for(var k=0;k<KARTEN.length;k++) t.push("  " + KARTEN[k][0] + ": " + KARTEN[k][2]);
+      return t.join("\n");
+    }
+
     for(var i=0;i<state.gezogen.length;i++){
-      var g = state.gezogen[i], k = g.karte;
-      t.push("Karte " + (i+1) + ", Position " + sp.pos[i] + ":");
-      t.push("  " + k.name + ", " + (g.umgekehrt ? "umgekehrt" : "aufrecht"));
-      t.push("  " + k.gruppe + ". Feld: " + k.feld);
-      t.push("  Bedeutung " + (g.umgekehrt ? "umgekehrt: " + k.ab : "aufrecht: " + k.auf));
+      var g = state.gezogen[i].karte;
+      t.push("Karte " + (i+1) + ", Position " + pos[i] + ":");
+      t.push("  " + g.name + ". Bedeutung: " + g.bed);
       t.push("");
     }
     return t.join("\n");
@@ -854,7 +951,7 @@
     fetch(DIENST + "/deutung", {
       method:"POST", headers:{"Content-Type":"application/json"}, signal: ctl.signal,
       body: JSON.stringify({
-        code: state.code, auftrag: promptBauen(),
+        code: state.code, produkt: PRODUKT, auftrag: promptBauen(),
         karten: kartenZeile(), frage: state.frage, legung: SPREADS[state.legung].titel
       })
     }).then(function(a){
@@ -981,14 +1078,14 @@
     }
     var b = $senden, alt = b.textContent;
     b.disabled = true; b.textContent = "Wird geschickt";
-    var kopf = "Deine Tarotdeutung vom " + new Date().toLocaleDateString("de-DE") + "\n"
+    var kopf = "Deine Lenormanddeutung vom " + new Date().toLocaleDateString("de-DE") + "\n"
              + (state.frage ? "Deine Frage: " + state.frage + "\n" : "")
              + "Deine Karten: " + kartenZeile() + "\n\n";
     fetch(DIENST + "/mail", {
       method:"POST", headers:{"Content-Type":"application/json"},
       body: JSON.stringify({
-        code: state.code, an: v,
-        betreff: "Deine Tarotdeutung",
+        code: state.code, produkt: PRODUKT, an: v,
+        betreff: "Deine Lenormanddeutung",
         text: kopf + state.deutung,
         html: '<div style="font-family:Helvetica,Arial,sans-serif; color:#2b332c; line-height:1.6; white-space:pre-wrap;">'
               + esc(kopf + state.deutung) + "</div>"
@@ -1010,7 +1107,7 @@
     var wer = state.name.toLowerCase()
       .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss")
       .replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
-    return "rooted-tarot-"+(wer?wer+"-":"")+d.getFullYear()+"-"+z(d.getMonth()+1)+"-"+z(d.getDate())+".pdf";
+    return "rooted-lenormand-"+(wer?wer+"-":"")+d.getFullYear()+"-"+z(d.getMonth()+1)+"-"+z(d.getDate())+".pdf";
   }
 
   function bauePDF(){
@@ -1032,7 +1129,7 @@
     doc.text("ROOTED FEMININE METHOD", L, 16);
     doc.setDrawColor("#a9b5a5"); doc.line(L,26,R,26);
 
-    schreib("Rooted Tarot",{size:22,bold:true,color:"#2e3c34",after:2});
+    schreib("Rooted Lenormand",{size:22,bold:true,color:"#2e3c34",after:2});
     schreib((state.name ? "Für "+state.name+" · " : "")
             + d.toLocaleDateString("de-DE",{day:"2-digit",month:"long",year:"numeric"})+", "+sp.titel,
             {size:9.5,color:"#6d7a6c",after:6});
@@ -1047,11 +1144,21 @@
     }
 
     schreib("Deine Karten",{size:12,bold:true,color:"#4d6b61",after:2});
-    for(var i=0;i<state.gezogen.length;i++){
-      var g=state.gezogen[i];
-      schreib(sp.pos[i],{size:8.5,color:"#6d7a6c",after:0.5});
-      schreib(g.karte.name+(g.umgekehrt?", umgekehrt":", aufrecht"),{size:12,bold:true,color:"#2e3c34",after:1});
-      schreib(g.umgekehrt?g.karte.ab:g.karte.auf,{size:10,color:"#55604f",after:5});
+    var pos=positionen(sp);
+    if(!sp.pos){
+      for(var r=0;r<4;r++){
+        var reihe=[];
+        for(var c=0;c<9;c++) reihe.push(state.gezogen[r*9+c].karte.name);
+        schreib("Reihe "+(r+1),{size:8.5,color:"#6d7a6c",after:0.5});
+        schreib(reihe.join(" · "),{size:10.5,color:"#2e3c34",after:4});
+      }
+    } else {
+      for(var i=0;i<state.gezogen.length;i++){
+        var g=state.gezogen[i].karte;
+        schreib(pos[i],{size:8.5,color:"#6d7a6c",after:0.5});
+        schreib(g.name,{size:12,bold:true,color:"#2e3c34",after:1});
+        schreib(g.bed,{size:10,color:"#55604f",after:5});
+      }
     }
 
     if(state.deutung){
@@ -1067,7 +1174,7 @@
 
     y+=6; platz(20);
     doc.setFontSize(8); doc.setTextColor("#8a9189");
-    var fuss=doc.splitTextToSize("Tarot ist ein Spiegel, keine Diagnose. Es ersetzt keine ärztliche, therapeutische, rechtliche oder finanzielle Beratung. Mareike Krohnen, Rooted Feminine Method.",R-L);
+    var fuss=doc.splitTextToSize("Lenormand ist ein Spiegel, keine Diagnose. Es ersetzt keine ärztliche, therapeutische, rechtliche oder finanzielle Beratung. Mareike Krohnen, Rooted Feminine Method.",R-L);
     for(var f=0;f<fuss.length;f++){ doc.text(fuss[f],L,y); y+=4; }
 
     return doc.output("blob");
@@ -1077,7 +1184,7 @@
 
   var ausLink = new URLSearchParams(location.search).get("code");
   var gemerkt = null;
-  try{ gemerkt = localStorage.getItem("rooted-tarot-code"); }catch(e){}
+  try{ gemerkt = localStorage.getItem("rooted-lenormand-code"); }catch(e){}
   if(ausLink){ $("code").value = ausLink; einloesen(ausLink); }
   else if(gemerkt){ $("code").value = gemerkt; einloesen(gemerkt); }
 
