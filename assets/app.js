@@ -250,25 +250,75 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
 })();
 
 // ============================================================
-// Spotify-Player erst auf Klick laden. Vorher geht nichts an
-// Spotify, deshalb braucht die Seite dafuer keine Zustimmung.
+// Zustimmung zu externen Inhalten (Spotify).
+// Beim ersten Besuch fragt ein Banner einmal fuer die ganze Seite.
+// "Erlauben": der Player laedt danach ueberall direkt.
+// "Nur notwendige": nichts geht an Spotify, der Player laedt
+// dann nur auf Klick. Aendern ueber "Cookie-Einstellungen" im Fuss.
 // ============================================================
 (function(){
+  var SCHLUESSEL_Z = 'mk-zustimmung';
+  function lesen(){ try{ return localStorage.getItem(SCHLUESSEL_Z); }catch(e){ return null; } }
+  function schreiben(w){ try{ localStorage.setItem(SCHLUESSEL_Z, w); }catch(e){} }
+
   var platz = document.getElementById('spotify-platz');
-  var knopf = document.getElementById('spotify-laden');
-  if(!platz || !knopf) return;
-  knopf.addEventListener('click', function(){
+  var geladen = false;
+  function playerLaden(){
+    if(!platz || geladen) return;
+    geladen = true;
     var rahmen = document.createElement('iframe');
     rahmen.src = platz.getAttribute('data-quelle');
     rahmen.setAttribute('title', 'Podcast-Player: Seelenklang und Kämpferherz');
     rahmen.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture');
     rahmen.setAttribute('allowfullscreen', '');
-    rahmen.setAttribute('loading', 'lazy');
     platz.innerHTML = '';
     platz.style.padding = '0';
     platz.style.minHeight = '0';
     platz.style.border = 'none';
     platz.appendChild(rahmen);
-    rahmen.focus();
-  });
+  }
+  var knopf = document.getElementById('spotify-laden');
+  if(knopf){ knopf.addEventListener('click', function(){ playerLaden(); }); }
+
+  var banner = null;
+  function bannerZu(){ if(banner){ banner.remove(); banner = null; } }
+  function bannerAuf(){
+    if(banner) return;
+    banner = document.createElement('div');
+    banner.className = 'zustimmung';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-label', 'Cookie-Einstellungen');
+    banner.innerHTML =
+      '<p class="zustimmung-text">Auf meiner Podcast-Seite läuft ein Player von Spotify. ' +
+      'Wenn du ihn erlaubst, lädt er direkt, und Spotify kann Daten in deinem Browser speichern. ' +
+      'Mehr dazu in der <a href="/datenschutz/">Datenschutzerklärung</a>. Du kannst deine Wahl jederzeit unten auf der Seite ändern.</p>' +
+      '<div class="zustimmung-knoepfe">' +
+      '<button type="button" class="btn line" data-wahl="nein">Nur notwendige</button>' +
+      '<button type="button" class="btn line" data-wahl="ja">Spotify erlauben</button>' +
+      '</div>';
+    banner.addEventListener('click', function(e){
+      var wahl = e.target.getAttribute && e.target.getAttribute('data-wahl');
+      if(!wahl) return;
+      schreiben(wahl);
+      bannerZu();
+      if(wahl === 'ja'){ playerLaden(); }
+      else if(geladen){ location.reload(); }
+    });
+    document.body.appendChild(banner);
+  }
+
+  var wahl = lesen();
+  if(wahl === 'ja'){ playerLaden(); }
+  else if(wahl !== 'nein'){ bannerAuf(); }
+
+  // Link "Cookie-Einstellungen" in jeden Seitenfuss
+  var fuss = document.querySelector('footer.site .flinks');
+  if(fuss){
+    var link = document.createElement('button');
+    link.type = 'button';
+    link.className = 'flink zustimmung-link';
+    link.textContent = 'Cookie-Einstellungen';
+    link.addEventListener('click', bannerAuf);
+    fuss.appendChild(link);
+  }
 })();
