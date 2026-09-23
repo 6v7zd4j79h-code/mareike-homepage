@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /brand-your-voice-guide/
+Disallow: /assets/media/*.pdf
 
 Sitemap: https://mareikekrohnen.de/sitemap.xml
