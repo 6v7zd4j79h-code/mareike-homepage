@@ -110,7 +110,7 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
             io.unobserve(entry.target);
           }
         });
-      }, {threshold:0.14, rootMargin:'0px 0px -40px 0px'});
+      }, {threshold:0, rootMargin:'0px 0px -40px 0px'});
       revealTargets.forEach(function(el){ io.observe(el); });
     } else {
       revealTargets.forEach(function(el){ el.classList.add('is-in'); });

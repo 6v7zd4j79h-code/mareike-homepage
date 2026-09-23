@@ -571,6 +571,34 @@
     .offer-row .thumb{ max-width:220px; }
   }
 
+  /* ---------- zwei Bereiche auf der Angebotsseite ---------- */
+  .angebot-bereiche{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(32px,5vw,64px);
+    align-items:start;
+  }
+  .bereich-kopf{ margin-bottom:8px; }
+  .bereich-kopf h2{ font-size:clamp(1.5rem,3vw,2rem); font-weight:300; margin-bottom:12px; }
+  .bereich-kopf p{ font-size:1.0312rem; line-height:1.65; color:var(--muted); max-width:44ch; }
+  .angebot-bereiche .offer-row{
+    grid-template-columns:96px 1fr;
+    gap:20px;
+    align-items:start;
+    padding-block:26px;
+  }
+  .angebot-bereiche .offer-row .thumb{ border-radius:10px; }
+  .angebot-bereiche .offer-row h3{ font-size:clamp(1.1875rem,2.2vw,1.375rem); }
+  .angebot-bereiche .offer-row p{ font-size:0.9687rem; }
+  .bereich-hinweis{ font-size:0.9375rem; line-height:1.6; color:var(--muted); padding-top:22px; }
+  @media (max-width:860px){
+    .angebot-bereiche{ grid-template-columns:1fr; gap:56px; }
+  }
+  @media (max-width:640px){
+    .angebot-bereiche .offer-row{ grid-template-columns:72px 1fr; gap:16px; }
+    .angebot-bereiche .offer-row .thumb{ max-width:none; }
+  }
+
   /* ---------- image strip (community glimpses) ---------- */
   .strip{
     display:grid;
