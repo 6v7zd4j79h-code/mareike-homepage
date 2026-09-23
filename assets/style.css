@@ -600,6 +600,27 @@
     .angebot-bereiche .offer-row .thumb{ max-width:none; }
   }
 
+  /* ---------- Angebote: zwei große Kacheln ---------- */
+  .bereich-kacheln{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,44px); }
+  .bereich-kachel{
+    display:flex; flex-direction:column; text-decoration:none; color:inherit;
+    background:var(--bg); border-radius:14px; overflow:hidden;
+    box-shadow:var(--shadow); transition:transform .3s ease;
+  }
+  .bereich-kachel:hover{ transform:translateY(-3px); }
+  .kachel-bild{ display:block; aspect-ratio:4/3; overflow:hidden; }
+  .kachel-bild img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .kachel-text{ display:flex; flex-direction:column; gap:12px; padding:clamp(22px,3vw,34px); }
+  .kachel-titel{ font-size:clamp(1.5rem,2.8vw,1.875rem); line-height:1.15; font-weight:400; }
+  .kachel-satz{ font-size:1.0312rem; line-height:1.65; }
+  .kachel-umfang{ font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.08em; color:var(--muted); }
+  .bereich-kachel .cta-link{ margin-top:4px; align-self:flex-start; }
+  @media (max-width:760px){ .bereich-kacheln{ grid-template-columns:1fr; } }
+
+  /* ---------- Bereichsseite: Produkttreppe ---------- */
+  .treppe{ display:flex; flex-direction:column; gap:clamp(48px,7vw,80px); }
+  .treppe-stufe .bereich-kopf{ margin-bottom:12px; }
+
   /* ---------- image strip (community glimpses) ---------- */
   .strip{
     display:grid;
