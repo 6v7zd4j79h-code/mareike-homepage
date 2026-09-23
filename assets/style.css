@@ -555,6 +555,7 @@
     background:var(--panel);
   }
   .offer-row .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .offer-row .thumb-link{ display:block; width:100%; height:100%; cursor:pointer; }
   .offer-row .thumb.empty{
     display:flex;
     align-items:center;
