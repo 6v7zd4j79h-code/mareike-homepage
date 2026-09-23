@@ -387,6 +387,18 @@
     var nachnameInput = makeField("Nachname", "fm-nachname", "text", state.contact.nachname);
     var emailInput = makeField("E-Mail-Adresse", "fm-email", "email", state.contact.email, true);
 
+    // Pflicht-Einwilligung. Nicht vorab angehakt, das waere nach DSGVO unwirksam
+    var ok = el("div","field full");
+    ok.style.cssText = "display:flex; gap:8px; align-items:flex-start;";
+    var okBox = document.createElement("input");
+    okBox.type = "checkbox"; okBox.id = "fm-einwilligung";
+    okBox.style.cssText = "margin-top:4px; accent-color:var(--accent); flex:none; width:16px; height:16px;";
+    var okLabel = el("label", null, "Ich willige ein, dass Mareike meinen Namen und meine E-Mail-Adresse speichert und mir zu meinem Ergebnis schreiben darf. Meine Antworten bleiben in meinem Browser. Jederzeit widerrufbar, Hinweise in der <a href=\"../datenschutz/\">Datenschutzerkl&auml;rung</a>.*");
+    okLabel.htmlFor = "fm-einwilligung";
+    okLabel.style.cssText = "font-size:0.875rem; line-height:1.5;";
+    ok.appendChild(okBox); ok.appendChild(okLabel);
+    form.appendChild(ok);
+
     var errBox = el("div","full fm-error","");
     errBox.id = "fm-contact-error";
     form.appendChild(errBox);
@@ -406,8 +418,20 @@
         errBox.textContent = "Bitte f&uuml;lle Vorname, Nachname und eine g&uuml;ltige E-Mail-Adresse aus.";
         return;
       }
+      if(!okBox.checked){
+        errBox.innerHTML = "Bitte setz noch den Haken bei der Einwilligung.";
+        return;
+      }
       errBox.textContent = "";
       state.contact = { vorname:vorname, nachname:nachname, email:email };
+      // Double-Opt-in-Mail im Hintergrund, der Test wartet nicht darauf
+      state.optin = true;
+      try {
+        fetch("https://rooted-tarot.rooted-tarot.workers.dev/kontakt", {
+          method:"POST", headers:{ "Content-Type":"application/json" },
+          body: JSON.stringify({ email:email, vorname:vorname, nachname:nachname, einwilligung:true })
+        }).catch(function(){});
+      } catch(e) {}
       state.screen = "question"; state.qIndex = 0;
       render();
     };
@@ -538,6 +562,15 @@
     var r = computeResult();
     var info = TIER_INFO[r.tier];
     var accent = TIER_ACCENT[r.tier];
+
+    if(state.optin){
+      var hinweis = el("div", null,
+        "<p style=\"font-size:1.35rem; line-height:1.3; color:var(--ink); margin:0 0 8px;\">Fast geschafft.</p>" +
+        "<p style=\"font-size:1.05rem; line-height:1.6; color:var(--ink); margin:0;\">Ich hab dir gerade eine Mail geschickt. Klick dort einmal auf &bdquo;Ja, das bin ich&ldquo;, dann darf ich dir zu deinem Ergebnis schreiben. Falls nichts ankommt, schau kurz in den Spam-Ordner.</p>");
+      hinweis.setAttribute("role","status");
+      hinweis.style.cssText = "border-left:3px solid var(--accent); padding:14px 0 14px 20px; margin:0 0 28px; text-align:left;";
+      c.appendChild(hinweis);
+    }
 
     var hero = el("div","fm-result-hero");
     hero.appendChild(el("div","fm-result-emoji", info.emoji));
