@@ -18,24 +18,16 @@ Das Gedächtnis zwischen den Sitzungen. `/shutdown` schreibt es fort, `/start` l
 
 ## Ideen und Projekte
 
-### Atem-App (Idee, Prototyp steht)
-- Eigene Breathwork-App, nur Atmung. Einstieg über das Gefühl: „Wie geht es mir, was brauche ich, was soll die Atmung bewirken?“ Notfallatmung immer mit einem Tipp erreichbar.
-- Übungen, die Mareike will: Notfallatmung (Stress, Alltag mit Kindern), Einschlafbegleitung, sanft wach werden (Alternative zur Feueratmung), Atmung für mehr Weiblichkeit, für mehr Männlichkeit, Balance-Atmung, Atmen beim Spazierengehen, Fehlatmung erkennen und richtig atmen lernen.
-- Namensideen: „Atme deinen Schlüssel“ (Favorit), „Under your breath“, „Atemschlüssel“, „KeyBreath“. Marke und Domain noch nicht geprüft.
-- Prototyp als Artifact: https://claude.ai/artifact/CBXcBGSvshWqjMTYm2jAFA . Die Datei liegt als Sicherung auf dem Zweig `claude/coach-app-ideas-knjz3v` unter `.claude/projekte/atem-app/prototyp.html`.
-- Die Übungen im Prototyp sind Platzhalter. Weiblichkeit und Männlichkeit fehlen noch, die Technik dafür muss von Mareike kommen.
-- Die Atem-App bekommt ein eigenes Repository `atem-app`, getrennt von der Homepage (Mareikes Wunsch). Claude kann keine Repositories anlegen; Mareike legt es auf github.com/new an (privat). Danach Prototyp dorthin umziehen.
-- Wichtig: keine Heilversprechen, Sicherheitshinweise (Schwangerschaft, Herz, Epilepsie, psychische Krisen), Stimmungsdaten nur auf dem Gerät.
+### Atem-App
+- Eigenes privates Repository `6v7zd4j79h-code/atem-app`, mit eigenem Gehirn und eigenen Befehlen `/start` und `/shutdown`. Alles zur Atem-App steht dort, nicht hier.
 
 ### Coach-App (Idee)
 - Frage: Gibt es eine App, die Coaches vom Anfang an begleitet (Positionierung, erste Klient:innen, Sessions vor- und nachbereiten, eigene Reflexion, Methodensammlung)? Nichts gefunden, das das auf Deutsch zusammen abdeckt. Nächstes Coaching-nahes Werkzeug: Coachingspace. Noch nicht weiterverfolgt.
 
 ## Offene Punkte
 
-- [ ] Repository `atem-app` anlegen, dann den Prototyp dorthin umziehen.
-- [ ] Mareike: Welche Atemtechniken nutzt sie für Weiblichkeit und Männlichkeit? Eigene Tonaufnahmen?
-- [ ] Namen der Atem-App auf Marke und Domain prüfen.
+- [ ] Gehirn dieses Repositorys ist öffentlich lesbar. Prüfen, ob Mareike das so will oder ob die Notizen in ein privates Repository sollen.
 
 ## Sitzungsprotokoll
 
-- 2026-09-28: Ideen Coach-App und Atem-App besprochen, Atem-Prototyp gebaut, Befehle `/start` und `/shutdown` mit diesem Gehirn eingerichtet.
+- 2026-09-28: Ideen Coach-App und Atem-App besprochen, Befehle `/start` und `/shutdown` mit diesem Gehirn eingerichtet, Atem-App in eigenes Repository `atem-app` umgezogen.

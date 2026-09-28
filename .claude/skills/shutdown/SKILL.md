@@ -11,7 +11,8 @@ description: Sitzung beenden. Sichert alle Änderungen (commit und push), schrei
 - Unter „Sitzungsprotokoll“ eine Zeile anhängen: Datum und in einem Satz, was passiert ist. Nur die letzten 15 Einträge behalten.
 - Kurz bleiben. Das Gehirn ist eine Zusammenfassung, kein Gesprächsverlauf.
 - Niemals Passwörter, API-Schlüssel, Zugangsdaten oder persönliche Daten von Kund:innen hineinschreiben.
-- Neue Notizen, Entwürfe oder Prototypen, die nicht auf die Webseite gehören, unter `.claude/projekte/` ablegen. Alles außerhalb von `.claude/` ist öffentlich im Netz.
+- Das Repository ist öffentlich, jeder kann das Gehirn auf GitHub lesen. Unveröffentlichte Ideen nur als Verweis auf ihr privates Repository eintragen, ohne Details.
+- Alles außerhalb von `.claude/` erscheint auf der Webseite. Eigene Projekte wie die Atem-App liegen in ihren eigenen privaten Repositories, nicht hier.
 
 ## 2. Alles auf dem Arbeitszweig sichern
 - `git status` prüfen. Alle Änderungen dieser Sitzung committen, mit einer klaren deutschen Nachricht im Stil der bisherigen Commits.
