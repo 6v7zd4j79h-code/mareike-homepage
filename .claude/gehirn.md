@@ -22,9 +22,9 @@ Das Gedächtnis zwischen den Sitzungen. `/shutdown` schreibt es fort, `/start` l
 - Eigene Breathwork-App, nur Atmung. Einstieg über das Gefühl: „Wie geht es mir, was brauche ich, was soll die Atmung bewirken?“ Notfallatmung immer mit einem Tipp erreichbar.
 - Übungen, die Mareike will: Notfallatmung (Stress, Alltag mit Kindern), Einschlafbegleitung, sanft wach werden (Alternative zur Feueratmung), Atmung für mehr Weiblichkeit, für mehr Männlichkeit, Balance-Atmung, Atmen beim Spazierengehen, Fehlatmung erkennen und richtig atmen lernen.
 - Namensideen: „Atme deinen Schlüssel“ (Favorit), „Under your breath“, „Atemschlüssel“, „KeyBreath“. Marke und Domain noch nicht geprüft.
-- Prototyp: `.claude/projekte/atem-app/prototyp.html`, auch als Artifact: https://claude.ai/artifact/CBXcBGSvshWqjMTYm2jAFA
+- Prototyp als Artifact: https://claude.ai/artifact/CBXcBGSvshWqjMTYm2jAFA . Die Datei liegt als Sicherung auf dem Zweig `claude/coach-app-ideas-knjz3v` unter `.claude/projekte/atem-app/prototyp.html`.
 - Die Übungen im Prototyp sind Platzhalter. Weiblichkeit und Männlichkeit fehlen noch, die Technik dafür muss von Mareike kommen.
-- Eigenes Repository `atem-app` ist geplant, aber noch nicht angelegt. Claude kann keine Repositories anlegen; Mareike legt es auf github.com/new an (privat).
+- Die Atem-App bekommt ein eigenes Repository `atem-app`, getrennt von der Homepage (Mareikes Wunsch). Claude kann keine Repositories anlegen; Mareike legt es auf github.com/new an (privat). Danach Prototyp dorthin umziehen.
 - Wichtig: keine Heilversprechen, Sicherheitshinweise (Schwangerschaft, Herz, Epilepsie, psychische Krisen), Stimmungsdaten nur auf dem Gerät.
 
 ### Coach-App (Idee)
