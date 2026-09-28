@@ -99,7 +99,7 @@
 <a class="sprungmarke" href="#inhalt">Zum Inhalt springen</a>
 <header class="site">
   <div class="wrap header-row">
-    <a class="brandmark" aria-label="Rooted Feminine Method — Startseite" href="../../">
+    <a class="brandmark" aria-label="Mareike Krohnen, Rooted Feminine — Startseite" href="../../">
       <img src="../../assets/media/c72e1082ad.png" alt="" aria-hidden="true">
       <span class="word">Mareike Krohnen</span>
     </a>
@@ -289,6 +289,7 @@
         <p class="tnote" style="margin-top:44px;">
           Tarot ist ein Spiegel, keine Diagnose. Es ersetzt keine &auml;rztliche, therapeutische, rechtliche oder finanzielle Beratung. Bei allem, was dich wirklich belastet, hol dir bitte echte Begleitung.
         </p>
+        <p class="tnote">&copy; 2026 Mareike Krohnen &middot; Rooted Feminine&trade;</p>
 
       </div>
     </div>
@@ -1029,7 +1030,7 @@
     }
 
     doc.setTextColor("#6d7a6c"); doc.setFont("helvetica","normal"); doc.setFontSize(8.5);
-    doc.text("ROOTED FEMININE METHOD", L, 16);
+    doc.text("ROOTED FEMININE\u2122", L, 16);
     doc.setDrawColor("#a9b5a5"); doc.line(L,26,R,26);
 
     schreib("Rooted Tarot",{size:22,bold:true,color:"#2e3c34",after:2});
@@ -1067,8 +1068,9 @@
 
     y+=6; platz(20);
     doc.setFontSize(8); doc.setTextColor("#8a9189");
-    var fuss=doc.splitTextToSize("Tarot ist ein Spiegel, keine Diagnose. Es ersetzt keine ärztliche, therapeutische, rechtliche oder finanzielle Beratung. Mareike Krohnen, Rooted Feminine Method.",R-L);
+    var fuss=doc.splitTextToSize("Tarot ist ein Spiegel, keine Diagnose. Es ersetzt keine ärztliche, therapeutische, rechtliche oder finanzielle Beratung.",R-L);
     for(var f=0;f<fuss.length;f++){ doc.text(fuss[f],L,y); y+=4; }
+    y+=2; doc.text("\u00a9 2026 Mareike Krohnen \u00b7 Rooted Feminine\u2122 \u00b7 mareikekrohnen.de",L,y);
 
     return doc.output("blob");
   }
@@ -1133,7 +1135,7 @@
   </div>
 
   <div class="wrap flinks">
-    <span>© Mareike Krohnen · Rooted Feminine Method</span>
+    <span>© 2026 Mareike Krohnen · Rooted Feminine™</span>
     <a class="flink" href="../../impressum/">Impressum</a>
     <a class="flink" href="../../datenschutz/">Datenschutz</a>
             <a class="flink" href="../../agb/">AGB</a>
