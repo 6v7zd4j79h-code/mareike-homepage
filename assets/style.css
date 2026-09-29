@@ -1161,3 +1161,159 @@
   .bb-banner-handys{ order:-1; }
   .bb-uhr div{ min-width:0; flex:1; }
 }
+
+/* ============================================================
+   MENUE MIT ZWEI AUFKLAPP-GRUPPEN (seit 29.09.2026)
+   „Rooted Feminine“ und „Zum Ankommen“ sind Knoepfe mit Pfeil.
+   Am Rechner oeffnen sie beim Ueberfahren und per Klick/Tastatur
+   eine breite, weichgezeichnete Flaeche mit Karten.
+   Auf dem Handy oeffnen sie per Antippen unter dem Kopf, die
+   Karten stehen dann untereinander. Steuerung in assets/app.js.
+   Die Glasflaeche ist immer dunkel, deshalb feste helle
+   Schriftfarben (Kontrast ueber 4,5 zu 1 auch ueber hellen Seiten).
+   ============================================================ */
+nav.pages{ align-items:center; }
+.dd{ position:static; display:inline-flex; align-items:center; }
+nav.pages .dd-knopf{
+  font-family:"Jost",sans-serif; font-size:0.7812rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--on-deep-muted); background:none; border:0; padding:6px 0; cursor:pointer;
+  display:inline-flex; gap:7px; align-items:center; white-space:nowrap; transition:color .2s ease;
+}
+nav.pages .dd-knopf::after{
+  content:""; width:6px; height:6px; border-right:1px solid currentColor; border-bottom:1px solid currentColor;
+  rotate:45deg; translate:0 -2px; transition:rotate .25s ease, translate .25s ease;
+}
+.dd.offen > .dd-knopf, .dd.ist-aktiv > .dd-knopf{ color:var(--on-deep); }
+.dd.offen > .dd-knopf::after{ rotate:225deg; translate:0 2px; }
+.dd.ist-aktiv > .dd-knopf{ text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:7px; }
+nav.pages > a{ white-space:nowrap; }
+
+.dd-flaeche{
+  position:absolute; left:50%; top:100%; z-index:120;
+  width:min(1120px, calc(100% - 40px));
+  translate:-50% 0;
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:12px;
+  padding:18px; border-radius:28px;
+  background:rgba(30,42,34,.55);
+  -webkit-backdrop-filter:blur(22px) saturate(130%); backdrop-filter:blur(22px) saturate(130%);
+  border:1px solid rgba(241,237,226,.14);
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.6);
+  opacity:0; visibility:hidden;
+  transition:opacity .35s ease, translate .35s ease, visibility .35s;
+  text-align:left;
+}
+/* sechs Karten in zwei Dreierreihen, vier Karten in einer Reihe */
+@media (min-width:861px){
+  #menue-rooted{ grid-template-columns:repeat(3,1fr); }
+  #menue-ankommen{ grid-template-columns:repeat(4,1fr); }
+}
+/* unsichtbarer Steg, damit die Maus auf dem Weg nach unten nicht rausfaellt */
+.dd-flaeche::before{ content:""; position:absolute; left:0; right:0; bottom:100%; height:34px; }
+.dd.offen .dd-flaeche{ opacity:1; visibility:visible; translate:-50% 12px; }
+@media (hover:hover) and (pointer:fine){
+  .dd:hover > .dd-knopf{ color:var(--on-deep); }
+  .dd:hover > .dd-knopf::after{ rotate:225deg; translate:0 2px; }
+  .dd:hover .dd-flaeche{ opacity:1; visibility:visible; translate:-50% 12px; }
+}
+
+nav.pages a.kl{
+  display:block; padding:20px 20px 22px; border-radius:20px; text-decoration:none;
+  font-family:"Jost",sans-serif; text-transform:none; letter-spacing:normal; white-space:normal;
+  color:#F1EDE2; background:transparent; border:1px solid transparent;
+  transition:background .4s ease, box-shadow .4s ease, translate .3s ease;
+}
+nav.pages a.kl:hover, nav.pages a.kl:focus-visible{
+  color:#F1EDE2; background:radial-gradient(ellipse 75% 80% at 50% 50%, rgba(155,176,139,.72) 0%, rgba(155,176,139,.46) 55%, rgba(155,176,139,0) 100%); border-color:transparent; box-shadow:0 0 40px 8px rgba(155,176,139,.20); translate:0 -2px;
+}
+nav.pages a.kl[aria-current="page"]{ background:radial-gradient(ellipse 75% 80% at 50% 50%, rgba(246,242,234,.12) 0%, rgba(246,242,234,0) 100%); }
+nav.pages a.kl[aria-current="page"]::after{ display:none; }
+.kl-t{ display:block; font-family:"Cormorant Garamond",serif; font-size:1.4rem; line-height:1.15; font-weight:400; margin-bottom:6px; color:#F1EDE2; }
+.kl-d{ display:block; font-size:0.72rem; letter-spacing:.14em; text-transform:uppercase; color:#BFD0B2; margin-bottom:8px; }
+.kl-s{ display:block; font-size:0.9062rem; line-height:1.5; color:rgba(241,237,226,.82); }
+
+/* Kopfzeile: Menue bleibt in einer Zeile, bei mittlerer Breite rutscht es unter Logo und Knoepfe */
+@media (min-width:861px){
+  nav.pages{ flex-wrap:nowrap; gap:clamp(18px,2.4vw,30px); }
+  .brandmark .word{ white-space:nowrap; }
+}
+@media (max-width:860px){
+  .header-row{ flex-wrap:wrap; row-gap:8px; }
+  nav.pages{ order:3; width:100%; justify-content:center; gap:10px 22px; }
+  .dd-flaeche{
+    width:calc(100% - 24px); grid-template-columns:1fr; gap:8px; padding:12px; border-radius:22px;
+    max-height:calc(100vh - 150px); max-height:calc(100dvh - 150px); overflow-y:auto; overscroll-behavior:contain;
+  }
+  .dd.offen .dd-flaeche{ translate:-50% 6px; }
+  nav.pages a.kl{ padding:14px 16px 15px; border-radius:16px; }
+  .kl-t{ font-size:1.25rem; margin-bottom:4px; }
+  .kl-d{ margin-bottom:6px; }
+}
+@media (max-width:480px){
+  .header-row{ flex-wrap:nowrap; }
+  nav.pages{ order:0; gap:8px 18px; flex-wrap:wrap; }
+}
+@media (prefers-reduced-motion: reduce){
+  .dd-flaeche, nav.pages a.kl{ transition:none; }
+}
+
+/* ============================================================
+   WEICHE FOTORAENDER, NUR STARTSEITE (seit 29.09.2026)
+   Greift nur ueber body.startseite in index.html.
+   ============================================================ */
+body.startseite .photo-band{
+  -webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 78%,transparent 100%);
+}
+body.startseite .photo-frame,
+body.startseite .kachel-bild,
+body.startseite .strip .cell{
+  background:none; box-shadow:none; border:0; border-radius:0; overflow:visible;
+}
+body.startseite .photo-frame img,
+body.startseite .kachel-bild img,
+body.startseite .strip .cell img,
+body.startseite .collage img{
+  border-radius:0; box-shadow:none;
+  -webkit-mask-image:radial-gradient(ellipse 62% 62% at 50% 50%,#000 50%,transparent 100%);
+  mask-image:radial-gradient(ellipse 62% 62% at 50% 50%,#000 50%,transparent 100%);
+}
+/* weicher Uebergang vom dunklen Banner ins Startbild */
+body.startseite .photo-band.center-scrim::before{
+  content:""; position:absolute; left:0; right:0; top:0; height:220px; z-index:1; pointer-events:none;
+  background:linear-gradient(180deg, var(--deep) 0%, color-mix(in srgb, var(--deep) 60%, transparent) 45%, transparent 100%);
+}
+
+/* ============================================================
+   ANGEBOTE: BRUECKE ZWISCHEN DEN BEIDEN KACHELN (seit 29.09.2026)
+   Am Rechner ein flacher Bogen in der Mitte, der von Kachel zu
+   Kachel reicht, darunter ein kurzer Satz. Auf dem Handy steht
+   die Bruecke zwischen den gestapelten Kacheln, als feine
+   geschwungene Linie ueber und unter dem Satz.
+   ============================================================ */
+.bereich-kacheln:has(.bruecke){ grid-template-columns:1fr clamp(210px,22vw,280px) 1fr; gap:0; }
+.bruecke{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:16px; padding-inline:4px; color:var(--line-strong); position:relative; z-index:1;
+}
+.bruecke-bild{ display:block; width:calc(100% + 36px); margin-inline:-18px; height:auto; overflow:visible; }
+.bruecke-satz{
+  margin:0; text-align:center; font-style:normal; color:var(--ink);
+  font-size:clamp(0.95rem,1.15vw,1.05rem); line-height:1.6; max-width:26ch;
+}
+@media (max-width:860px){
+  .bereich-kacheln:has(.bruecke){ grid-template-columns:1fr; }
+  .bruecke{ gap:12px; padding-block:18px; }
+  .bruecke-bild{ width:220px; margin-inline:auto; }
+  .bruecke-satz{ max-width:32ch; }
+}
+
+
+/* Countdown passt aufs schmale Handy */
+@media (max-width:480px){
+  .bb-uhr{ gap:6px; }
+  .bb-uhr div{ padding-inline:2px; min-width:0; }
+  .bb-uhr small{ font-size:0.6875rem; letter-spacing:.03em; }
+}
+
+/* Startseite: kurzer Satz unter der Brücke */
+.bruecke-satz.bruecke-kurz{ font-size:0.9375rem; letter-spacing:.02em; color:var(--muted); max-width:none; }

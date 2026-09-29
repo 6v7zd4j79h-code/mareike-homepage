@@ -378,3 +378,56 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
     fuss.appendChild(link);
   }
 })();
+
+// ============================================================
+// Menue mit zwei Aufklapp-Gruppen (seit 29.09.2026).
+// Klick oder Antippen oeffnet und schliesst, Escape und ein Klick
+// daneben schliessen. Am Rechner oeffnet zusaetzlich das Ueberfahren
+// (per CSS), beim Verlassen mit der Maus geht die Gruppe wieder zu.
+// ============================================================
+(function(){
+  var gruppen = Array.prototype.slice.call(document.querySelectorAll('nav.pages .dd'));
+  if(!gruppen.length) return;
+  var feineMaus = window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  function setzen(dd, auf){
+    dd.classList.toggle('offen', auf);
+    var k = dd.querySelector('.dd-knopf');
+    if(k) k.setAttribute('aria-expanded', auf ? 'true' : 'false');
+  }
+  function alleZu(ausser){
+    gruppen.forEach(function(g){ if(g !== ausser) setzen(g, false); });
+  }
+
+  gruppen.forEach(function(dd){
+    var knopf = dd.querySelector('.dd-knopf');
+    if(!knopf) return;
+    knopf.addEventListener('click', function(e){
+      e.stopPropagation();
+      var auf = !dd.classList.contains('offen');
+      alleZu(dd);
+      setzen(dd, auf);
+    });
+    if(feineMaus){
+      dd.addEventListener('mouseleave', function(){ setzen(dd, false); });
+    }
+    // Wer mit der Tastatur aus der Gruppe heraus weitergeht, schliesst sie
+    dd.addEventListener('focusout', function(e){
+      if(e.relatedTarget && !dd.contains(e.relatedTarget)) setzen(dd, false);
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Escape') return;
+    gruppen.forEach(function(g){
+      if(g.classList.contains('offen')){
+        setzen(g, false);
+        var k = g.querySelector('.dd-knopf');
+        if(k && g.contains(document.activeElement)) k.focus();
+      }
+    });
+  });
+  document.addEventListener('click', function(e){
+    gruppen.forEach(function(g){ if(!g.contains(e.target)) setzen(g, false); });
+  });
+})();
