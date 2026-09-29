@@ -1160,6 +1160,8 @@
   .bb-banner-reihe{ grid-template-columns:1fr; }
   .bb-banner-handys{ order:-1; }
   .bb-uhr div{ min-width:0; flex:1; }
+  .bb-banner-reihe{ grid-template-columns:minmax(0,1fr); }
+  .bb-banner-reihe > *{ min-width:0; }
 }
 
 /* ============================================================
