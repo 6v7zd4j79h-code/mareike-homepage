@@ -1,325 +1,178 @@
 /* ============================================================
    Breathing Bones · Atme dich zurück
-   Eigener, heller Look passend zur Atem-App (Briefing 28.09.2026).
-   Schriften liegen auf der eigenen Seite, nicht bei Google.
+   Rahmen und Schriften wie der Rest der Homepage (dunkles Grün,
+   Creme, Salbei). Das Hellblau der App kommt über die Screenshots,
+   den Atemkreis und einzelne Akzente mit rein. Umgebaut 29.09.2026,
+   weil die rein helle Fassung wie eine fremde Seite wirkte.
    ============================================================ */
 
-@font-face {
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 400 600;
-  font-display: swap;
-  src: url(../assets/fonts/NunitoSans-var-latin-ext.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 400 600;
-  font-display: swap;
-  src: url(../assets/fonts/NunitoSans-var-latin.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-:root {
+.bb {
   --himmel: #CFE7F1;
-  --grund: #F7FBFC;
+  --himmel-hell: #EAF4F7;
   --kreis: #9FD4D8;
   --tuerkis: #3E9C9E;
-  --tuerkis-dunkel: #2F7F81;
-  --blau: #6BBBD0;
-  --schrift: #3B5058;
-  --leise: #6A7F87;
-  --linie: rgba(59, 80, 88, 0.12);
-  --weiss: #FFFFFF;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: var(--grund);
-  color: var(--schrift);
-  font-family: 'Nunito Sans', system-ui, sans-serif;
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
-
-img { max-width: 100%; display: block; }
-
-a { color: var(--tuerkis-dunkel); }
-
-h1, h2, h3 {
-  font-family: 'Jost', system-ui, sans-serif;
-  font-weight: 300;
-  line-height: 1.15;
-  margin: 0;
-  letter-spacing: 0.01em;
-}
-h2 { font-size: clamp(1.75rem, 4.5vw, 2.4rem); margin-bottom: 20px; }
-h3 { font-size: 1.25rem; font-weight: 400; }
-
-p { margin: 0 0 1em; }
-
-.wrap { width: 100%; max-width: 1040px; margin-inline: auto; padding-inline: 20px; }
-.schmal { max-width: 680px; }
-
-.sprungmarke {
-  position: absolute; left: -9999px; top: 0;
-  background: var(--weiss); padding: 10px 16px; z-index: 50;
-}
-.sprungmarke:focus { left: 12px; top: 12px; }
-
-.eyebrow {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--tuerkis);
-  margin-bottom: 14px;
-}
-
-/* ---------- Kopf ---------- */
-.kopf {
-  position: absolute; inset: 0 0 auto 0; z-index: 5;
-  padding-block: 18px;
-}
-.kopf .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.marke, .kopf-link { white-space: nowrap; }
-.marke {
-  font-family: 'Jost', sans-serif; font-weight: 400; font-size: 1rem;
-  letter-spacing: 0.06em; color: var(--schrift); text-decoration: none;
-}
-.kopf-link {
-  font-family: 'Jost', sans-serif; font-size: 0.85rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--schrift); text-decoration: none;
-  border-bottom: 1px solid currentColor; padding-bottom: 2px;
-}
-
-/* ---------- Knöpfe ---------- */
-.knopf {
-  display: inline-block;
-  font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 400;
-  letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
-  padding: 15px 30px; border-radius: 999px;
-  background: var(--tuerkis); color: var(--weiss);
-  border: 1px solid var(--tuerkis);
-  transition: background .2s, transform .2s;
-}
-.knopf:hover { background: var(--tuerkis-dunkel); border-color: var(--tuerkis-dunkel); }
-.knopf:focus-visible { outline: 2px solid var(--schrift); outline-offset: 3px; }
-.knopf.leise { background: transparent; color: var(--schrift); border-color: rgba(59, 80, 88, 0.35); }
-.knopf.leise:hover { background: rgba(255, 255, 255, 0.6); }
-
-/* ---------- Einstieg ---------- */
-.einstieg {
+/* ---------- Einstieg (dunkel wie die Homepage) ---------- */
+.bb-einstieg {
   position: relative; overflow: hidden;
-  background: linear-gradient(180deg, var(--himmel) 0%, #E4F2F7 55%, var(--grund) 100%);
-  padding: 110px 0 80px;
+  background:
+    radial-gradient(ellipse 60% 70% at 78% 45%, rgba(159, 212, 216, 0.22), rgba(159, 212, 216, 0) 70%),
+    var(--deep);
+  color: var(--on-deep);
+  padding-block: clamp(56px, 9vw, 110px);
 }
-.einstieg .wrap {
+.bb-einstieg .wrap {
   position: relative; z-index: 2;
-  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 72px); align-items: center;
 }
-.einstieg h1 { font-size: clamp(2.6rem, 8vw, 4.4rem); font-weight: 300; }
-.einstieg .unterzeile {
-  font-family: 'Jost', sans-serif; font-weight: 300;
-  font-size: clamp(1.3rem, 3.6vw, 1.75rem); color: var(--tuerkis); margin: 6px 0 26px;
+.bb-einstieg .eyebrow { color: var(--kreis); }
+.bb-einstieg h1 {
+  font-family: "Jost", sans-serif; font-weight: 300;
+  font-size: clamp(2.5rem, 7vw, 4.2rem); letter-spacing: 0.01em; color: var(--on-deep);
 }
-.einstieg .lead { font-size: 1.15rem; max-width: 30em; margin-bottom: 30px; }
-.knopf-reihe { display: flex; gap: 12px; flex-wrap: wrap; }
+.bb-einstieg .unterzeile {
+  font-style: italic; font-size: clamp(1.6rem, 4vw, 2.3rem); color: var(--kreis); margin: 4px 0 22px;
+}
+.bb-einstieg .lead { font-size: clamp(1.2rem, 2.4vw, 1.4rem); max-width: 26em; margin: 0 0 30px; color: var(--on-deep); }
+.bb-knoepfe { display: flex; gap: 12px; flex-wrap: wrap; }
+.bb-einstieg .btn.line { color: var(--on-deep); border-color: var(--on-deep-muted); }
+.bb-einstieg .btn.line:hover { background: rgba(241, 237, 226, 0.08); }
 
-/* Wolken und Vögel */
-.wolke {
-  position: absolute; z-index: 1; border-radius: 999px;
-  background: rgba(255, 255, 255, 0.75); filter: blur(18px);
-  animation: ziehen linear infinite;
-}
-.wolke.w1 { width: 320px; height: 70px; top: 18%; left: -340px; animation-duration: 70s; }
-.wolke.w2 { width: 220px; height: 50px; top: 52%; left: -240px; animation-duration: 95s; animation-delay: -40s; }
-.wolke.w3 { width: 420px; height: 90px; top: 78%; left: -440px; animation-duration: 120s; animation-delay: -70s; opacity: .8; }
-@keyframes ziehen { to { transform: translateX(calc(100vw + 480px)); } }
+/* Vögel wie in der App */
+.bb-voegel { position: absolute; z-index: 1; top: 12%; left: 46%; width: 150px; opacity: .5; }
+.bb-voegel path { fill: none; stroke: var(--kreis); stroke-width: 1.3; stroke-linecap: round; }
+.bb-voegel g { animation: bb-schweben 9s ease-in-out infinite; }
+.bb-voegel g:nth-child(2) { animation-delay: -3s; }
+.bb-voegel g:nth-child(3) { animation-delay: -6s; }
+@keyframes bb-schweben { 50% { transform: translate(6px, -8px); } }
 
-.voegel { position: absolute; z-index: 1; top: 14%; right: 6%; width: 180px; opacity: .55; }
-.voegel path { fill: none; stroke: var(--schrift); stroke-width: 1.4; stroke-linecap: round; }
-.voegel g { animation: schweben 9s ease-in-out infinite; transform-origin: center; }
-.voegel g:nth-child(2) { animation-delay: -3s; }
-.voegel g:nth-child(3) { animation-delay: -6s; }
-@keyframes schweben { 50% { transform: translate(6px, -8px); } }
+/* Handys mit echten Screenshots */
+.bb-handys { position: relative; height: clamp(440px, 52vw, 560px); }
+.bb-handy {
+  position: absolute; width: clamp(190px, 21vw, 250px);
+  border-radius: 34px; padding: 8px; background: #121a14;
+  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+.bb-handy img { width: 100%; height: auto; border-radius: 27px; display: block; }
+.bb-handys .vorne { right: 8%; top: 0; z-index: 2; }
+.bb-handys .hinten { left: 4%; top: 70px; transform: rotate(-4deg); opacity: .92; }
 
-/* Handy mit Atemkreis */
-.handy {
-  justify-self: center;
-  width: min(290px, 78vw); aspect-ratio: 9 / 18.5;
-  border-radius: 42px; padding: 12px;
-  background: var(--weiss);
-  box-shadow: 0 30px 60px -20px rgba(59, 80, 88, 0.28), 0 0 0 1px rgba(59, 80, 88, 0.06);
-}
-.bildschirm {
-  position: relative; height: 100%; border-radius: 32px; overflow: hidden;
-  background: linear-gradient(180deg, var(--himmel) 0%, var(--grund) 100%);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center;
-}
-.bildschirm .titel {
-  position: absolute; top: 34px; left: 0; right: 0;
-  font-family: 'Jost', sans-serif; font-weight: 300; font-size: 1.05rem;
-}
-.bildschirm .mini-wolke {
-  position: absolute; border-radius: 999px; background: rgba(255,255,255,.85); filter: blur(8px);
-}
-.bildschirm .mw1 { width: 110px; height: 26px; top: 16%; left: -20px; animation: treiben 14s ease-in-out infinite; }
-.bildschirm .mw2 { width: 80px; height: 20px; top: 74%; right: -10px; animation: treiben 18s ease-in-out infinite reverse; }
-@keyframes treiben { 50% { transform: translateX(30px); } }
+/* Einzelnes Handy in Abschnitten */
+.bb-handy.einzeln { position: relative; margin-inline: auto; width: min(260px, 70vw); background: #fff; box-shadow: var(--shadow), 0 0 0 1px var(--line); }
 
-.atemkreis {
-  position: relative; width: 150px; height: 150px; border-radius: 50%;
-  display: grid; place-items: center;
-}
-.atemkreis::before {
-  content: ""; position: absolute; inset: 0; border-radius: 50%;
-  background: radial-gradient(circle, rgba(159, 212, 216, 0.95) 0%, rgba(159, 212, 216, 0.55) 60%, rgba(159, 212, 216, 0) 72%);
-  animation: atmen 10s ease-in-out infinite;
-}
-@keyframes atmen {
-  0%   { transform: scale(0.62); }
-  40%  { transform: scale(1.12); }
-  100% { transform: scale(0.62); }
-}
-.atemwort { position: relative; font-family: 'Jost', sans-serif; font-weight: 300; font-size: 1.05rem; }
-.atemwort span { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); white-space: nowrap; }
-.atemwort .ein { animation: wort-ein 10s ease-in-out infinite; }
-.atemwort .aus { animation: wort-aus 10s ease-in-out infinite; }
-@keyframes wort-ein { 0%, 36% { opacity: 1; } 42%, 96% { opacity: 0; } 100% { opacity: 1; } }
-@keyframes wort-aus { 0%, 36% { opacity: 0; } 42%, 96% { opacity: 1; } 100% { opacity: 0; } }
-.bildschirm .fuss-zeile {
-  position: absolute; bottom: 30px; left: 0; right: 0;
-  font-size: 0.78rem; color: var(--leise);
-}
+/* ---------- Himmel-Band (die helle App-Farbe als Akzent) ---------- */
+.band.bb-himmel { background: linear-gradient(180deg, var(--himmel-hell) 0%, var(--bg) 100%); }
 
-/* ---------- Abschnitte ---------- */
-.abschnitt { padding: 84px 0; }
-.abschnitt.himmel { background: linear-gradient(180deg, var(--grund) 0%, #EAF5F9 100%); }
-.abschnitt.weiss { background: var(--weiss); }
+.bb-zwei { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(32px, 6vw, 64px); align-items: center; }
+.bb-zwei.umgekehrt { grid-template-columns: 0.8fr 1.2fr; }
+.bb h2 { font-weight: 300; font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 22px; }
+.bb .prose { text-align: left; margin-inline: 0; }
 
 /* Schritte */
-.schritte {
-  list-style: none; padding: 0; margin: 36px 0 0;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-  counter-reset: schritt;
+.bb-schritte {
+  list-style: none; padding: 0; margin: 34px 0 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: schritt;
 }
-.schritte li {
-  background: var(--weiss); border-radius: 22px; padding: 28px 24px;
-  box-shadow: 0 10px 30px -18px rgba(59, 80, 88, 0.25);
+.bb-schritte li {
+  background: var(--bg); border: 1px solid var(--line); padding: 26px 22px;
   counter-increment: schritt;
 }
-.schritte li::before {
+.bb-schritte li::before {
   content: counter(schritt);
-  display: grid; place-items: center;
-  width: 40px; height: 40px; border-radius: 50%; margin-bottom: 16px;
-  background: var(--himmel); color: var(--tuerkis-dunkel);
-  font-family: 'Jost', sans-serif; font-size: 1.1rem;
+  display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; margin-bottom: 14px;
+  background: radial-gradient(circle, var(--kreis) 0%, rgba(159, 212, 216, 0.4) 70%);
+  color: var(--deep); font-family: "Jost", sans-serif; font-size: 1.05rem;
 }
-.schritte h3 { margin-bottom: 8px; }
-.schritte p { margin: 0; color: var(--leise); font-size: 0.98rem; }
+.bb-schritte h3 { font-size: 1.35rem; margin-bottom: 8px; }
+.bb-schritte p { margin: 0; color: var(--muted); font-size: 1.05rem; line-height: 1.5; }
 
 /* Übungen */
-.bereiche {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px;
-  margin-top: 36px;
-}
-.bereich {
-  background: var(--grund); border: 1px solid var(--linie); border-radius: 20px; padding: 22px 22px 18px;
-}
-.bereich h3 { font-size: 1.15rem; margin-bottom: 4px; }
-.bereich .hinweis { font-size: 0.85rem; color: var(--leise); margin-bottom: 10px; }
-.bereich ul { list-style: none; padding: 0; margin: 0; }
-.bereich li { padding: 5px 0; border-top: 1px solid var(--linie); font-size: 0.98rem; }
-.bereich li:first-child { border-top: 0; }
+.bb-bereiche { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.bb-bereich { background: var(--bg); border: 1px solid var(--line); padding: 18px 18px 12px; }
+.bb-bereich h3 { font-family: "Jost", sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.bb-bereich ul { list-style: none; padding: 0; margin: 0; }
+.bb-bereich li { padding: 4px 0; border-top: 1px solid var(--line); font-size: 1.08rem; line-height: 1.35; }
+.bb-bereich li:first-child { border-top: 0; }
 
-.merkmale {
-  display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 0; padding: 0; list-style: none;
-}
-.merkmale li {
-  background: var(--weiss); border: 1px solid rgba(62, 156, 158, 0.3); border-radius: 999px;
-  padding: 8px 16px; font-size: 0.92rem;
+.bb-merkmale { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; padding: 0; list-style: none; }
+.bb-merkmale li {
+  font-family: "Jost", sans-serif; font-size: 0.85rem; letter-spacing: 0.02em;
+  background: var(--himmel-hell); border: 1px solid rgba(62, 156, 158, 0.28); border-radius: 999px; padding: 6px 14px;
 }
 
-/* Ganz offen / Sicher üben */
-.zwei-spalten { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-.karte {
-  background: var(--weiss); border-radius: 24px; padding: 32px 30px;
-  box-shadow: 0 10px 30px -18px rgba(59, 80, 88, 0.25);
-}
-.karte h2 { font-size: 1.7rem; }
-.karte p:last-child { margin-bottom: 0; }
+/* Karten */
+.bb-karten { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.bb-karte { background: var(--bg); border: 1px solid var(--line); padding: 30px 28px; }
+.bb-karte h2 { font-size: 1.7rem; margin-bottom: 16px; }
+.bb-karte p:last-child { margin-bottom: 0; }
 
 /* Über mich */
-.ueber {
-  display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px; align-items: center;
-}
-.ueber img { border-radius: 28px; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.bb-ueber img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; }
 
 /* Preis */
-.preis-box {
-  max-width: 520px; margin: 0 auto; text-align: center;
-  background: var(--weiss); border-radius: 30px; padding: 44px 32px 36px;
-  box-shadow: 0 30px 60px -30px rgba(59, 80, 88, 0.35);
-  border: 1px solid rgba(62, 156, 158, 0.25);
+.bb-preis {
+  max-width: 500px; margin: 0 auto; text-align: center;
+  background: linear-gradient(180deg, var(--himmel) 0%, #F4FAFC 100%);
+  color: #2B3E45; padding: 42px 30px 34px; border-radius: 4px;
+  box-shadow: 0 40px 70px -40px rgba(0, 0, 0, 0.6);
 }
-.preis-box .betrag {
-  font-family: 'Jost', sans-serif; font-weight: 300; font-size: 3.6rem; line-height: 1; margin: 8px 0 10px;
-}
-.preis-box .danach { color: var(--leise); margin-bottom: 22px; }
-.preis-box ul { list-style: none; padding: 0; margin: 0 0 26px; }
-.preis-box li { padding: 6px 0; }
-.preis-box li::before { content: "·"; color: var(--tuerkis); margin-right: 8px; font-weight: 600; }
-.versprechen { max-width: 520px; margin: 0 auto 30px; text-align: center; }
-.kleingedruckt { max-width: 520px; margin: 22px auto 0; text-align: center; font-size: 0.82rem; color: var(--leise); }
+.bb-preis .eyebrow { color: var(--tuerkis); }
+.bb-preis h2 { color: #2B3E45; margin-bottom: 0; font-size: 1.9rem; }
+.bb-preis .betrag { font-family: "Jost", sans-serif; font-weight: 300; font-size: 3.4rem; line-height: 1; margin: 12px 0 10px; }
+.bb-preis .danach { font-size: 1.05rem; color: #52666d; margin-bottom: 20px; }
+.bb-preis ul { list-style: none; padding: 0; margin: 0 0 26px; font-size: 1.1rem; }
+.bb-preis li { padding: 4px 0; }
+.bb-preis .btn.solid { background: var(--deep); color: var(--on-deep); border-color: var(--deep); }
+.bb-preis .btn.solid:hover { background: var(--deep-2); color: var(--on-deep); }
+.bb-versprechen { max-width: 520px; margin: 0 auto 30px; text-align: center; font-size: 1.2rem; font-style: italic; color: var(--on-deep); }
+.bb-klein { max-width: 540px; margin: 22px auto 0; text-align: center; font-size: 0.85rem; line-height: 1.6; color: var(--on-deep-muted); }
+.bb-klein a { color: var(--on-deep); }
 
 /* FAQ */
-.faq details {
-  border-bottom: 1px solid var(--linie); padding: 4px 0;
+.bb-faq details { border-bottom: 1px solid var(--line); }
+.bb-faq summary {
+  cursor: pointer; list-style: none; padding: 18px 36px 18px 0; position: relative; font-size: 1.3rem;
 }
-.faq summary {
-  cursor: pointer; list-style: none; padding: 18px 36px 18px 0; position: relative;
-  font-family: 'Jost', sans-serif; font-size: 1.12rem; font-weight: 400;
-}
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::after {
+.bb-faq summary::-webkit-details-marker { display: none; }
+.bb-faq summary::after {
   content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
-  font-size: 1.5rem; font-weight: 300; color: var(--tuerkis);
+  font-family: "Jost", sans-serif; font-weight: 300; font-size: 1.5rem; color: var(--accent);
 }
-.faq details[open] summary::after { content: "–"; }
-.faq details p { color: var(--leise); padding-right: 24px; }
-
-/* Fuß */
-.fuss {
-  background: var(--himmel); padding: 40px 0 34px; text-align: center; font-size: 0.88rem;
-}
-.fuss nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 14px; }
-.fuss a { color: var(--schrift); }
-.fuss p { margin: 0; color: var(--leise); }
+.bb-faq details[open] summary::after { content: "–"; }
+.bb-faq details p { color: var(--muted); font-size: 1.1rem; padding-right: 24px; }
 
 /* ---------- Handy ---------- */
 @media (max-width: 820px) {
-  .einstieg { padding: 90px 0 64px; }
-  .einstieg .wrap { grid-template-columns: 1fr; gap: 44px; text-align: center; }
-  .einstieg .lead { margin-inline: auto; }
-  .knopf-reihe { justify-content: center; }
-  .voegel { width: 110px; top: auto; bottom: 46%; right: 2%; opacity: .4; }
-  .kopf-link { font-size: 0.75rem; letter-spacing: 0.08em; }
-  .knopf { padding: 14px 24px; letter-spacing: 0.1em; }
-  .schritte, .zwei-spalten, .ueber { grid-template-columns: 1fr; }
-  .ueber img { max-width: 340px; margin-inline: auto; }
-  .abschnitt { padding: 64px 0; }
+  .bb-einstieg .wrap, .bb-zwei, .bb-zwei.umgekehrt, .bb-schritte, .bb-karten { grid-template-columns: 1fr; }
+  .bb-einstieg { text-align: center; }
+  .bb-einstieg .lead { margin-inline: auto; }
+  .bb-knoepfe { justify-content: center; }
+  .bb-handys { height: 440px; max-width: 360px; margin-inline: auto; width: 100%; }
+  .bb-handy { width: 200px; }
+  .bb-handys .vorne { right: 0; }
+  .bb-handys .hinten { left: 0; top: 56px; }
+  .bb-voegel { left: auto; right: 6%; top: 4%; width: 100px; }
+  .bb-zwei .bb-handy.einzeln { order: 2; }
+  .bb-ueber img { max-width: 340px; margin-inline: auto; display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wolke, .voegel g, .bildschirm .mini-wolke { animation: none; }
-  .atemkreis::before { animation-duration: 16s; }
-  html { scroll-behavior: auto; }
+  .bb-voegel g { animation: none; }
 }
+:root[data-bewegung="reduziert"] .bb-voegel g { animation: none; }
+
+/* ---------- Dunkle Darstellung (wie der Rest der Seite) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .bb { --himmel-hell: #1E2C2E; }
+  :root:not([data-theme="light"]) .band.bb-himmel { background: linear-gradient(180deg, #1D2B2C 0%, var(--bg) 100%); }
+  :root:not([data-theme="light"]) .bb-merkmale li { border-color: rgba(159, 212, 216, 0.3); }
+  :root:not([data-theme="light"]) .bb-schritte li::before { color: #10160F; }
+}
+:root[data-theme="dark"] .bb { --himmel-hell: #1E2C2E; }
+:root[data-theme="dark"] .band.bb-himmel { background: linear-gradient(180deg, #1D2B2C 0%, var(--bg) 100%); }
+:root[data-theme="dark"] .bb-merkmale li { border-color: rgba(159, 212, 216, 0.3); }
+
+/* Abstände */
+.bb-karte p { margin: 0 0 1em; font-size: 1.1rem; line-height: 1.55; }
+.bb .prose + .btn { margin-top: 18px; }
