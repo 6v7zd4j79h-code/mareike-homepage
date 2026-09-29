@@ -220,7 +220,9 @@
           <li>Auf bis zu 3 Geräten</li>
         </ul>
         <!-- STRIPE: Einführungspreis 19,99 €. Am 01.12.2026 tauschen gegen https://buy.stripe.com/cNi5kF0Jl2PedmB7uccEw03 (39,99 €) -->
-        <a class="btn solid" id="kaufen" href="https://buy.stripe.com/bJe6oJfEf9dCgyNeWEcEw04">Zugang holen</a>
+        <!-- Bis zum Start 01.10.2026 ohne href, app.js setzt den Link um 0 Uhr aus data-href -->
+        <a class="btn solid" id="kaufen" aria-disabled="true" data-href="https://buy.stripe.com/bJe6oJfEf9dCgyNeWEcEw04">Ab Donnerstag, 01.10.</a>
+        <p class="bb-countdown-zeile" id="bb-countdown-zeile"></p>
       </div>
       <p class="bb-klein">
         Nach dem Bezahlen bekommst du eine Mail mit deinem Anmelde-Link. Kurz bevor dein Jahr um ist, schreibe ich dir und du entscheidest selbst, ob du verlängerst.<br>

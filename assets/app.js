@@ -227,6 +227,43 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
 })();
 
 // ============================================================
+// Breathing Bones: Countdown bis zum Start am 01.10.2026, 0 Uhr.
+// Im Laufband auf allen Seiten und auf der App-Seite. Der
+// Kaufknopf dort wird erst ab dem Start zum Link.
+// ============================================================
+(function(){
+  var start = new Date('2026-10-01T00:00:00+02:00').getTime();
+  var band = document.querySelectorAll('.bb-countdown');
+  var knopf = document.getElementById('kaufen');
+  var zeile = document.getElementById('bb-countdown-zeile');
+  if(!band.length && !knopf) return;
+  var uhr;
+  function rest(ms){
+    var min = Math.ceil(ms / 60000);
+    var t = Math.floor(min / 1440), h = Math.floor((min % 1440) / 60), m = min % 60;
+    var teile = [];
+    if(t) teile.push(t + (t === 1 ? ' Tag' : ' Tage'));
+    if(h) teile.push(h + ' Std.');
+    if(!t && m) teile.push(m + ' Min.');
+    return 'Noch ' + teile.join(' ');
+  }
+  function zeigen(){
+    var ms = start - Date.now();
+    var offen = ms <= 0;
+    band.forEach(function(el){ el.textContent = offen ? 'Jetzt da' : rest(ms); });
+    if(zeile) zeile.textContent = offen ? '' : rest(ms) + ' bis zum Start';
+    if(knopf && offen && knopf.dataset.href){
+      knopf.href = knopf.dataset.href;
+      knopf.removeAttribute('aria-disabled');
+      knopf.textContent = 'Zugang holen';
+    }
+    if(offen && uhr) clearInterval(uhr);
+  }
+  zeigen();
+  if(start > Date.now()) uhr = setInterval(zeigen, 30000);
+})();
+
+// ============================================================
 // Alle Brevo-Formulare, auch der Newsletter unten (id="sib-form"),
 // schicken wir selbst im Hintergrund ab und zeigen die Meldung auf
 // der Seite. Das Brevo-Skript wird nicht mehr geladen: nachgeladen

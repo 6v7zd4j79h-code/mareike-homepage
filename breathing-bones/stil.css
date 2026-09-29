@@ -125,6 +125,10 @@
 .bb-preis li { padding: 4px 0; }
 .bb-preis .btn.solid { background: var(--deep); color: var(--on-deep); border-color: var(--deep); }
 .bb-preis .btn.solid:hover { background: var(--deep-2); color: var(--on-deep); }
+/* Bis zum Start: Knopf ohne Link, Countdown darunter (app.js) */
+.bb-preis .btn.solid[aria-disabled="true"] { cursor: default; }
+.bb-preis .btn.solid[aria-disabled="true"]:hover { background: var(--deep); }
+.bb-countdown-zeile { font-family: "Jost", sans-serif; font-size: 1.05rem; color: #52666d; margin: 14px 0 0; min-height: 1.4em; }
 .bb-versprechen { max-width: 520px; margin: 0 auto 30px; text-align: center; font-size: 1.2rem; font-style: italic; color: var(--on-deep); }
 .bb-klein { max-width: 540px; margin: 22px auto 0; text-align: center; font-size: 0.85rem; line-height: 1.6; color: var(--on-deep-muted); }
 .bb-klein a { color: var(--on-deep); }
