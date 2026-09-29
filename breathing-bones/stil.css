@@ -1,0 +1,325 @@
+/* ============================================================
+   Breathing Bones · Atme dich zurück
+   Eigener, heller Look passend zur Atem-App (Briefing 28.09.2026).
+   Schriften liegen auf der eigenen Seite, nicht bei Google.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(../assets/fonts/NunitoSans-var-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(../assets/fonts/NunitoSans-var-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --himmel: #CFE7F1;
+  --grund: #F7FBFC;
+  --kreis: #9FD4D8;
+  --tuerkis: #3E9C9E;
+  --tuerkis-dunkel: #2F7F81;
+  --blau: #6BBBD0;
+  --schrift: #3B5058;
+  --leise: #6A7F87;
+  --linie: rgba(59, 80, 88, 0.12);
+  --weiss: #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--grund);
+  color: var(--schrift);
+  font-family: 'Nunito Sans', system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--tuerkis-dunkel); }
+
+h1, h2, h3 {
+  font-family: 'Jost', system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+h2 { font-size: clamp(1.75rem, 4.5vw, 2.4rem); margin-bottom: 20px; }
+h3 { font-size: 1.25rem; font-weight: 400; }
+
+p { margin: 0 0 1em; }
+
+.wrap { width: 100%; max-width: 1040px; margin-inline: auto; padding-inline: 20px; }
+.schmal { max-width: 680px; }
+
+.sprungmarke {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--weiss); padding: 10px 16px; z-index: 50;
+}
+.sprungmarke:focus { left: 12px; top: 12px; }
+
+.eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tuerkis);
+  margin-bottom: 14px;
+}
+
+/* ---------- Kopf ---------- */
+.kopf {
+  position: absolute; inset: 0 0 auto 0; z-index: 5;
+  padding-block: 18px;
+}
+.kopf .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.marke, .kopf-link { white-space: nowrap; }
+.marke {
+  font-family: 'Jost', sans-serif; font-weight: 400; font-size: 1rem;
+  letter-spacing: 0.06em; color: var(--schrift); text-decoration: none;
+}
+.kopf-link {
+  font-family: 'Jost', sans-serif; font-size: 0.85rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--schrift); text-decoration: none;
+  border-bottom: 1px solid currentColor; padding-bottom: 2px;
+}
+
+/* ---------- Knöpfe ---------- */
+.knopf {
+  display: inline-block;
+  font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+  padding: 15px 30px; border-radius: 999px;
+  background: var(--tuerkis); color: var(--weiss);
+  border: 1px solid var(--tuerkis);
+  transition: background .2s, transform .2s;
+}
+.knopf:hover { background: var(--tuerkis-dunkel); border-color: var(--tuerkis-dunkel); }
+.knopf:focus-visible { outline: 2px solid var(--schrift); outline-offset: 3px; }
+.knopf.leise { background: transparent; color: var(--schrift); border-color: rgba(59, 80, 88, 0.35); }
+.knopf.leise:hover { background: rgba(255, 255, 255, 0.6); }
+
+/* ---------- Einstieg ---------- */
+.einstieg {
+  position: relative; overflow: hidden;
+  background: linear-gradient(180deg, var(--himmel) 0%, #E4F2F7 55%, var(--grund) 100%);
+  padding: 110px 0 80px;
+}
+.einstieg .wrap {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
+}
+.einstieg h1 { font-size: clamp(2.6rem, 8vw, 4.4rem); font-weight: 300; }
+.einstieg .unterzeile {
+  font-family: 'Jost', sans-serif; font-weight: 300;
+  font-size: clamp(1.3rem, 3.6vw, 1.75rem); color: var(--tuerkis); margin: 6px 0 26px;
+}
+.einstieg .lead { font-size: 1.15rem; max-width: 30em; margin-bottom: 30px; }
+.knopf-reihe { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Wolken und Vögel */
+.wolke {
+  position: absolute; z-index: 1; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75); filter: blur(18px);
+  animation: ziehen linear infinite;
+}
+.wolke.w1 { width: 320px; height: 70px; top: 18%; left: -340px; animation-duration: 70s; }
+.wolke.w2 { width: 220px; height: 50px; top: 52%; left: -240px; animation-duration: 95s; animation-delay: -40s; }
+.wolke.w3 { width: 420px; height: 90px; top: 78%; left: -440px; animation-duration: 120s; animation-delay: -70s; opacity: .8; }
+@keyframes ziehen { to { transform: translateX(calc(100vw + 480px)); } }
+
+.voegel { position: absolute; z-index: 1; top: 14%; right: 6%; width: 180px; opacity: .55; }
+.voegel path { fill: none; stroke: var(--schrift); stroke-width: 1.4; stroke-linecap: round; }
+.voegel g { animation: schweben 9s ease-in-out infinite; transform-origin: center; }
+.voegel g:nth-child(2) { animation-delay: -3s; }
+.voegel g:nth-child(3) { animation-delay: -6s; }
+@keyframes schweben { 50% { transform: translate(6px, -8px); } }
+
+/* Handy mit Atemkreis */
+.handy {
+  justify-self: center;
+  width: min(290px, 78vw); aspect-ratio: 9 / 18.5;
+  border-radius: 42px; padding: 12px;
+  background: var(--weiss);
+  box-shadow: 0 30px 60px -20px rgba(59, 80, 88, 0.28), 0 0 0 1px rgba(59, 80, 88, 0.06);
+}
+.bildschirm {
+  position: relative; height: 100%; border-radius: 32px; overflow: hidden;
+  background: linear-gradient(180deg, var(--himmel) 0%, var(--grund) 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+}
+.bildschirm .titel {
+  position: absolute; top: 34px; left: 0; right: 0;
+  font-family: 'Jost', sans-serif; font-weight: 300; font-size: 1.05rem;
+}
+.bildschirm .mini-wolke {
+  position: absolute; border-radius: 999px; background: rgba(255,255,255,.85); filter: blur(8px);
+}
+.bildschirm .mw1 { width: 110px; height: 26px; top: 16%; left: -20px; animation: treiben 14s ease-in-out infinite; }
+.bildschirm .mw2 { width: 80px; height: 20px; top: 74%; right: -10px; animation: treiben 18s ease-in-out infinite reverse; }
+@keyframes treiben { 50% { transform: translateX(30px); } }
+
+.atemkreis {
+  position: relative; width: 150px; height: 150px; border-radius: 50%;
+  display: grid; place-items: center;
+}
+.atemkreis::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle, rgba(159, 212, 216, 0.95) 0%, rgba(159, 212, 216, 0.55) 60%, rgba(159, 212, 216, 0) 72%);
+  animation: atmen 10s ease-in-out infinite;
+}
+@keyframes atmen {
+  0%   { transform: scale(0.62); }
+  40%  { transform: scale(1.12); }
+  100% { transform: scale(0.62); }
+}
+.atemwort { position: relative; font-family: 'Jost', sans-serif; font-weight: 300; font-size: 1.05rem; }
+.atemwort span { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); white-space: nowrap; }
+.atemwort .ein { animation: wort-ein 10s ease-in-out infinite; }
+.atemwort .aus { animation: wort-aus 10s ease-in-out infinite; }
+@keyframes wort-ein { 0%, 36% { opacity: 1; } 42%, 96% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes wort-aus { 0%, 36% { opacity: 0; } 42%, 96% { opacity: 1; } 100% { opacity: 0; } }
+.bildschirm .fuss-zeile {
+  position: absolute; bottom: 30px; left: 0; right: 0;
+  font-size: 0.78rem; color: var(--leise);
+}
+
+/* ---------- Abschnitte ---------- */
+.abschnitt { padding: 84px 0; }
+.abschnitt.himmel { background: linear-gradient(180deg, var(--grund) 0%, #EAF5F9 100%); }
+.abschnitt.weiss { background: var(--weiss); }
+
+/* Schritte */
+.schritte {
+  list-style: none; padding: 0; margin: 36px 0 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  counter-reset: schritt;
+}
+.schritte li {
+  background: var(--weiss); border-radius: 22px; padding: 28px 24px;
+  box-shadow: 0 10px 30px -18px rgba(59, 80, 88, 0.25);
+  counter-increment: schritt;
+}
+.schritte li::before {
+  content: counter(schritt);
+  display: grid; place-items: center;
+  width: 40px; height: 40px; border-radius: 50%; margin-bottom: 16px;
+  background: var(--himmel); color: var(--tuerkis-dunkel);
+  font-family: 'Jost', sans-serif; font-size: 1.1rem;
+}
+.schritte h3 { margin-bottom: 8px; }
+.schritte p { margin: 0; color: var(--leise); font-size: 0.98rem; }
+
+/* Übungen */
+.bereiche {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px;
+  margin-top: 36px;
+}
+.bereich {
+  background: var(--grund); border: 1px solid var(--linie); border-radius: 20px; padding: 22px 22px 18px;
+}
+.bereich h3 { font-size: 1.15rem; margin-bottom: 4px; }
+.bereich .hinweis { font-size: 0.85rem; color: var(--leise); margin-bottom: 10px; }
+.bereich ul { list-style: none; padding: 0; margin: 0; }
+.bereich li { padding: 5px 0; border-top: 1px solid var(--linie); font-size: 0.98rem; }
+.bereich li:first-child { border-top: 0; }
+
+.merkmale {
+  display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 0; padding: 0; list-style: none;
+}
+.merkmale li {
+  background: var(--weiss); border: 1px solid rgba(62, 156, 158, 0.3); border-radius: 999px;
+  padding: 8px 16px; font-size: 0.92rem;
+}
+
+/* Ganz offen / Sicher üben */
+.zwei-spalten { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.karte {
+  background: var(--weiss); border-radius: 24px; padding: 32px 30px;
+  box-shadow: 0 10px 30px -18px rgba(59, 80, 88, 0.25);
+}
+.karte h2 { font-size: 1.7rem; }
+.karte p:last-child { margin-bottom: 0; }
+
+/* Über mich */
+.ueber {
+  display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px; align-items: center;
+}
+.ueber img { border-radius: 28px; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+
+/* Preis */
+.preis-box {
+  max-width: 520px; margin: 0 auto; text-align: center;
+  background: var(--weiss); border-radius: 30px; padding: 44px 32px 36px;
+  box-shadow: 0 30px 60px -30px rgba(59, 80, 88, 0.35);
+  border: 1px solid rgba(62, 156, 158, 0.25);
+}
+.preis-box .betrag {
+  font-family: 'Jost', sans-serif; font-weight: 300; font-size: 3.6rem; line-height: 1; margin: 8px 0 10px;
+}
+.preis-box .danach { color: var(--leise); margin-bottom: 22px; }
+.preis-box ul { list-style: none; padding: 0; margin: 0 0 26px; }
+.preis-box li { padding: 6px 0; }
+.preis-box li::before { content: "·"; color: var(--tuerkis); margin-right: 8px; font-weight: 600; }
+.versprechen { max-width: 520px; margin: 0 auto 30px; text-align: center; }
+.kleingedruckt { max-width: 520px; margin: 22px auto 0; text-align: center; font-size: 0.82rem; color: var(--leise); }
+
+/* FAQ */
+.faq details {
+  border-bottom: 1px solid var(--linie); padding: 4px 0;
+}
+.faq summary {
+  cursor: pointer; list-style: none; padding: 18px 36px 18px 0; position: relative;
+  font-family: 'Jost', sans-serif; font-size: 1.12rem; font-weight: 400;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+  font-size: 1.5rem; font-weight: 300; color: var(--tuerkis);
+}
+.faq details[open] summary::after { content: "–"; }
+.faq details p { color: var(--leise); padding-right: 24px; }
+
+/* Fuß */
+.fuss {
+  background: var(--himmel); padding: 40px 0 34px; text-align: center; font-size: 0.88rem;
+}
+.fuss nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 14px; }
+.fuss a { color: var(--schrift); }
+.fuss p { margin: 0; color: var(--leise); }
+
+/* ---------- Handy ---------- */
+@media (max-width: 820px) {
+  .einstieg { padding: 90px 0 64px; }
+  .einstieg .wrap { grid-template-columns: 1fr; gap: 44px; text-align: center; }
+  .einstieg .lead { margin-inline: auto; }
+  .knopf-reihe { justify-content: center; }
+  .voegel { width: 110px; top: auto; bottom: 46%; right: 2%; opacity: .4; }
+  .kopf-link { font-size: 0.75rem; letter-spacing: 0.08em; }
+  .knopf { padding: 14px 24px; letter-spacing: 0.1em; }
+  .schritte, .zwei-spalten, .ueber { grid-template-columns: 1fr; }
+  .ueber img { max-width: 340px; margin-inline: auto; }
+  .abschnitt { padding: 64px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wolke, .voegel g, .bildschirm .mini-wolke { animation: none; }
+  .atemkreis::before { animation-duration: 16s; }
+  html { scroll-behavior: auto; }
+}
