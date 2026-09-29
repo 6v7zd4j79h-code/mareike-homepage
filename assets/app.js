@@ -236,7 +236,19 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
   var band = document.querySelectorAll('.bb-countdown');
   var knopf = document.getElementById('kaufen');
   var zeile = document.getElementById('bb-countdown-zeile');
-  if(!band.length && !knopf) return;
+  var uhrFeld = document.querySelector('[data-countdown]');
+  var vorher = document.querySelector('.bb-banner-vorher');
+  var nachher = document.querySelector('.bb-banner-nachher');
+  if(!band.length && !knopf && !uhrFeld) return;
+  function zwei(n){ return (n < 10 ? '0' : '') + n; }
+  function uhrStellen(ms){
+    if(!uhrFeld) return;
+    var s = Math.max(0, Math.floor(ms / 1000));
+    var werte = { t: Math.floor(s / 86400), h: zwei(Math.floor(s % 86400 / 3600)), m: zwei(Math.floor(s % 3600 / 60)), s: zwei(s % 60) };
+    uhrFeld.querySelectorAll('[data-teil]').forEach(function(el){ el.textContent = werte[el.dataset.teil]; });
+    var tagWort = uhrFeld.querySelector('[data-teil="t"] + small');
+    if(tagWort) tagWort.textContent = werte.t === 1 ? 'Tag' : 'Tage';
+  }
   var uhr;
   function rest(ms){
     var min = Math.ceil(ms / 60000);
@@ -252,6 +264,8 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
     var offen = ms <= 0;
     band.forEach(function(el){ el.textContent = offen ? 'Jetzt da' : rest(ms); });
     if(zeile) zeile.textContent = offen ? '' : rest(ms) + ' bis zum Start';
+    uhrStellen(ms);
+    if(offen && vorher && nachher){ vorher.hidden = true; nachher.hidden = false; }
     if(knopf && offen && knopf.dataset.href){
       knopf.href = knopf.dataset.href;
       knopf.removeAttribute('aria-disabled');
@@ -260,7 +274,7 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
     if(offen && uhr) clearInterval(uhr);
   }
   zeigen();
-  if(start > Date.now()) uhr = setInterval(zeigen, 30000);
+  if(start > Date.now()) uhr = setInterval(zeigen, uhrFeld ? 1000 : 30000);
 })();
 
 // ============================================================

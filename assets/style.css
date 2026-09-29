@@ -1116,3 +1116,48 @@
   .zustimmung-knoepfe .btn{ flex:1 1 180px; color:var(--on-deep); border-color:var(--on-deep); }
   .zustimmung-knoepfe .btn:hover{ background:rgba(241,237,226,0.08); }
   button.flink.zustimmung-link{ background:none; border:0; padding:0; cursor:pointer; font:inherit; text-transform:none; letter-spacing:inherit; }
+
+/* ============================================================
+   BREATHING BONES BANNER (Startseite, seit 29.09.2026)
+   Dunkel wie die App-Seite, Hellblau nur als Akzent.
+   Countdown bis 01.10.2026 steuert assets/app.js.
+   ============================================================ */
+.bb-banner{
+  position:relative; z-index:2; overflow:hidden;
+  background:
+    radial-gradient(ellipse 55% 80% at 78% 50%, rgba(159,212,216,0.22), rgba(159,212,216,0) 70%),
+    var(--deep);
+  color:var(--on-deep);
+  padding-block:clamp(44px,7vw,84px);
+}
+.bb-banner-reihe{ display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(28px,5vw,64px); align-items:center; }
+.bb-banner .eyebrow{ color:#9FD4D8; }
+.bb-banner h2{ font-family:"Jost",sans-serif; font-weight:300; font-size:clamp(2.25rem,6vw,3.6rem); color:var(--on-deep); margin:0; }
+.bb-banner-unterzeile{ font-style:italic; font-size:clamp(1.4rem,3.4vw,2rem); color:#9FD4D8; margin:2px 0 16px; }
+.bb-banner-lead{ font-size:clamp(1.1rem,2.2vw,1.3rem); margin:0 0 22px; max-width:26em; }
+.bb-banner-start{ font-family:"Jost",sans-serif; letter-spacing:.06em; font-size:1rem; margin:0 0 12px; }
+.bb-uhr{ display:flex; gap:10px; margin:0 0 26px; }
+.bb-uhr div{
+  min-width:4.4rem; padding:12px 8px 10px; text-align:center;
+  border:1px solid rgba(159,212,216,0.45); border-radius:10px;
+  background:rgba(241,237,226,0.05);
+}
+.bb-uhr span{ display:block; font-family:"Jost",sans-serif; font-weight:300; font-size:clamp(1.9rem,4.5vw,2.6rem); line-height:1; font-variant-numeric:tabular-nums; }
+.bb-uhr small{ display:block; margin-top:6px; font-size:0.8125rem; letter-spacing:.08em; text-transform:uppercase; color:var(--on-deep-muted); }
+.bb-banner .btn.line{ color:var(--on-deep); border-color:var(--on-deep-muted); }
+.bb-banner .btn.line:hover{ background:rgba(241,237,226,0.08); }
+.bb-banner .btn.solid{ background:var(--on-deep); color:var(--deep); border-color:var(--on-deep); }
+.bb-banner-handys{ display:flex; justify-content:center; align-items:center; gap:clamp(10px,2vw,18px); }
+.bb-banner-handy{
+  width:clamp(110px,14vw,170px); padding:6px; border-radius:26px;
+  background:#10160F; box-shadow:0 24px 50px -24px rgba(0,0,0,0.7);
+}
+.bb-banner-handy img{ display:block; width:100%; height:auto; border-radius:20px; aspect-ratio:9/16; object-fit:cover; object-position:top; }
+.bb-banner-handy:not(.mitte){ transform:translateY(22px) rotate(-3deg); opacity:.95; }
+.bb-banner-handy:last-child{ transform:translateY(22px) rotate(3deg); }
+.bb-banner-handy.mitte{ width:clamp(130px,17vw,200px); }
+@media (max-width:820px){
+  .bb-banner-reihe{ grid-template-columns:1fr; }
+  .bb-banner-handys{ order:-1; }
+  .bb-uhr div{ min-width:0; flex:1; }
+}
