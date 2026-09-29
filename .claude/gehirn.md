@@ -14,7 +14,8 @@ Das Gedächtnis zwischen den Sitzungen. `/shutdown` schreibt es fort, `/start` l
 
 - Startseite mit zwei Kacheln. Zwei Produkttreppen: Körperbewusstsein (mit Breathwork) und Entlastung im Alltag (mit „Ich baue es dir“).
 - Newsletter und Anmeldungen laufen mit Double-Opt-in über Brevo, Formulare schicken im Hintergrund ab.
-- Letzte Arbeiten: Datenschutz um PayPal und Klarna ergänzt, Dankeseite der 1:1-Begleitung löst die Kaufmail aus, Widerrufshinweis bei Tarot und Lenormand.
+- Menü mit zwei Aufklappern: „Rooted Feminine“ (Angebote) und „Zum Ankommen“. Countdown-Banner auf der Startseite, Besucherzähler ohne Cookies (Cloudflare) auf allen Seiten.
+- Neue Unterseite `mehr-raum/` (29.09.): „Mehr Raum im Alltag“, gerade in Erprobung mit zwei Testkundinnen, Angebot wird im Kennenlerngespräch geklärt, Kontaktformular darunter (öffnet Mail an Mareike). Der Menüpunkt führt direkt dorthin, `entlastung/` bleibt die Auswahlseite.
 
 ## Ideen und Projekte
 
@@ -26,8 +27,11 @@ Das Gedächtnis zwischen den Sitzungen. `/shutdown` schreibt es fort, `/start` l
 
 ## Offene Punkte
 
+- [ ] Foto auf `mehr-raum/` tauschen, sobald Mareike das Bild schickt, auf dem sie steht und den Laptop in der Hand hält (im Moment steht dort `laptop-lachend.jpg`).
+
 - [ ] Gehirn dieses Repositorys ist öffentlich lesbar. Prüfen, ob Mareike das so will oder ob die Notizen in ein privates Repository sollen.
 
 ## Sitzungsprotokoll
 
 - 2026-09-28: Ideen Coach-App und Atem-App besprochen, Befehle `/start` und `/shutdown` mit diesem Gehirn eingerichtet, Atem-App in eigenes Repository `atem-app` umgezogen.
+- 2026-09-29: Unterseite „Mehr Raum im Alltag“ (`mehr-raum/`) mit Kontaktformular gebaut, Menüpunkt auf allen Seiten dorthin umgestellt, live.
