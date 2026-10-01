@@ -431,3 +431,53 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
     gruppen.forEach(function(g){ if(!g.contains(e.target)) setzen(g, false); });
   });
 })();
+
+// ============================================================
+// Verkaufsquelle: Woher kam die Käuferin?
+// Kommt jemand über einen Link mit ?quelle=… (z. B. aus der Story),
+// merkt sich die Seite das für den Besuch. Ohne Angabe wird aus der
+// Herkunft geraten (instagram, facebook, google …). Beim Klick auf
+// einen Stripe-Kaufknopf wandert die Quelle als client_reference_id
+// mit zu Stripe. scripts/verkaeufe.py im Business-Ordner liest sie
+// dort aus und legt sie auf den CEO-Tisch. Keine Cookies, nur
+// sessionStorage, nichts Persönliches.
+// ============================================================
+(function(){
+  var MERKER = 'mk-quelle';
+  function sauber(q){ return String(q).toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60); }
+  function lesen(){ try { return sessionStorage.getItem(MERKER); } catch(e){ return null; } }
+  function merken(q){ try { sessionStorage.setItem(MERKER, q); } catch(e){} }
+
+  var q = null;
+  try {
+    var p = new URLSearchParams(location.search);
+    q = p.get('quelle') || p.get('utm_source');
+  } catch(e){}
+  if(q){
+    q = sauber(q);
+    if(q) merken(q);
+  } else if(!lesen()){
+    var r = document.referrer || '';
+    var fremd = r && r.indexOf(location.hostname) < 0;
+    if(fremd){
+      if(/instagram/i.test(r)) merken('instagram');
+      else if(/facebook|fb\.me|fb\.com/i.test(r)) merken('facebook');
+      else if(/linkedin|lnkd/i.test(r)) merken('linkedin');
+      else if(/google\./i.test(r)) merken('google');
+      else if(/brevo|sendibt|sendinblue/i.test(r)) merken('newsletter');
+      else merken('andere-seite');
+    }
+  }
+
+  // Erst beim Klick anhängen, damit es auch für Knöpfe gilt, die erst
+  // später zum Link werden (Countdown-Kaufknopf).
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="https://buy.stripe.com/"]');
+    if(!a) return;
+    try {
+      var u = new URL(a.href);
+      u.searchParams.set('client_reference_id', lesen() || 'direkt');
+      a.href = u.toString();
+    } catch(err){}
+  }, true);
+})();
