@@ -435,7 +435,7 @@
       nextBtn.disabled = true;
       fetch(DIENST + "/kontakt", {
         method:"POST", headers:{ "Content-Type":"application/json" },
-        body: JSON.stringify({ email:email, vorname:vorname, nachname:nachname, einwilligung:true })
+        body: JSON.stringify({ email:email, vorname:vorname, nachname:nachname, einwilligung:true, quelle:(function(){ try { return sessionStorage.getItem("mk-quelle"); } catch(e){ return null; } })() || "direkt" })
       }).then(function(r){
         if(!r.ok) throw new Error("fehler");
         state.screen = "warten";

@@ -294,7 +294,12 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
     form.addEventListener('submit', function(ev){
       ev.preventDefault();
       if(knopf) knopf.disabled = true;
-      fetch(form.getAttribute('action') + '?isAjax=1', { method:'POST', body:new FormData(form), credentials:'include' })
+      // Woher sie kam (siehe „Verkaufsquelle“ unten), landet in Brevo im Kontaktfeld QUELLE
+      var daten = new FormData(form);
+      var quelle = null;
+      try { quelle = sessionStorage.getItem('mk-quelle'); } catch(e){}
+      daten.set('QUELLE', quelle || 'direkt');
+      fetch(form.getAttribute('action') + '?isAjax=1', { method:'POST', body:daten, credentials:'include' })
         .then(function(r){ return r.json(); })
         .then(function(d){
           if(d && d.success){ zeige(ok); form.style.display = 'none'; if(ok) ok.scrollIntoView({block:'center', behavior:'smooth'}); }
