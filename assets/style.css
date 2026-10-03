@@ -1324,3 +1324,53 @@ body.startseite .photo-band.center-scrim::before{
 
 /* Startseite: kurzer Satz unter der Brücke */
 .bruecke-satz.bruecke-kurz{ font-size:0.9375rem; letter-spacing:.02em; color:var(--muted); max-width:none; }
+
+/* ============================================================
+   AKZENTFARBE TERRAKOTTA (seit 03.10.2026)
+   Gruen bleibt Grundfarbe, Terrakotta ist nur Schmuck, nie
+   Bedeutungstraeger. --akz auf dunklem Grund, --akz-text fuer
+   Schrift auf Creme/Salbei (Kontrast >= 4,5), --akz-mid fuer Linien.
+   Ueber dem Startfoto bleiben die Original-Farben, nur der Knopf
+   bekommt den Akzent.
+   ============================================================ */
+:root{ --akz:#D49A80; --akz-text:#874630; --akz-mid:#B8735A; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --akz-text:var(--akz); --akz-mid:var(--akz); }
+}
+:root[data-theme="dark"]{ --akz-text:var(--akz); --akz-mid:var(--akz); }
+
+html .eyebrow{ color:var(--akz-text); }
+html .on-deep .eyebrow{ color:var(--akz); }
+html .eyebrow::before{ content:""; display:inline-block; width:28px; height:2px; background:var(--akz); vertical-align:middle; margin-right:10px; }
+html .center .eyebrow::before, html .hero .eyebrow::before, html .bb-banner .eyebrow::before{ display:none; }
+html .bb-banner .eyebrow{ color:#9FD4D8; }
+
+html h2::after{ content:""; display:block; width:40px; height:2px; background:var(--akz); margin-top:18px; }
+html .center h2::after{ margin-inline:auto; }
+
+html .btn.solid{ background:var(--akz) !important; border-color:var(--akz) !important; color:var(--deep) !important; }
+html .btn.solid:hover{ background:transparent !important; color:inherit !important; }
+html .btn.line{ border-color:var(--akz-text); }
+html .on-deep .btn.line{ border-color:var(--akz); }
+
+html .cta-link{ border-bottom-color:var(--akz); border-bottom-width:2px; }
+html .cta-link svg{ color:var(--akz-text); }
+html .on-deep .cta-link svg{ color:var(--akz); }
+html .num{ color:var(--akz-text); }
+html .on-deep .num{ color:var(--akz); }
+html :focus-visible{ outline-color:var(--akz-text); }
+
+html .bruecke{ color:var(--akz-mid); }
+html .bruecke-bild path{ stroke-width:1.8; }
+
+/* Startfoto: Original-Farben, Akzent nur am Knopf */
+html .hero .eyebrow, html .hero .kicker, html .hero .tagline{ color:var(--on-deep-muted) !important; }
+html .hero .byline{ color:var(--on-deep) !important; }
+html .hero .btn.line{ border-color:var(--akz); color:var(--on-deep); }
+html .hero .btn.line:hover{ background:var(--akz); color:var(--deep); }
+
+/* Menue oben */
+html nav.pages .dd-knopf::after{ border-color:var(--akz); }
+html .dd.ist-aktiv > .dd-knopf{ text-decoration-color:var(--akz); text-decoration-thickness:2px; }
+html nav.pages > a:hover, html nav.pages > a[aria-current="page"]{ text-decoration:underline; text-decoration-color:var(--akz); text-decoration-thickness:2px; text-underline-offset:7px; }
+html .kl-d{ color:var(--akz); }
