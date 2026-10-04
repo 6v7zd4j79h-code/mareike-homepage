@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breathing Bones · Coming soon in English | Mareike Krohnen</title>
+<meta name="description" content="Breathing Bones is Mareike Krohnen's breathing app. You tap how you feel and she breathes with you, in her own voice. The English version is on its way. Join the waitlist.">
+<link rel="canonical" href="https://mareikekrohnen.de/breathing-bones/en/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Breathing Bones · Coming soon in English">
+<meta property="og:description" content="Breathing for the moment. With my voice right beside you.">
+<meta property="og:url" content="https://mareikekrohnen.de/breathing-bones/en/">
+<meta property="og:image" content="https://mareikekrohnen.de/assets/media/bb-sitzung.jpg">
+<meta property="og:locale" content="en_US">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#26332B">
+<link rel="stylesheet" href="../../assets/fonts.css">
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="stylesheet" href="../stil.css">
+<style>
+  .wl-form { display:flex; flex-direction:column; gap:10px; max-width:440px; margin:22px auto 0; text-align:left; }
+  .wl-form .input { width:100%; font-family:'Jost',sans-serif; font-size:1rem; padding:12px 14px; color:inherit; background:transparent; border:1px solid currentColor; border-radius:2px; opacity:.9; }
+  .wl-form .input::placeholder { color:inherit; opacity:.6; }
+  .wl-haken { display:flex; gap:10px; align-items:flex-start; margin-top:4px; }
+  .wl-haken input { margin-top:4px; accent-color:var(--accent); flex:none; }
+  .wl-haken label { font-family:'Jost',sans-serif; font-size:0.7812rem; line-height:1.6; color:var(--muted); }
+  .wl-haken a { color:inherit; text-decoration:underline; }
+  .wl-meldung { max-width:440px; margin:18px auto 0; text-align:left; padding:12px 0 12px 20px; line-height:1.6; }
+  .wl-meldung.ok { border-left:3px solid var(--accent); }
+  .wl-meldung.fehler { border-left:3px solid #b3261e; }
+  .wl-meldung strong { display:block; font-size:1.2rem; font-weight:400; margin-bottom:6px; }
+  .wl-fuss { text-align:center; padding:28px 16px 36px; font-size:0.8125rem; }
+  .wl-fuss a { color:inherit; }
+</style>
+</head>
+<body>
+<a class="sprungmarke" href="#inhalt">Skip to content</a>
+<header class="site">
+  <div class="wrap header-row">
+    <a class="brandmark" aria-label="Mareike Krohnen, Rooted Feminine" href="../../">
+      <img src="../../assets/media/c72e1082ad.png" alt="" aria-hidden="true">
+      <span class="word">Mareike Krohnen</span>
+    </a>
+  </div>
+</header>
+
+<main id="inhalt" tabindex="-1" class="bb">
+
+  <section class="bb-einstieg">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Coming soon in English</p>
+        <h1>Breathing Bones</h1>
+        <p class="unterzeile">Breathe your way back</p>
+        <p class="lead">Breathing for the moment. With my voice right beside you.</p>
+        <div class="bb-knoepfe">
+          <a class="btn solid" href="#waitlist">Join the waitlist</a>
+        </div>
+      </div>
+      <div class="bb-handys">
+        <div class="bb-handy hinten"><img src="../../assets/media/bb-start.jpg" alt="Start screen of the app asking how you feel right now, with answers to tap"></div>
+        <div class="bb-handy vorne"><img src="../../assets/media/bb-sitzung.jpg" alt="A breathing exercise in progress, a large turquoise breathing circle"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band cream">
+    <div class="wrap" style="max-width:680px;">
+      <h2>Sound familiar?</h2>
+      <div class="prose">
+        <p>The day isn't even half over and everything in you is already too much. At night you're lying in bed, your body is done and your head is just getting started. Or you're at a family get-together, smiling through one comment after another, and you can feel yourself about to blow.</p>
+        <p>In moments like that you don't have time for a course and you don't have the nerves for a program. You just want to come back to yourself a little. That's what Breathing Bones is for. You open the app, tap how you're feeling, and I breathe with you.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" id="waitlist">
+    <div class="wrap" style="max-width:680px; text-align:center;">
+      <h2>Right now it only speaks German</h2>
+      <div class="prose" style="text-align:left;">
+        <p>I recorded every exercise in my own voice, and right now that voice speaks German. The English version is on its way. If you'd like to be one of the first to try it, leave your email here and I'll let you know as soon as it's ready.</p>
+      </div>
+
+      <form class="wl-form" id="wl-form" novalidate>
+        <input class="input" type="text" id="wl-vorname" name="vorname" maxlength="80" autocomplete="given-name" placeholder="First name (optional)">
+        <input class="input" type="email" id="wl-email" name="email" maxlength="200" autocomplete="email" placeholder="Your email address" required>
+        <div class="wl-haken">
+          <input type="checkbox" id="wl-ok" name="einwilligung" required>
+          <label for="wl-ok">I'd like to hear from Mareike when Breathing Bones is available in English and I accept the <a href="../../datenschutz/">privacy policy</a> (in German). You can unsubscribe anytime.</label>
+        </div>
+        <div style="display:flex; justify-content:center; margin-top:10px;">
+          <button class="btn solid" type="submit" id="wl-knopf">Join the waitlist</button>
+        </div>
+      </form>
+      <div class="wl-meldung ok" id="wl-ok-meldung" role="status" hidden>
+        <strong>Almost there.</strong>I just sent you an email. Click &ldquo;Yes, put me on the list&rdquo; in there. If nothing shows up, take a quick look in your spam folder.
+      </div>
+      <div class="wl-meldung fehler" id="wl-fehler" role="alert" hidden></div>
+    </div>
+  </div>
+
+  <div class="band cream">
+    <div class="wrap bb-zwei umgekehrt bb-ueber">
+      <img src="../../assets/media/ac62833448.jpg" alt="Mareike Krohnen by the sea, arms above her head, eyes closed, seagulls flying in the background">
+      <div>
+        <p class="eyebrow">About me</p>
+        <h2>I'm Mareike</h2>
+        <div class="prose">
+          <p>A coach for body awareness and everyday relief, trained in Embodied Breathwork®. I walk alongside women who keep everything running on the outside and have lost themselves a little on the inside.</p>
+          <p>I'm not someone who explains things from above. I've been right where you are. In Breathing Bones you hear my voice and my breath, just like you would in a session with me.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="wl-fuss">
+  &copy; 2026 Mareike Krohnen &middot; Rooted Feminine&trade; &middot;
+  <a href="../../impressum/">Legal notice</a> &middot;
+  <a href="../../datenschutz/">Privacy policy</a>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('wl-form');
+  var knopf = document.getElementById('wl-knopf');
+  var ok = document.getElementById('wl-ok-meldung');
+  var fehler = document.getElementById('wl-fehler');
+  function zeigeFehler(text) { fehler.textContent = text; fehler.hidden = false; }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    fehler.hidden = true;
+    var email = document.getElementById('wl-email').value.trim();
+    var haken = document.getElementById('wl-ok').checked;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return zeigeFehler("That email address doesn't look complete.");
+    if (!haken) return zeigeFehler('Please tick the box so I can send you the email.');
+    var quelle = new URLSearchParams(location.search).get('q') || 'waitlist-en';
+    knopf.disabled = true;
+    fetch('https://rooted-tarot.rooted-tarot.workers.dev/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, vorname: document.getElementById('wl-vorname').value, einwilligung: true, quelle: quelle })
+    }).then(function (r) {
+      if (!r.ok) throw new Error();
+      form.hidden = true; ok.hidden = false;
+    }).catch(function () {
+      knopf.disabled = false;
+      zeigeFehler('Something went wrong. Please try again in a moment.');
+    });
+  });
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a664c9414f3c4eb3bcefd966e249e983"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
