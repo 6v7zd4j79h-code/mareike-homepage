@@ -105,7 +105,7 @@
     <div class="band cream">
       <div class="wrap page-hero">
         <p class="eyebrow">Breathwork</p>
-        <h1>Du bist dabei</h1>
+        <h1><span data-termin="steht" hidden>Du bist dabei</span><span data-termin="offen">Du stehst auf der Liste</span></h1>
       </div>
     </div>
 
@@ -116,8 +116,14 @@
         </div>
 
         <div role="status" style="border-left:3px solid var(--accent); padding:14px 0 14px 20px; margin:0 0 32px; text-align:left;">
+          <div data-termin="steht" hidden>
           <p style="font-size:1.35rem; line-height:1.3; color:var(--ink); margin:0 0 8px;">Sch&ouml;n, dass du kommst.</p>
           <p style="font-size:1.05rem; line-height:1.6; color:var(--ink); margin:0;">Ich hab dir gerade noch eine Mail geschickt. Da steht alles drin, auch der Zoom-Link. Falls sie nicht da ist, schau kurz in den Spam-Ordner.</p>
+          </div>
+          <div data-termin="offen">
+          <p style="font-size:1.35rem; line-height:1.3; color:var(--ink); margin:0 0 8px;">Danke sch&ouml;n, dass du dabei sein m&ouml;chtest.</p>
+          <p style="font-size:1.05rem; line-height:1.6; color:var(--ink); margin:0;">Ich bin ganz ehrlich, momentan hab ich noch keinen festen Termin. Du bekommst aber in K&uuml;rze eine Mail, da steht dann das Datum und der Zoom-Link drin und du schaust einfach, ob du kannst. Bis dahin musst du erst mal gar nichts tun. Und wenn du doch etwas tun m&ouml;chtest, atme. Und &uuml;berleg dir vielleicht schon mal, wo du dich an dem Abend hinlegen kannst, wo du dich in Ruhe zur&uuml;ckziehen kannst und einen Moment f&uuml;r dich hast.</p>
+          </div>
         </div>
 
         <div class="prose" style="text-align:left; margin-inline:0;">
