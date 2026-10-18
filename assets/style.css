@@ -1043,6 +1043,8 @@
     display:flex; align-items:center; gap:10px;
     padding:0 10px 0 0; overflow:hidden;
   }
+  /* Ausgeblendet, solange kein Breathwork-Termin steht. scripts/termin.py holt es zurueck */
+  .laufband[hidden]{ display:none; }
   .laufband-fenster{ flex:1; overflow:hidden; }
   .laufband-spur{
     display:flex; width:max-content; gap:0;

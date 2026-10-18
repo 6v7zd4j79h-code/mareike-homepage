@@ -312,7 +312,7 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
 
 // ============================================================
 // Zustimmung zu externen Inhalten (Spotify).
-// Beim ersten Besuch fragt ein Banner einmal fuer die ganze Seite.
+// Beim ersten Besuch einer Seite mit Player fragt ein Banner einmal fuer die ganze Seite.
 // "Erlauben": der Player laedt danach ueberall direkt.
 // "Nur notwendige": nichts geht an Spotify, der Player laedt
 // dann nur auf Klick. Aendern ueber "Cookie-Einstellungen" im Fuss.
@@ -370,7 +370,10 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
 
   var wahl = lesen();
   if(wahl === 'ja'){ playerLaden(); }
-  else if(wahl !== 'nein'){ bannerAuf(); }
+  // Der Hinweis kommt nur dort von selbst, wo ein Player eingebaut ist (seit 18.10.2026,
+  // vorher auf jeder Seite, auch auf Kaufseiten ohne Player). Ueber "Cookie-Einstellungen"
+  // im Fuss laesst er sich ueberall oeffnen.
+  else if(wahl !== 'nein' && platz){ bannerAuf(); }
 
   // Link "Cookie-Einstellungen" in jeden Seitenfuss
   var fuss = document.querySelector('footer.site .flinks');
