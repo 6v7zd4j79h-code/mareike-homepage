@@ -264,6 +264,13 @@
   };
 
   var TYP_LABEL = { reguliert:"Reguliert", instabil:"Instabil", ueberbelastet:"Überbelastet" };
+  // Naechster Schritt je Zustand, wie in ManyChat (B7, Mareike 18.10.2026)
+  var GESPRAECH = { text:"Zum Kennenlerngespräch", href:"../premium-begleitung/?quelle=selbsttest" };
+  var NAECHSTER_SCHRITT = {
+    reguliert: { satz:"Wenn du mal genauer hinschauen magst, wo dein Muster herkommt und was du davon heute noch brauchst, dann lass uns gern im kostenlosen Kennenlerngespräch drüber sprechen.", knopf:GESPRAECH },
+    instabil: { satz:"Was da oft schon hilft, sind ein paar Atemzüge, die dich wieder in den Körper holen. Genau dafür hab ich Breathing Bones gemacht, meine Atem-App, da atme ich mit dir, wann immer du es brauchst.", knopf:{ text:"Zur App", href:"../breathing-bones/?quelle=selbsttest" }, leise:"Und wenn du lieber erst mal mit mir sprechen magst, geht das auch, im kostenlosen Kennenlerngespräch." },
+    ueberbelastet: { satz:"Da reicht es oft nicht, sich einfach mal eine Pause mehr zu nehmen. Wenn du magst, lass uns einmal in Ruhe sprechen, ganz ohne Verpflichtung. Im kostenlosen Kennenlerngespräch schauen wir zusammen, was dich gerade entlasten könnte.", knopf:GESPRAECH }
+  };
 
 
   var DIENST = "https://rooted-tarot.rooted-tarot.workers.dev";
@@ -647,6 +654,16 @@
     closing.style.marginTop = "18px";
     closing.innerHTML = renderRich(TYP_CLOSING[r.typ]);
     c.appendChild(closing);
+
+    var ns = NAECHSTER_SCHRITT[r.typ];
+    if(ns){
+      var weiter = el("div","prose");
+      weiter.style.cssText = "margin-top:28px; border-left:3px solid var(--accent); padding:4px 0 4px 20px;";
+      var html = "<p>" + esc(ns.satz) + "</p><p><a class=\"btn solid\" style=\"border-color:var(--deep); background:var(--deep); color:var(--on-deep); display:inline-block;\" href=\"" + ns.knopf.href + "\">" + esc(ns.knopf.text) + "</a></p>";
+      if(ns.leise) html += "<p style=\"font-size:0.95rem; color:var(--muted);\"><a href=\"" + GESPRAECH.href + "\">" + esc(ns.leise) + "</a></p>";
+      weiter.innerHTML = html;
+      c.appendChild(weiter);
+    }
 
     var retake = el("div","fm-retake");
     var retakeBtn = el("button","btn line","Test erneut machen");
