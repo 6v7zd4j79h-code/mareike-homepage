@@ -1045,6 +1045,8 @@
   }
   /* Ausgeblendet, solange kein Breathwork-Termin steht. scripts/termin.py holt es zurueck */
   .laufband[hidden]{ display:none; }
+  /* Breathwork-Seite: Fassung mit Termin oder Warteliste, umgeschaltet von scripts/termin.py */
+  [data-termin][hidden]{ display:none !important; }
   .laufband-fenster{ flex:1; overflow:hidden; }
   .laufband-spur{
     display:flex; width:max-content; gap:0;
