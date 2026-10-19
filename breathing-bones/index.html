@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#26332B">
 <link rel="stylesheet" href="../assets/fonts.css">
 <link rel="stylesheet" href="../assets/style.css">
-<link rel="stylesheet" href="stil.css">
+<link rel="stylesheet" href="stil.css?v=20261019">
 </head>
 <body data-basis="../">
 <a class="sprungmarke" href="#inhalt">Zum Inhalt springen</a>
@@ -115,7 +115,19 @@
       </div>
       <div class="bb-handys">
         <div class="bb-handy hinten"><img src="../assets/media/bb-start.jpg" alt="Startseite der App mit der Frage „Wie geht es dir gerade?“ und Antworten zum Antippen"></div>
-        <div class="bb-handy vorne"><img src="../assets/media/bb-sitzung.jpg" alt="Die Herzraumatmung läuft, ein großer türkiser Atemkreis mit „Ein 3“, darunter „Ich atme Liebe ein“"></div>
+        <div class="bb-handy vorne"><video id="bb-demo" src="../assets/media/bb-demo.mp4" poster="../assets/media/bb-sitzung.jpg" muted loop playsinline preload="metadata" aria-label="Kurzes Video ohne Ton: Die Herzraumatmung läuft, der türkise Atemkreis wird beim Einatmen groß und beim Ausatmen klein, darunter „Ich atme Liebe ein“ und „Ich lasse Enge los“"></video></div>
+        <script>
+          (function(){
+            var v = document.getElementById('bb-demo');
+            if(!v) return;
+            // Bei „Bewegung reduzieren“ bleibt das Standbild stehen
+            var ruhig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.addEventListener('load', function(){
+              if(ruhig || document.documentElement.hasAttribute('data-bewegung')) return;
+              var p = v.play(); if(p && p.catch) p.catch(function(){});
+            });
+          })();
+        </script>
       </div>
     </div>
   </section>

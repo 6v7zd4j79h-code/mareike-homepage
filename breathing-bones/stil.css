@@ -54,7 +54,7 @@
   border-radius: 34px; padding: 8px; background: #121a14;
   box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
-.bb-handy img { width: 100%; height: auto; border-radius: 27px; display: block; }
+.bb-handy img, .bb-handy video { width: 100%; height: auto; border-radius: 27px; display: block; }
 .bb-handys .vorne { right: 8%; top: 0; z-index: 2; }
 .bb-handys .hinten { left: 4%; top: 70px; transform: rotate(-4deg); opacity: .92; }
 
