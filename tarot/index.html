@@ -120,6 +120,24 @@
           <img src="../assets/media/8f3c21ad47.jpg" alt="Drei Karten aus dem Rooted Tarot, zwei aufgedeckt und eine verdeckt mit der Lotusbl&uuml;te" style="width:100%; height:auto; border-radius:4px; display:block;">
         </figure>
 
+        <figure style="margin:0 auto 44px; max-width:260px; text-align:center;">
+          <video id="karten-demo" src="../assets/media/tarot-demo.mp4" poster="../assets/media/tarot-demo-standbild.jpg" muted loop playsinline preload="none" style="width:100%; height:auto; border-radius:22px; display:block; box-shadow:0 18px 40px -18px rgba(16,22,15,0.35);" aria-label="Kurzes Video ohne Ton: eine Ziehung im Rooted Tarot von der Frage bis zur Deutung"></video>
+          <figcaption style="font-size:0.9rem; opacity:0.8; margin-top:12px;">So läuft eine Ziehung ab, die Deutung im Zeitraffer</figcaption>
+        </figure>
+        <script>
+          (function(){
+            var v = document.getElementById('karten-demo');
+            if(!v) return;
+            var ruhig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            function still(){ return ruhig || document.documentElement.hasAttribute('data-bewegung'); }
+            if(!('IntersectionObserver' in window)){ v.controls = true; return; }
+            new IntersectionObserver(function(e){
+              if(still()){ v.controls = true; return; }
+              if(e[0].isIntersecting){ var p = v.play(); if(p && p.catch) p.catch(function(){}); } else v.pause();
+            }, { threshold: 0.4 }).observe(v);
+          })();
+        </script>
+
         <h2 style="font-weight:300; margin-bottom:24px;">Tarot oder Lenormand</h2>
 
         <div class="prose" style="text-align:left; margin-inline:0; margin-bottom:40px;">
