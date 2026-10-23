@@ -152,20 +152,20 @@
       </div>
       <div class="bb-handy einzeln rf-handy"><img src="../assets/media/bb-rf-start.jpg" alt="Startseite von Rooted Feminine in der App, in Lachs-Rosé mit feinen Wurzeln. Oben der Umschalter zwischen Breathing Bones und Rooted Feminine, darunter die Frage „Wie geht es dir gerade?“ mit Antworten wie „Mein Unterleib zieht“, „Ich bin dünnhäutig, alles ist zu viel“ und „Ich liege nachts wach“" loading="lazy"></div>
     </div>
-    <!-- PREISE RF: nur nach Mareikes Okay live. Kaufknöpfe ohne href, bis die Stripe-Links aus dem Projekt Atem-App da sind -->
+    <!-- PREISE RF: von Mareike abgenommen 23.10.2026. Kaufknöpfe werden am 25.10. um 0 Uhr klickbar (Skript unten, data-ab). Ab 01.12.2026 Preise und Zusatz-Link laut Atem-App-Plan tauschen -->
     <div class="wrap">
       <div class="rf-preise">
         <div class="rf-preis">
           <h3>Rooted Feminine</h3>
           <p class="betrag">14,99&nbsp;€</p>
           <p>Dir geht es nur um die Zyklusatmung? Dann reicht dir Rooted Feminine. Ein Jahr, kein Abo.</p>
-          <a class="btn solid" aria-disabled="true" data-href="">Ab Sonntag, 25.10.</a>
+          <a class="btn solid" aria-disabled="true" data-href="https://buy.stripe.com/fZufZj3Vx9dCeqFcOwcEw05" data-ab="2026-10-25T00:00:00+02:00" data-text="Rooted Feminine holen">Ab Sonntag, 25.10.</a>
         </div>
         <div class="rf-preis">
           <h3>Komplett</h3>
           <p class="betrag">29,99&nbsp;€</p>
           <p>Du möchtest beides, die Atmung für den Alltag und die Zyklusatmung. Ein Jahr, kein Abo.</p>
-          <a class="btn solid" aria-disabled="true" data-href="">Ab Sonntag, 25.10.</a>
+          <a class="btn solid" aria-disabled="true" data-href="https://buy.stripe.com/7sYaEZ77J4Xmaap15OcEw06" data-ab="2026-10-25T00:00:00+02:00" data-text="Komplett holen">Ab Sonntag, 25.10.</a>
         </div>
         <div class="rf-preis rf-unsicher">
           <div>
@@ -175,7 +175,7 @@
           <div class="rf-unsicher-preis">
             <p class="betrag">9,99&nbsp;€</p>
             <p>als Zusatz</p>
-            <a class="btn solid" aria-disabled="true" data-href="">Ab Sonntag, 25.10.</a>
+            <a class="btn solid" aria-disabled="true" data-href="https://buy.stripe.com/fZueVfcs31LafuJcOwcEw07" data-ab="2026-10-25T00:00:00+02:00" data-text="Dazunehmen">Ab Sonntag, 25.10.</a>
           </div>
         </div>
       </div>
@@ -325,6 +325,13 @@
         var jetzt = Date.now();
         document.querySelectorAll('[data-bis]').forEach(function(el){
           if (jetzt >= Date.parse(el.getAttribute('data-bis'))) el.hidden = true;
+        });
+        // Kaufknöpfe Rooted Feminine: ab data-ab mit Stripe-Link klickbar
+        document.querySelectorAll('a[data-ab]').forEach(function(a){
+          if (jetzt < Date.parse(a.getAttribute('data-ab'))) return;
+          a.href = a.getAttribute('data-href');
+          a.removeAttribute('aria-disabled');
+          a.textContent = a.getAttribute('data-text');
         });
       })();
     </script>
