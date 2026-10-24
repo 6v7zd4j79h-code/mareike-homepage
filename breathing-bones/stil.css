@@ -225,7 +225,7 @@
 .rf-unsicher h3 { margin-bottom: 10px; }
 .rf-unsicher p { margin-bottom: 0; }
 .rf-unsicher a:not(.btn) { color: var(--rf-stark); }
-.rf-unsicher-preis { flex: none; text-align: center; }
+.rf-unsicher-preis { flex: 0 0 250px; text-align: center; }
 .rf-unsicher-preis .betrag { margin-top: 0; }
 .rf-unsicher-preis p:not(.betrag) { margin-bottom: 16px; }
 
@@ -233,6 +233,7 @@
   /* Sprung aus ManyChat (#rooted-feminine): der Kopf ist am Handy hoch und klebt oben */
   #rooted-feminine { scroll-margin-top: 140px; }
   .rf-preis.rf-unsicher { flex-direction: column; text-align: center; }
+  .rf-unsicher-preis { flex: none; }
   .rf-preise { grid-template-columns: 1fr; max-width: 340px; margin-inline: auto; }
 }
 
