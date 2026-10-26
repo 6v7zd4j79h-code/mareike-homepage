@@ -306,6 +306,9 @@
     font-size:clamp(1.25rem,2.6vw,1.625rem);
     line-height:1.5;
   }
+  .stimme{ margin:0; }
+  .stimme figcaption{ text-align:center; margin-top:1rem; font-size:1rem; letter-spacing:0.04em; }
+  .stimme figcaption::before{ content:"– "; }
 
   button.flink{
     display:inline-flex;
