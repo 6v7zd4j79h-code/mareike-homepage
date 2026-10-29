@@ -45,6 +45,10 @@ window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
         if(iconOff) iconOff.style.display = playing ? 'none' : '';
         if(iconOn) iconOn.style.display = playing ? '' : 'none';
       });
+      // Video mit Ton startet: Hintergrundmusik anhalten, damit nichts übereinander läuft
+      document.querySelectorAll('video[data-mit-ton]').forEach(function(v){
+        v.addEventListener('play', function(){ if(playing) btn.click(); });
+      });
     })();
 
     // freebie pop-up: appears once per browser session when the visitor scrolls down to the footer
