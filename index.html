@@ -126,7 +126,7 @@
           <p class="eyebrow">Neu · Meine Atem-App</p>
           <h2>Breathing Bones</h2>
           <p class="bb-banner-unterzeile">Atme dich zurück</p>
-          <p class="bb-banner-lead">Atmen für den Moment. Mit meiner Stimme an deiner Seite.</p>
+          <p class="bb-banner-lead">Dein Körper fährt nicht runter, nur weil du dich hinlegst. Ein paar Minuten länger ausatmen als einatmen, und er merkt, dass er heute nichts mehr festhalten muss.</p>
           <div class="bb-banner-vorher">
             <p class="bb-banner-start">Ab Donnerstag, 01.10., kannst du sie dir holen</p>
             <div class="bb-uhr" data-countdown aria-hidden="true">
@@ -138,7 +138,7 @@
             <a class="btn line" href="breathing-bones/">Schau sie dir an</a>
           </div>
           <div class="bb-banner-nachher" hidden>
-            <p class="bb-banner-start">Jetzt da. Einführungspreis 19,99&nbsp;€ bis 30.11.2026</p>
+            <p class="bb-banner-start"><span data-bis="2026-11-01T00:00:00+01:00">Einführungspreis 19,99&nbsp;€, nur noch bis Samstag, 31.10.</span><span data-zeigen-ab="2026-11-01T00:00:00+01:00" hidden>Ein Jahr für 39,99&nbsp;€, kein Abo</span></p>
             <a class="btn solid" href="breathing-bones/#preis">Zugang holen</a>
           </div>
         </div>
@@ -330,6 +330,14 @@
   </section>
 
   <!-- ============================= ÜBER MICH ============================= -->
+<script>
+  // Preis im Banner: ab 01.11.2026 0 Uhr Normalpreis
+  (function(){
+    var jetzt = Date.now();
+    document.querySelectorAll('[data-bis]').forEach(function(el){ if (jetzt >= Date.parse(el.getAttribute('data-bis'))) el.hidden = true; });
+    document.querySelectorAll('[data-zeigen-ab]').forEach(function(el){ if (jetzt >= Date.parse(el.getAttribute('data-zeigen-ab'))) el.hidden = false; });
+  })();
+</script>
 </main>
 <footer class="site">
   <div class="divider-wave" aria-hidden="true">
