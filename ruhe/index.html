@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breathing Bones · Atme einmal mit mir | Mareike Krohnen</title>
+<meta name="description" content="Zwei Minuten zum Mitatmen mit Mareike Krohnen. Und wenn es dir guttut, die ganze Atem-App Breathing Bones für ein Jahr.">
+<!-- Anzeigen-Seite (seit 15.11.2026): nur für Frauen aus Meta-Anzeigen, nicht im Menü, nicht in der Sitemap, nicht bei Google. Die große Seite ist /breathing-bones/ -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://mareikekrohnen.de/breathing-bones/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Breathing Bones · Atme einmal mit mir">
+<meta property="og:description" content="Dein Körper fährt nicht runter, nur weil du dich hinlegst. Ein paar Minuten länger ausatmen als einatmen, und er merkt, dass er heute nichts mehr festhalten muss.">
+<meta property="og:image" content="https://mareikekrohnen.de/assets/media/bb-sitzung.jpg">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="theme-color" content="#26332B">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../breathing-bones/stil.css?v=20261024c">
+<style>
+  /* Schmale Kopfleiste ohne Menü, nur hier */
+  header.site.schmal .header-row { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+  header.site.schmal .brandmark img { width: 1.9rem; height: auto; }
+  header.site.schmal .brandmark .word { font-size: 1rem; }
+  .ruhe-einstieg .wrap { padding-top: clamp(28px, 6vw, 64px); }
+  .ruhe-einstieg h1 { font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.12; margin-bottom: 10px; }
+  .ruhe-einstieg .unterzeile { font-size: clamp(1.35rem, 3.6vw, 1.8rem); margin-bottom: 22px; }
+  .hoerprobe { max-width: 34rem; margin: 0 auto; text-align: center; }
+  .hoerprobe audio { width: 100%; margin: 18px 0 10px; }
+  .hoerprobe .quelle { font-size: 0.875rem; }
+  .ruhe-weiter p + p, .hoerprobe p + p { margin-top: 1em; }
+  .ruhe-knopf-zeile { margin-top: 26px; }
+  .ruhe-ich { display: flex; gap: 18px; align-items: center; max-width: 34rem; margin: 26px auto 0; text-align: left; }
+  .ruhe-ich img { width: 4.5rem; height: 4.5rem; border-radius: 50%; object-fit: cover; flex: none; }
+  .ruhe-ich p { margin: 0; font-size: 1rem; }
+  .ruhe-weiter { max-width: 34rem; margin: 0 auto; text-align: center; }
+  .ruhe-weiter .klein { font-size: 0.9375rem; margin-top: 22px; }
+  @media (max-width: 700px) {
+    .ruhe-einstieg .bb-handys { height: 400px; margin-top: 10px; }
+  }
+</style>
+</head>
+<body data-basis="../">
+<a class="sprungmarke" href="#inhalt">Zum Inhalt springen</a>
+<header class="site schmal">
+  <div class="wrap header-row">
+    <a class="brandmark" aria-label="Mareike Krohnen, Rooted Feminine, zur Startseite" href="../">
+      <img src="../assets/media/c72e1082ad.png" alt="" aria-hidden="true">
+      <span class="word">Mareike Krohnen</span>
+    </a>
+    <div class="header-aktionen">
+      <button class="ansicht-toggle" id="ansicht-toggle" type="button" aria-expanded="false" aria-controls="ansicht-panel" aria-label="Darstellung anpassen, Schrift und Kontrast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"></path>
+          <circle cx="12" cy="12" r="2.6"></circle>
+        </svg>
+      </button>
+    </div>
+    <div class="ansicht-panel" id="ansicht-panel" hidden>
+      <p class="ansicht-titel">Darstellung</p>
+      <div class="ansicht-zeile">
+        <span id="lbl-schrift">Schriftgr&ouml;&szlig;e</span>
+        <span class="ansicht-knoepfe" role="group" aria-labelledby="lbl-schrift">
+          <button type="button" data-schrift="normal" aria-pressed="true">Normal</button>
+          <button type="button" data-schrift="gross" aria-pressed="false">Gro&szlig;</button>
+          <button type="button" data-schrift="groesser" aria-pressed="false">Sehr gro&szlig;</button>
+        </span>
+      </div>
+      <div class="ansicht-zeile">
+        <span id="lbl-kontrast">St&auml;rkerer Kontrast</span>
+        <span class="ansicht-knoepfe" role="group" aria-labelledby="lbl-kontrast">
+          <button type="button" data-kontrast="aus" aria-pressed="true">Aus</button>
+          <button type="button" data-kontrast="hoch" aria-pressed="false">An</button>
+        </span>
+      </div>
+      <div class="ansicht-zeile">
+        <span id="lbl-bewegung">Bewegung reduzieren</span>
+        <span class="ansicht-knoepfe" role="group" aria-labelledby="lbl-bewegung">
+          <button type="button" data-bewegung="normal" aria-pressed="true">Aus</button>
+          <button type="button" data-bewegung="reduziert" aria-pressed="false">An</button>
+        </span>
+      </div>
+      <p class="ansicht-hinweis">Die Einstellung bleibt in deinem Browser gespeichert. Es werden keine Daten an mich oder Dritte &uuml;bertragen.</p>
+    </div>
+  </div>
+</header>
+
+<main id="inhalt" tabindex="-1" class="bb">
+
+  <section class="bb-einstieg ruhe-einstieg">
+    <svg class="bb-voegel" viewBox="0 0 150 70" aria-hidden="true">
+      <g><path d="M8 36 q8 -9 16 0 q8 -9 16 0"/></g>
+      <g><path d="M62 16 q6 -7 12 0 q6 -7 12 0"/></g>
+      <g><path d="M104 46 q5 -6 10 0 q5 -6 10 0"/></g>
+    </svg>
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Breathing Bones · Die Atem-App</p>
+        <h1>Ich lieg hier nicht, weil ich Zeit hab.</h1>
+        <p class="unterzeile">Sondern weil mein Kopf sonst bis halb drei Weltuntergang spielt.</p>
+        <p class="lead">Dein Körper fährt nicht runter, nur weil du dich hinlegst. Ein paar Minuten länger ausatmen als einatmen, und er merkt, dass er heute nichts mehr festhalten muss.</p>
+        <div class="bb-knoepfe">
+          <a class="btn solid" href="#reinhoeren">Einmal mitatmen</a>
+        </div>
+      </div>
+      <div class="bb-handys">
+        <div class="bb-handy hinten"><img src="../assets/media/bb-start.jpg" alt="Startseite der App mit der Frage „Wie geht es dir gerade?“ und Antworten zum Antippen"></div>
+        <div class="bb-handy vorne"><video id="bb-demo" src="../assets/media/bb-demo.mp4" poster="../assets/media/bb-sitzung.jpg" muted loop playsinline preload="metadata" aria-label="Kurzes Video ohne Ton: Die Herzraumatmung läuft, der türkise Atemkreis wird beim Einatmen groß und beim Ausatmen klein, darunter „Ich atme Liebe ein“ und „Ich lasse Enge los“"></video></div>
+        <script>
+          (function(){
+            var v = document.getElementById('bb-demo');
+            if(!v) return;
+            var ruhig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.addEventListener('load', function(){
+              if(ruhig || document.documentElement.hasAttribute('data-bewegung')) return;
+              var p = v.play(); if(p && p.catch) p.catch(function(){});
+            });
+          })();
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="reinhoeren" aria-labelledby="reinhoeren-titel">
+    <div class="wrap hoerprobe">
+      <p class="eyebrow">Zum Reinhören</p>
+      <h2 id="reinhoeren-titel">Atme einmal mit mir</h2>
+      <p>Zwei Minuten, meine Stimme, vier Takte ein und sechs Takte aus. Du kannst sitzen oder liegen, wie es gerade passt. Genau so atme ich auch in der App mit dir.</p>
+      <audio controls preload="none" src="../assets/media/hoerprobe-ausatmen.m4a" aria-label="Hörprobe, gut zwei Minuten verlängerte Ausatmung mit Mareikes Stimme"></audio>
+      <p class="quelle">Ein Ausschnitt aus meiner Atemreise „Atem als Werkzeug“.</p>
+    </div>
+  </section>
+
+  <section class="band panel" aria-labelledby="app-titel">
+    <div class="wrap ruhe-weiter">
+      <h2 id="app-titel">Und wenn es mal wieder so ein Tag ist</h2>
+      <p>In Breathing Bones tippst du an, wie es dir gerade geht. Gestresst, Kopf voll, müde oder du kannst nicht abschalten. Dann atme ich mit dir, mit meiner Stimme, meinem echten Atem und leiser Musik, wenn du magst.</p>
+      <p>18 Übungen zum Runterkommen, für Energie und zum Einschlafen. Die App läuft im Browser, auf dem Handy genauso wie am Computer, du musst nichts installieren.</p>
+      <div class="ruhe-ich">
+        <img src="../assets/media/ac62833448.jpg" alt="" aria-hidden="true">
+        <p>Ich bin Mareike, Coachin für Körperbewusstsein und Entlastung im Alltag und ausgebildet in Embodied Breathwork®. Ich stand selber da, wo du stehst.</p>
+      </div>
+      <figure class="stimme" style="margin-top:34px;">
+        <blockquote class="pull">&bdquo;Es ist total unkompliziert, alltagstauglich und deine Stimme ist so ruhig und klar […] und ich mag die liebevolle Aufmachung.&ldquo;</blockquote>
+        <figcaption>Andrea</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="band deep" id="preis">
+    <div class="wrap">
+      <p class="bb-versprechen">Eins verspreche ich dir nicht. Dein Alltag wird davon nicht leiser. Was sich ändern kann, ist, wie du da drinstehst.</p>
+      <div class="bb-preis">
+        <h2>Ein Jahr Breathing Bones</h2>
+        <p class="betrag">39,99&nbsp;€</p>
+        <ul>
+          <li>12 Monate Zugang, einmal zahlen</li>
+          <li>Kein Abo, nichts verlängert sich von allein</li>
+          <li>Neue Übungen sind mit drin</li>
+          <li>Auf bis zu 3 Geräten</li>
+        </ul>
+        <p class="kauf-mails">Nach dem Kauf schicke ich dir zwei kurze Mails und frage, wie es dir mit der App geht. Wenn du in der Kasse „Ja, gern“ wählst, lade ich dich nach etwa zwei Monaten zu einem kostenlosen Gespräch oder in meinen Erfahrungsraum ein. Abmelden kannst du dich jederzeit über den Link in jeder Mail.</p>
+        <a class="btn solid" href="https://buy.stripe.com/cNi5kF0Jl2PedmB7uccEw03">Zugang holen</a>
+      </div>
+      <p class="bb-klein">
+        Nach dem Bezahlen bekommst du eine Mail mit deinem Anmelde-Link. Kurz bevor dein Jahr um ist, schreibe ich dir und du entscheidest selbst, ob du verlängerst.<br>
+        Das ist ein digitales Produkt. Du bekommst den Zugang sofort, deshalb stimmst du beim Bezahlen zu, dass dein Widerrufsrecht damit erlischt. Mehr in den <a href="../agb/">AGB</a> und in der <a href="../widerruf/">Widerrufsbelehrung</a>. Als Kleinunternehmerin weise ich keine Umsatzsteuer aus.
+      </p>
+    </div>
+  </div>
+
+  <section class="band" aria-labelledby="noch-nicht-titel">
+    <div class="wrap ruhe-weiter">
+      <h2 id="noch-nicht-titel">Noch nicht so weit?</h2>
+      <p>Dann hol dir erst mal die ganze Atemreise, aus der die Hörprobe oben ist. Zehn Minuten zum Anhören, kostenlos per Mail.</p>
+      <p class="ruhe-knopf-zeile"><a class="btn line" href="../audio-optin/">Atemreise holen</a></p>
+      <p class="klein">Alle Übungen und häufige Fragen findest du auf der <a href="../breathing-bones/#uebungen">großen Seite zur App</a>.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="divider-wave" aria-hidden="true">
+    <svg viewBox="0 0 400 32" preserveAspectRatio="none">
+      <path d="M0,20 C18,9 32,28 52,17 C72,7 88,26 108,15 C128,5 144,24 164,19 C184,13 198,8 218,17 C238,25 252,11 272,15 C292,19 306,6 326,13 C346,19 360,25 400,17" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path>
+    </svg>
+  </div>
+  <div class="wrap flinks">
+    <span>© 2026 Mareike Krohnen · Rooted Feminine™</span>
+    <a class="flink" href="../impressum/">Impressum</a>
+    <a class="flink" href="../datenschutz/">Datenschutz</a>
+    <a class="flink" href="../agb/">AGB</a>
+    <a class="flink" href="../widerruf/">Widerruf</a>
+    <a class="flink" href="../vertrag-widerrufen/">Vertrag widerrufen</a>
+  </div>
+</footer>
+<script src="../assets/app.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a664c9414f3c4eb3bcefd966e249e983"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
