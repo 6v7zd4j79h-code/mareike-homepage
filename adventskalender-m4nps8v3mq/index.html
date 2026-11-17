@@ -31,6 +31,7 @@
   .luft-kopf h1 em{ font-style:italic; color:var(--accent); }
   .luft-kopf .lead{ font-size:clamp(1.2rem,3.2vw,1.45rem); line-height:1.5; margin:0 auto; max-width:36rem; }
   .luft-status{ font-family:"Jost", sans-serif; font-size:0.9375rem; letter-spacing:0.02em; margin:22px auto 0; display:inline-block; padding:10px 18px; border:1px solid var(--line-strong); border-radius:999px; }
+  .luft [hidden]{ display:none !important; }
   .vorschau-hinweis{ font-family:"Jost", sans-serif; font-size:0.875rem; background:var(--panel); color:var(--ink); text-align:center; padding:10px 16px; margin:0; }
   .vorschau-hinweis a{ color:inherit; }
 
@@ -197,8 +198,8 @@
       <p class="eyebrow">Dein Adventskalender 2026</p>
       <h1>24 Türchen zum <em>Durchatmen</em></h1>
       <p class="lead">Deine 5 Minuten Luft am Tag, damit du im Dezember wieder Kraft für den Rest hast.</p>
-      <p class="luft-status" id="luft-status" aria-live="polite">Ab dem 1. Dezember geht jeden Morgen ein Türchen auf.</p>
-      <div class="schalter">
+      <p class="luft-status luft-zu-ohne" id="luft-status" aria-live="polite">Einen Moment, dein Kalender lädt.</p>
+      <div class="schalter luft-zu-ohne">
         <button type="button" id="spieluhr-knopf" aria-pressed="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>
           <span>Musik an</span>
@@ -211,7 +212,7 @@
     </div>
   </section>
 
-  <section class="brett" aria-label="Die 24 Türchen">
+  <section class="brett luft-zu-ohne" id="brett" aria-label="Die 24 Türchen" hidden>
     <svg class="girlande" id="girlande" viewBox="0 0 1000 90" preserveAspectRatio="xMidYMin meet" aria-hidden="true"></svg>
     <canvas class="schnee" id="schnee" aria-hidden="true"></canvas>
     <div class="wrap">
@@ -220,7 +221,15 @@
     </div>
   </section>
 
-  <section class="band luft-unten" aria-labelledby="so-titel">
+  <section class="band luft-unten" id="sperre" aria-labelledby="sperre-titel" hidden>
+    <div class="wrap">
+      <h2 id="sperre-titel">Dein Kalender geht mit deinem Link auf</h2>
+      <p class="sperre-text">Jede, die den Kalender gekauft hat, bekommt von mir einen eigenen Link. Den findest du in der Mail „Deine 24 Türchen warten auf dich“ und in jeder Türchen-Mail. Öffne einfach von dort, dann geht alles auf.</p>
+      <p id="sperre-weiter">Du hast noch keinen Kalender? <a href="../adventskalender/">Hier kannst du ihn dir holen.</a> Und wenn du gekauft hast und der Link nicht klappt, <a href="mailto:info@mareikekrohnen.de">schreib mir kurz</a>.</p>
+    </div>
+  </section>
+
+  <section class="band luft-unten luft-zu-ohne" aria-labelledby="so-titel">
     <div class="wrap">
       <h2 id="so-titel">So ist jedes Türchen gebaut</h2>
       <p>Erst erzähl ich dir kurz was zum Tag, so wie mir der Satz gerade kommt. Dann atmen wir zusammen, mit Musik, drei bis vier Minuten. Und am Ende bekommst du einen Satz mit, wann du diesen Atem heute im Alltag brauchen kannst. Dazu kommt jeden Morgen eine Mail von mir, damit du dein Türchen nicht suchen musst.</p>
@@ -272,35 +281,9 @@
 (function(){
   var SVGNS = 'http://www.w3.org/2000/svg';
 
-  // ---------- Inhalte der 24 Tage (aus konzept-5-minuten-luft.md) ----------
-  var WOCHEN = { 1:'Woche 1 · Luft holen', 2:'Woche 2 · Runterfahren', 3:'Woche 3 · Druck raus, Boden rein', 4:'Woche 4 · Bei dir bleiben im Trubel' };
-  var TAGE = [
-    null,
-    {w:1, titel:'Atem wahrnehmen', satz:'Merk heute einmal, ganz nebenbei, wie du gerade atmest. Mehr nicht.'},
-    {w:1, titel:'Bauchatmung', satz:'Für den Moment, in dem der Atem wieder hoch in der Brust sitzt.'},
-    {w:1, titel:'Verlängerte Ausatmung', satz:'Wenn du runterkommen willst, mach die Ausatmung ein bisschen länger als die Einatmung.'},
-    {w:1, titel:'Psychologischer Seufzer', satz:'Der schnellste Weg raus aus Druck. Zweimal ein, einmal lang aus.'},
-    {w:1, titel:'Gleichmäßiges Atmen', satz:'Für den Moment, in dem alles durcheinander ist.'},
-    {w:1, titel:'Dein Notfall-Atem', zusatz:'Nikolaus', satz:'Deine Minute für unterwegs. Speicher sie dir, du wirst sie brauchen.', extra:'Heute ist zweiter Advent und Nikolaus, deshalb gibt es eine kurze Fassung für unterwegs, nur eine Minute.'},
-    {w:2, titel:'4-7-8-Atmung', satz:'Für abends, wenn der Kopf einfach nicht aufhört.'},
-    {w:2, titel:'Mondatmung', satz:'Wenn du dich wieder weich spüren willst.'},
-    {w:2, titel:'Bienenatmung', satz:'Wenn es innen zu laut ist.'},
-    {w:2, titel:'Box-Atmung', satz:'Vor einem Gespräch, das dich anspannt.'},
-    {w:2, titel:'Dreiphasenatmung', satz:'Wenn du wieder ganz viel Platz in dir brauchst.'},
-    {w:2, titel:'Wechselatmung', satz:'Wenn du hin- und hergerissen bist.'},
-    {w:2, titel:'Deine Lieblingsatmung', zusatz:'3. Advent', satz:'Nimm dir die Atmung mit, die dir diese Woche am meisten gegeben hat.'},
-    {w:3, titel:'Löwenatem', satz:'Wenn sich Wut aufstaut. Lieber raus damit als runterschlucken.'},
-    {w:3, titel:'Erdungsatem im Stehen', satz:'Wenn dich gerade alles umpustet.'},
-    {w:3, titel:'Atmen mit Bewegung', satz:'Wenn dein Körper steif ist vom ganzen Funktionieren.'},
-    {w:3, titel:'Atmen beim Gehen', satz:'Beim Spaziergang oder auf dem Weg zum Auto.'},
-    {w:3, titel:'Verlängerte Einatmung', satz:'An Tagen, an denen du einfach nur müde bist.'},
-    {w:3, titel:'Herzraumatmung', satz:'Wenn du gerade für alle da bist, nur nicht für dich.'},
-    {w:3, titel:'Deine Lieblingsatmung', zusatz:'4. Advent', satz:'Such dir deine Atmung für die letzten Tage vor Weihnachten aus.'},
-    {w:4, titel:'Grenzen-Atem', satz:'Bevor du Ja sagst, obwohl du Nein meinst.'},
-    {w:4, titel:'Atem im Auto', satz:'Auf der Fahrt zur Familie.'},
-    {w:4, titel:'Der unsichtbare Atem', satz:'Am Tisch, im Gespräch, und keiner merkt es.'},
-    {w:4, titel:'Heiligabend', zusatz:'Heiligabend', satz:'Der unsichtbare Atem in kurz, für heute Abend, wenn es voll und laut wird.', extra:'Und heute ist noch eine kleine Nachricht von mir dabei.'}
-  ];
+  // Texte der Tage kommen vom Dienst, nur mit gueltigem Schluessel und nur fuer offene Tage
+  var TAGE = {};
+  var ZUSATZ = {6:'Nikolaus', 13:'3. Advent', 20:'4. Advent', 24:'Heiligabend'};
   // Reihenfolge auf dem Brett, wie bei einem echten Kalender durcheinander
   var REIHE = [14,3,22,8,1,17,6,19,11,4,24,9,15,2,20,12,7,23,5,13,18,10,21,16];
   var GROSS = {6:1, 24:1};
@@ -333,23 +316,14 @@
   function bild(name, klasse){ return '<svg class="' + (klasse || 'deko') + '" viewBox="0 0 40 40" aria-hidden="true">' + BILDER[name] + '</svg>'; }
 
   var PLATZHALTER = '../assets/media/hoerprobe-ausatmen.m4a';
+  var DIENST = 'https://rooted-tarot.rooted-tarot.workers.dev';
 
-  // ---------- Welcher Tag ist heute? ----------
+  // ---------- Persoenlicher Schluessel ----------
+  // Kommt als ?k=... aus der Mail und wird im Browser gemerkt, damit die Seite auch ohne Link wieder aufgeht.
   var q = new URLSearchParams(location.search);
-  var vorschau = q.has('alle') || q.has('tag');
-  var heute = new Date();
-  var offenBis, heuteTag = 0, kerzen = 0;
-  if(q.has('tag')){
-    heuteTag = Math.max(0, Math.min(24, parseInt(q.get('tag'),10) || 0));
-    offenBis = heuteTag;
-    kerzen = 1 + [6,13,20].filter(function(s){ return heuteTag >= s; }).length;
-  } else {
-    var j = heute.getFullYear(), m = heute.getMonth(), d = heute.getDate();
-    if(j < 2026 || (j === 2026 && m < 11)){ offenBis = 0; kerzen = (j === 2026 && m === 10 && d >= 29) ? 1 : 0; }
-    else if(j === 2026 && m === 11){ offenBis = Math.min(24, d); heuteTag = d <= 24 ? d : 0; kerzen = 1 + [6,13,20].filter(function(s){ return d >= s; }).length; }
-    else { offenBis = 24; kerzen = 4; }
-  }
-  if(q.has('alle')){ offenBis = 24; kerzen = 4; }
+  var schluessel = (q.get('k') || '').toLowerCase().replace(/[^a-z2-9]/g, '');
+  try{ if(schluessel) localStorage.setItem('luft-k', schluessel); else schluessel = localStorage.getItem('luft-k') || ''; }catch(e){}
+  var vorschau = false, offenBis = 0, heuteTag = 0, kerzen = 0;
 
   var gemerkt = [];
   try{ gemerkt = JSON.parse(localStorage.getItem('luft-offen') || '[]') || []; }catch(e){ gemerkt = []; }
@@ -363,7 +337,7 @@
   };
 
   // ---------- Adventskranz ----------
-  (function(){
+  function kranzBauen(){
     var k = document.getElementById('kranz'), html = '';
     var cx = 120, cy = 98, rx = 100, ry = 15;
     for(var i = 0; i < 64; i++){
@@ -391,7 +365,7 @@
     html = '<defs><radialGradient id="kerzenschein"><stop offset="0" stop-color="#FFE9B0" stop-opacity=".95"/><stop offset=".35" stop-color="#F2C46B" stop-opacity=".5"/><stop offset="1" stop-color="#F2C46B" stop-opacity="0"/></radialGradient></defs>' + html;
     k.innerHTML = html;
     k.setAttribute('aria-label', 'Adventskranz, ' + (kerzen === 0 ? 'noch keine Kerze brennt' : kerzen === 1 ? 'eine Kerze brennt' : kerzen + ' Kerzen brennen'));
-  })();
+  }
 
   // ---------- Girlande ----------
   (function(){
@@ -418,24 +392,27 @@
   })();
 
   // ---------- Status oben ----------
-  var status = document.getElementById('luft-status');
-  if(offenBis === 0) status.textContent = 'Ab dem 1. Dezember geht jeden Morgen ein Türchen auf.';
-  else if(heuteTag >= 1 && heuteTag <= 24 && !q.has('alle')) status.textContent = 'Heute ist der ' + heuteTag + '. Dezember. Dein Türchen wartet auf dich.';
-  else status.textContent = 'Alle 24 Türchen sind offen. Hör rein, wann immer du magst.';
-
-  if(vorschau){
-    var vh = document.getElementById('vorschau-hinweis');
-    vh.hidden = false;
-    vh.innerHTML = q.has('alle')
-      ? 'Vorschau, alle Türchen gehen auf. So sieht es am <a href="?tag=5">5. Dezember</a> aus, so am <a href="?tag=14">14. Dezember</a>.'
-      : 'Vorschau, so sieht es am ' + heuteTag + '. Dezember aus. <a href="?alle">Alle öffnen</a> · <a href="?tag=14">14. Dezember</a> · <a href="?tag=24">Heiligabend</a>';
+  function statusSetzen(){
+    var status = document.getElementById('luft-status');
+    if(offenBis === 0) status.textContent = 'Ab dem 1. Dezember geht jeden Morgen ein Türchen auf.';
+    else if(heuteTag >= 1 && heuteTag <= 24) status.textContent = 'Heute ist der ' + heuteTag + '. Dezember. Dein Türchen wartet auf dich.';
+    else status.textContent = 'Alle 24 Türchen sind offen. Hör rein, wann immer du magst.';
+    if(vorschau){
+      var vh = document.getElementById('vorschau-hinweis');
+      var basis = '?k=' + schluessel;
+      vh.hidden = false;
+      vh.innerHTML = 'Vorschau-Schlüssel. So sieht es ' + (q.has('alle') ? 'mit allen Türchen' : q.has('tag') ? 'am ' + heuteTag + '. Dezember' : 'heute') + ' aus. ' +
+        '<a href="' + basis + '&alle=1">Alle öffnen</a> · <a href="' + basis + '&tag=5">5. Dezember</a> · <a href="' + basis + '&tag=14">14. Dezember</a> · <a href="' + basis + '&tag=24">Heiligabend</a> · <a href="' + basis + '">heute</a>';
+    }
   }
 
   // ---------- Brett bauen ----------
   var liste = document.getElementById('kalender');
   var meldung = document.getElementById('kalender-meldung');
+  function brettBauen(){
   REIHE.forEach(function(t, i){
-    var tag = TAGE[t];
+    var tag = TAGE[t] || {};
+    var zusatz = ZUSATZ[t];
     var li = document.createElement('li');
     if(GROSS[t]) li.className = 'gross';
     var frei = t <= offenBis;
@@ -445,7 +422,7 @@
     li.style.setProperty('--ton', ton[0]);
     li.style.setProperty('--fg', ton[1]);
     li.classList.add(frei ? 'ist-frei' : 'ist-zu');
-    var istHeute = t === heuteTag && !q.has('alle');
+    var istHeute = t === heuteTag;
     if(istHeute) li.classList.add('ist-heute');
     if(frei && gemerkt.indexOf(t) !== -1) li.classList.add('ist-offen');
 
@@ -455,11 +432,11 @@
       '<button class="tuer" type="button" data-tag="' + t + '">' +
         '<span class="tuer-innen" aria-hidden="true">' +
           '<span class="innen-play"><svg viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg></span>' +
-          '<span class="innen-titel">' + tag.titel + '</span>' +
+          '<span class="innen-titel">' + (tag.titel || '') + '</span>' +
         '</span>' +
         '<span class="blatt-wrap" aria-hidden="true">' +
-          '<span class="tuer-blatt"><span class="zahl">' + t + '</span>' + (tag.zusatz && !GROSS[t] ? '' : bild(motiv)) +
-            (tag.zusatz ? '<span class="zusatz">' + tag.zusatz + '</span>' : '') +
+          '<span class="tuer-blatt"><span class="zahl">' + t + '</span>' + (zusatz && !GROSS[t] ? '' : bild(motiv)) +
+            (zusatz ? '<span class="zusatz">' + zusatz + '</span>' : '') +
           '</span>' +
           '<span class="blatt-rueck"></span>' +
         '</span>' +
@@ -470,6 +447,7 @@
     knopf.addEventListener('click', function(){ antippen(li, t, frei); });
     liste.appendChild(li);
   });
+  }
 
   function funkeln(li){
     if(ruhig()) return;
@@ -510,17 +488,19 @@
   function zeigen(t){
     var tag = TAGE[t];
     document.getElementById('dialog-zahl').textContent = t;
-    document.getElementById('dialog-woche').textContent = (tag.zusatz && tag.zusatz !== tag.titel ? tag.zusatz + ' · ' : '') + WOCHEN[tag.w];
+    document.getElementById('dialog-woche').textContent = (tag.zusatz && tag.zusatz !== tag.titel ? tag.zusatz + ' · ' : '') + (tag.woche || '');
     document.getElementById('dialog-titel').textContent = tag.titel;
     document.getElementById('dialog-satz').textContent = tag.satz;
     var ex = document.getElementById('dialog-extra');
     if(tag.extra){ ex.hidden = false; ex.textContent = tag.extra; } else { ex.hidden = true; }
-    var datei = 'audio/tag-' + (t < 10 ? '0' : '') + t + '.m4a';
-    audio.src = vorschau ? PLATZHALTER : datei;
+    var hinweis = document.getElementById('dialog-audio-hinweis');
+    hinweis.textContent = 'Fünf Minuten, mit Kopfhörern am schönsten.';
+    audio.onerror = function(){
+      if(vorschau && audio.src.indexOf(PLATZHALTER.slice(3)) === -1){ audio.src = PLATZHALTER; hinweis.textContent = 'Platzhalter. Die Aufnahme für Tag ' + t + ' ist noch nicht hochgeladen.'; }
+      else if(!vorschau) hinweis.textContent = 'Die Aufnahme lädt gerade nicht. Versuch es in ein paar Minuten nochmal, und wenn es dann immer noch hakt, schreib mir kurz.';
+    };
+    audio.src = DIENST + '/advent/audio?k=' + encodeURIComponent(schluessel) + '&tag=' + t;
     audio.setAttribute('aria-label', 'Türchen ' + t + ', ' + tag.titel + ', zum Anhören');
-    document.getElementById('dialog-audio-hinweis').textContent = vorschau
-      ? 'Platzhalter. Hier kommt deine Aufnahme für Tag ' + t + ' rein.'
-      : 'Fünf Minuten, mit Kopfhörern am schönsten.';
     if(typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
   }
   function schliessen(){ audio.pause(); if(dlg.open) dlg.close(); }
@@ -652,13 +632,45 @@
   // Türchen-Audio startet: Spieluhr leise machen, damit nichts übereinander läuft
   audio.addEventListener('play', function(){ if(spielt) spieluhr(false); });
 
-  // ---------- Link aus der Tagesmail: …/#3 öffnet Türchen 3 direkt, wenn es schon dran ist ----------
-  var anker = parseInt((location.hash || '').replace('#',''), 10);
-  if(anker >= 1 && anker <= 24){
-    var ankerLi = liste.querySelector('[data-tag="' + anker + '"]').parentElement;
-    ankerLi.scrollIntoView({block:'center'});
-    antippen(ankerLi, anker, anker <= offenBis);
+  // ---------- Link aus der Tagesmail: …/?k=…#3 öffnet Türchen 3 direkt, wenn es schon dran ist ----------
+  function ankerOeffnen(){
+    var anker = parseInt((location.hash || '').replace('#',''), 10);
+    if(anker >= 1 && anker <= 24){
+      var ankerLi = liste.querySelector('[data-tag="' + anker + '"]').parentElement;
+      ankerLi.scrollIntoView({block:'center'});
+      antippen(ankerLi, anker, anker <= offenBis);
+    }
   }
+
+  // ---------- Ohne gueltigen Schluessel bleibt alles zu ----------
+  function sperren(text){
+    document.querySelectorAll('.luft-zu-ohne').forEach(function(el){ el.hidden = true; });
+    var sp = document.getElementById('sperre');
+    if(text) sp.querySelector('.sperre-text').textContent = text;
+    sp.hidden = false;
+  }
+
+  function laden(){
+    if(!schluessel){ sperren(); return; }
+    var url = DIENST + '/advent/kalender?k=' + encodeURIComponent(schluessel) +
+      (q.has('tag') ? '&tag=' + encodeURIComponent(q.get('tag')) : '') + (q.has('alle') ? '&alle=1' : '');
+    fetch(url).then(function(r){
+      if(r.status === 403){ try{ localStorage.removeItem('luft-k'); }catch(e){} sperren(); return null; }
+      if(!r.ok) throw new Error('dienst');
+      return r.json();
+    }).then(function(d){
+      if(!d) return;
+      vorschau = !!d.vorschau; offenBis = d.offenBis; heuteTag = d.heute; kerzen = d.kerzen; TAGE = d.tage || {};
+      kranzBauen(); statusSetzen(); brettBauen();
+      document.getElementById('brett').hidden = false;
+      ankerOeffnen();
+    }).catch(function(){
+      sperren('Gerade klemmt die Verbindung zu deinem Kalender. Lad die Seite in ein paar Minuten einfach nochmal.');
+      document.getElementById('sperre-weiter').hidden = true;
+    });
+  }
+  kranzBauen();
+  laden();
 })();
 </script>
 <script src="../assets/app.js"></script>
