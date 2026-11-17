@@ -139,6 +139,12 @@
   .extra{ margin-top:16px; font-size:1.0625rem; }
 
   .luft-unten .wrap{ max-width:40rem; }
+  .link-form{ margin:26px 0 30px; padding:22px; background:var(--panel); border-radius:20px 26px 22px 24px; }
+  .link-form label{ display:block; font-size:1.125rem; line-height:1.5; margin-bottom:14px; }
+  .link-zeile{ display:flex; gap:10px; flex-wrap:wrap; }
+  .link-zeile input{ flex:1 1 14rem; font:inherit; font-size:1.0625rem; padding:12px 14px; border:1px solid var(--line-strong); border-radius:2px; background:var(--bg); color:var(--ink); }
+  .link-zeile .btn{ background:var(--ink); color:var(--bg); border-color:var(--ink); }
+  .link-antwort{ font-family:"Jost", sans-serif; font-size:0.9375rem !important; margin:12px 0 0; min-height:1.2em; }
   .luft-unten h2{ font-weight:300; font-size:clamp(1.5rem,4vw,2rem); margin-bottom:12px; }
   .luft-unten p + p{ margin-top:1em; }
   .luft-unten p{ font-size:1.1875rem; line-height:1.6; }
@@ -225,7 +231,17 @@
     <div class="wrap">
       <h2 id="sperre-titel">Dein Kalender geht mit deinem Link auf</h2>
       <p class="sperre-text">Jede, die den Kalender gekauft hat, bekommt von mir einen eigenen Link. Den findest du in der Mail „Deine 24 Türchen warten auf dich“ und in jeder Türchen-Mail. Öffne einfach von dort, dann geht alles auf.</p>
-      <p id="sperre-weiter">Du hast noch keinen Kalender? <a href="../adventskalender/">Hier kannst du ihn dir holen.</a> Und wenn du gekauft hast und der Link nicht klappt, <a href="mailto:info@mareikekrohnen.de">schreib mir kurz</a>.</p>
+      <div id="sperre-weiter">
+        <form class="link-form" id="link-form" novalidate>
+          <label for="link-mail">Link gerade nicht zur Hand? Gib die E-Mail-Adresse ein, mit der du gekauft hast, und ich schick ihn dir noch mal.</label>
+          <div class="link-zeile">
+            <input type="email" id="link-mail" name="mail" autocomplete="email" inputmode="email" placeholder="Deine E-Mail-Adresse" required>
+            <button class="btn" type="submit">Link zuschicken</button>
+          </div>
+          <p class="link-antwort" id="link-antwort" aria-live="polite"></p>
+        </form>
+        <p>Du hast noch keinen Kalender? <a href="../adventskalender/">Hier kannst du ihn dir holen.</a></p>
+      </div>
     </div>
   </section>
 
@@ -649,6 +665,19 @@
     if(text) sp.querySelector('.sperre-text').textContent = text;
     sp.hidden = false;
   }
+
+  // ---------- Link per Mail neu schicken ----------
+  document.getElementById('link-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var feld = document.getElementById('link-mail'), aus = document.getElementById('link-antwort');
+    var wert = feld.value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(wert)){ aus.textContent = 'Schau noch mal auf die Adresse, da fehlt noch was.'; feld.focus(); return; }
+    aus.textContent = 'Einen Moment …';
+    fetch(DIENST + '/advent/link', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ mail: wert }) })
+      .then(function(r){ return r.json(); })
+      .then(function(d){ aus.textContent = (d && d.text ? d.text : 'Wenn du dabei bist, kommt gleich eine Mail mit deinem Link.') + ' Schau auch im Spam-Ordner nach.'; })
+      .catch(function(){ aus.textContent = 'Gerade klemmt die Verbindung. Versuch es in ein paar Minuten noch mal, oder schreib mir an info@mareikekrohnen.de.'; });
+  });
 
   function laden(){
     if(!schluessel){ sperren(); return; }
