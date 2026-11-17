@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>24 Türchen zum Durchatmen · Adventskalender 2026 | Mareike Krohnen</title>
+<meta name="description" content="Dein Adventskalender mit Mareike Krohnen. Vom 1. bis 24. Dezember jeden Tag fünf Minuten Atem, damit du im Dezember wieder Kraft für den Rest hast.">
+<!-- Launch-Seite Adventskalender 2026 (seit 17.11.2026): nicht im Menü, nicht von der Hauptseite verlinkt, nicht in der Sitemap, nicht bei Google. -->
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="24 Türchen zum Durchatmen">
+<meta property="og:description" content="Deine 5 Minuten Luft am Tag, damit du im Dezember wieder Kraft für den Rest hast.">
+<meta property="og:image" content="https://mareikekrohnen.de/assets/media/ac62833448.jpg">
+<meta property="og:locale" content="de_DE">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16.png">
+<link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="theme-color" content="#26332B">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  header.site.schmal .header-row { display:flex; flex-direction:row; flex-wrap:nowrap; align-items:center; justify-content:space-between; gap:12px; padding-block:10px; }
+  header.site.schmal .brandmark img { width:1.9rem; height:auto; }
+  header.site.schmal .brandmark .word { font-size:1rem; }
+
+  .advent{ --t-creme:#F6F2EA; --t-salbei:#DEE5D6; --t-sand:#EBDFCB; --t-rose:#EEDDD6; --t-gold:#E2CC9C; --t-beere:#8A3843; --t-zahl:#26332B; --gold:#C9A65F; --beere:#A2454F; }
+  .ak-kopf{ text-align:center; padding-top:clamp(24px,5vw,56px); padding-bottom:clamp(36px,6vw,64px); }
+  .ak-kopf .wrap{ max-width:44rem; }
+  .ak-kopf h1{ font-weight:300; font-size:clamp(2.5rem,8.5vw,4.4rem); line-height:1.04; margin:6px 0 14px; }
+  .ak-kopf h1 em{ font-style:italic; color:var(--accent); }
+  .ak-kopf .unterzeile{ font-size:clamp(1.3rem,3.6vw,1.65rem); line-height:1.45; max-width:34rem; margin:0 auto 26px; }
+  .ak-kopf .knoepfe{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .ak-kopf .btn.dunkel{ background:var(--ink); color:var(--bg); border-color:var(--ink); }
+  .ak-kopf .btn.dunkel:hover{ background:transparent; color:var(--ink); }
+  .ak-kopf .wann{ font-family:"Jost", sans-serif; font-size:0.9375rem; margin-top:18px; color:var(--muted); }
+
+  .kranz{ width:min(14rem,58vw); height:auto; display:block; margin:0 auto 4px; overflow:visible; }
+  .kranz .blatt-a{ fill:none; stroke:var(--accent); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  .kranz .blatt-b{ fill:none; stroke:var(--line-strong); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  .kranz .beere{ fill:var(--beere); }
+  .kranz .kerze{ fill:var(--bg); stroke:var(--ink); stroke-width:1.4; }
+  .kranz .docht{ stroke:var(--ink); stroke-width:1.4; stroke-linecap:round; }
+  .kranz .flamme{ fill:#E8B85A; opacity:0; transform-box:fill-box; transform-origin:50% 100%; }
+  .kranz .kern{ fill:#FFF6DC; opacity:0; }
+  .kranz .schein{ fill:url(#kerzenschein); opacity:0; }
+  .kranz .brennt .flamme, .kranz .brennt .kern, .kranz .brennt .schein{ opacity:1; }
+  .kranz .brennt .flamme{ animation:flackern 3.2s ease-in-out infinite; }
+  @keyframes flackern{ 0%,100%{ transform:scale(1,1) rotate(0); } 30%{ transform:scale(.94,1.06) rotate(-3deg); } 60%{ transform:scale(1.04,.96) rotate(2deg); } }
+
+  .ak-text .wrap{ max-width:40rem; }
+  .ak-text h2{ font-weight:300; font-size:clamp(1.6rem,4.4vw,2.3rem); line-height:1.15; margin-bottom:16px; }
+  .ak-text p{ font-size:1.1875rem; line-height:1.65; }
+  .ak-text p + p{ margin-top:1em; }
+
+  /* Ein paar Türchen als Bild, nicht anklickbar */
+  .tuer-reihe{ display:flex; justify-content:center; gap:clamp(8px,2vw,14px); margin:30px auto 6px; flex-wrap:wrap; max-width:36rem; }
+  .tuer-reihe span{ width:clamp(3.6rem,13vw,4.6rem); aspect-ratio:1/1.15; display:grid; place-items:center; font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(1.5rem,4.6vw,2rem); font-weight:500; color:var(--t-zahl); box-shadow:0 10px 22px -14px rgba(0,0,0,.5); position:relative; }
+  .tuer-reihe span::before{ content:""; position:absolute; inset:5px; border-radius:inherit; border:1px dashed currentColor; opacity:.3; }
+  .tuer-reihe .r1{ background:var(--t-salbei); border-radius:999px 999px 14px 14px; }
+  .tuer-reihe .r2{ background:var(--t-beere); color:#F6F2EA; border-radius:42% 58% 46% 54% / 52% 44% 56% 48%; }
+  .tuer-reihe .r3{ background:var(--t-gold); border-radius:22px 30px 18px 26px; }
+  .tuer-reihe .r4{ background:var(--t-rose); border-radius:50% 50% 46% 54% / 60% 60% 40% 40%; }
+  .tuer-reihe .r5{ background:var(--t-sand); border-radius:999px; }
+
+  .ak-bild{ display:block; width:100%; max-width:34rem; margin:34px auto 0; border-radius:28px 34px 26px 32px; aspect-ratio:4/3; object-fit:cover; }
+
+  .offen-frage{ font-style:italic; font-size:1.3rem !important; margin-top:1.6em !important; }
+  .ak-ich{ display:flex; gap:18px; align-items:center; margin-top:30px; }
+  .ak-ich img{ width:4.5rem; height:4.5rem; border-radius:50%; object-fit:cover; flex:none; }
+  .ak-ich p{ margin:0; font-size:1.0625rem !important; }
+
+  .ak-preis .wrap{ max-width:40rem; text-align:center; }
+  .ak-versprechen{ font-size:clamp(1.3rem,3.6vw,1.6rem); line-height:1.45; font-style:italic; margin:0 auto 34px; max-width:32rem; }
+  .preis-karte{ background:var(--deep-2); border:1px solid rgba(201,166,95,0.55); border-radius:28px 34px 26px 32px; padding:clamp(26px,5vw,40px); text-align:left; position:relative; }
+  .preis-karte h2{ font-weight:300; font-size:clamp(1.6rem,4.4vw,2.1rem); margin:0 0 6px; color:var(--on-deep); }
+  .preis-karte .betrag{ font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(2.4rem,7vw,3rem); margin:0 0 14px; color:var(--on-deep); }
+  .preis-karte ul{ margin:0 0 24px; padding-left:1.2em; font-size:1.125rem; line-height:1.6; color:var(--on-deep); }
+  .preis-karte .btn{ width:100%; }
+  .ak-klein{ font-family:"Jost", sans-serif; font-size:0.875rem; line-height:1.6; color:var(--on-deep-muted); margin-top:20px; text-align:left; }
+  .ak-klein a{ color:var(--on-deep); }
+</style>
+</head>
+<body data-basis="../">
+<a class="sprungmarke" href="#inhalt">Zum Inhalt springen</a>
+<header class="site schmal">
+  <div class="wrap header-row">
+    <a class="brandmark" aria-label="Mareike Krohnen, Rooted Feminine, zur Startseite" href="../">
+      <img src="../assets/media/c72e1082ad.png" alt="" aria-hidden="true">
+      <span class="word">Mareike Krohnen</span>
+    </a>
+    <div class="header-aktionen">
+      <button class="ansicht-toggle" id="ansicht-toggle" type="button" aria-expanded="false" aria-controls="ansicht-panel" aria-label="Darstellung anpassen, Schrift und Kontrast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"></path>
+          <circle cx="12" cy="12" r="2.6"></circle>
+        </svg>
+      </button>
+    </div>
+    <div class="ansicht-panel" id="ansicht-panel" hidden>
+      <p class="ansicht-titel">Darstellung</p>
+      <div class="ansicht-zeile">
+        <span id="lbl-schrift">Schriftgr&ouml;&szlig;e</span>
+        <span class="ansicht-knoepfe" role="group" aria-labelledby="lbl-schrift">
+          <button type="button" data-schrift="normal" aria-pressed="true">Normal</button>
+          <button type="button" data-schrift="gross" aria-pressed="false">Gro&szlig;</button>
+          <button type="button" data-schrift="groesser" aria-pressed="false">Sehr gro&szlig;</button>
+        </span>
+      </div>
+      <div class="ansicht-zeile">
+        <span id="lbl-kontrast">St&auml;rkerer Kontrast</span>
+        <span class="ansicht-knoepfe" role="group" aria-labelledby="lbl-kontrast">
+          <button type="button" data-kontrast="aus" aria-pressed="true">Aus</button>
+          <button type="button" data-kontrast="hoch" aria-pressed="false">An</button>
+        </span>
+      </div>
+      <div class="ansicht-zeile">
+        <span id="lbl-bewegung">Bewegung reduzieren</span>
+        <span class="ansicht-knoepfe" role="group" aria-labelledby="lbl-bewegung">
+          <button type="button" data-bewegung="normal" aria-pressed="true">Aus</button>
+          <button type="button" data-bewegung="reduziert" aria-pressed="false">An</button>
+        </span>
+      </div>
+      <p class="ansicht-hinweis">Die Einstellung bleibt in deinem Browser gespeichert. Es werden keine Daten an mich oder Dritte &uuml;bertragen.</p>
+    </div>
+  </div>
+</header>
+
+<main id="inhalt" tabindex="-1" class="advent">
+
+  <section class="ak-kopf">
+    <div class="wrap">
+      <svg class="kranz" id="kranz" viewBox="0 0 240 120" aria-hidden="true"></svg>
+      <p class="eyebrow">Adventskalender 2026 · 1. bis 24. Dezember</p>
+      <h1>24 Türchen zum <em>Durchatmen</em></h1>
+      <p class="unterzeile">Deine 5 Minuten Luft am Tag, damit du im Dezember wieder Kraft für den Rest hast.</p>
+      <div class="knoepfe">
+        <a class="btn dunkel" href="#preis">Zum Kalender</a>
+      </div>
+      <p class="wann">39&nbsp;€ · das erste Türchen geht am 1. Dezember auf</p>
+    </div>
+  </section>
+
+  <section class="band panel ak-text" aria-labelledby="dezember-titel">
+    <div class="wrap">
+      <h2 id="dezember-titel">Mitte Dezember, und du hast seit Tagen nicht richtig Luft geholt</h2>
+      <p>Alle wollen was von dir, und irgendwo dazwischen merkst du, dass du nur noch funktionierst. Kennst du das aus dem Flugzeug? Die Sauerstoffmaske setzt du dir zuerst selbst auf, damit du den anderen überhaupt helfen kannst. Genau so ist dieser Kalender gemeint. Keine Me-Time, die du dir auch noch reinquetschen musst. Fünf Minuten Atem, damit der Rest vom Tag wieder geht.</p>
+      <p>Jeden Morgen geht ein Türchen auf, und du bekommst eine Mail von mir mit dem Link. Drin ist ein kurzer Gedanke von mir, dann atmen wir zusammen, mit Musik, und am Ende nimmst du einen Satz mit in deinen Tag. Die Übungen sind sanft, viele gehen sogar nebenbei, beim Spazierengehen, im Auto oder am Tisch, ohne dass es einer merkt.</p>
+      <div class="tuer-reihe" aria-hidden="true"><span class="r1">3</span><span class="r2">24</span><span class="r3">6</span><span class="r4">17</span><span class="r5">12</span></div>
+      <div class="ak-ich">
+        <img src="../assets/media/ac62833448.jpg" alt="" aria-hidden="true">
+        <p>Ich bin Mareike, Coachin für Körperbewusstsein und Entlastung im Alltag und ausgebildet in Embodied Breathwork®. Ich stand selber da, wo du stehst.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band deep ak-preis" id="preis" aria-labelledby="preis-titel">
+    <div class="wrap">
+      <p class="ak-versprechen">Eins verspreche ich dir nicht. Dein Dezember wird davon nicht leerer. Was sich ändern kann, ist, wie du durchgehst.</p>
+      <div class="preis-karte">
+        <h2 id="preis-titel">24 Türchen zum Durchatmen</h2>
+        <p class="betrag">39&nbsp;€</p>
+        <ul>
+          <li>Vom 1. bis 24. Dezember jeden Tag ein Türchen</li>
+          <li>Jeden Morgen eine Mail von mir mit dem Link</li>
+          <li>Fünf Minuten am Tag, mit meiner Stimme und Musik</li>
+          <li>Verpasst du einen Tag, bleibt das Türchen offen</li>
+          <li>Einmal zahlen, kein Abo</li>
+        </ul>
+        <a class="btn solid" id="kaufen" href="https://buy.stripe.com/bJe5kF3Vx1La96lcOwcEw09">Kalender holen</a>
+      </div>
+      <p class="ak-klein">
+        Nach dem Bezahlen bekommst du gleich eine Mail von mir. Am 1. Dezember kommt morgens die erste Mail mit deinem Türchen. Kaufst du später, findest du alle Türchen, die schon offen sind, gleich auf der Seite.<br>
+        Das ist ein digitales Produkt. Du bekommst den Zugang sofort, deshalb stimmst du beim Bezahlen zu, dass dein Widerrufsrecht damit erlischt. Mehr in den <a href="../agb/">AGB</a> und in der <a href="../widerruf/">Widerrufsbelehrung</a>. Als Kleinunternehmerin weise ich keine Umsatzsteuer aus.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="divider-wave" aria-hidden="true">
+    <svg viewBox="0 0 400 32" preserveAspectRatio="none">
+      <path d="M0,20 C18,9 32,28 52,17 C72,7 88,26 108,15 C128,5 144,24 164,19 C184,13 198,8 218,17 C238,25 252,11 272,15 C292,19 306,6 326,13 C346,19 360,25 400,17" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"></path>
+    </svg>
+  </div>
+  <div class="wrap flinks">
+    <span>© 2026 Mareike Krohnen · Rooted Feminine™</span>
+    <a class="flink" href="../impressum/">Impressum</a>
+    <a class="flink" href="../datenschutz/">Datenschutz</a>
+    <a class="flink" href="../agb/">AGB</a>
+    <a class="flink" href="../widerruf/">Widerruf</a>
+    <a class="flink" href="../vertrag-widerrufen/">Vertrag widerrufen</a>
+  </div>
+</footer>
+<script>
+(function(){
+  // Adventskranz: brennt nach Adventssonntagen, vor dem 1. Advent schon eine Kerze
+  var h = new Date(), j = h.getFullYear(), m = h.getMonth(), d = h.getDate(), kerzen = 1;
+  if(j === 2026 && m === 11) kerzen = 1 + [6,13,20].filter(function(s){ return d >= s; }).length;
+  if(j > 2026) kerzen = 4;
+  var k = document.getElementById('kranz'), html = '<defs><radialGradient id="kerzenschein"><stop offset="0" stop-color="#FFE9B0" stop-opacity=".95"/><stop offset=".35" stop-color="#F2C46B" stop-opacity=".5"/><stop offset="1" stop-color="#F2C46B" stop-opacity="0"/></radialGradient></defs>';
+  var cx = 120, cy = 98, rx = 100, ry = 15;
+  for(var i = 0; i < 64; i++){
+    var a = i / 32 * Math.PI * 2 + (i >= 32 ? 0.1 : 0), rr = i >= 32 ? 0.86 : 1;
+    var x = cx + Math.cos(a) * rx * rr, y = cy + Math.sin(a) * ry * rr - (i >= 32 ? 3 : 0);
+    var dreh = Math.atan2(Math.cos(a) * ry, -Math.sin(a) * rx) * 180 / Math.PI + (i % 2 ? 28 : -28);
+    html += '<path class="' + (i % 2 ? 'blatt-a' : 'blatt-b') + '" transform="translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') rotate(' + dreh.toFixed(0) + ')" d="M0 0c4-5 10-6 15-5-3 4-9 6-15 5Z"/>';
+  }
+  [58, 100, 140, 182].forEach(function(x, n){
+    var y = 62 + (n === 1 || n === 2 ? -5 : 0);
+    html += '<g class="' + (n < kerzen ? 'brennt' : '') + '"><circle class="schein" cx="' + x + '" cy="' + (y - 12) + '" r="26"/>' +
+      '<rect class="kerze" x="' + (x - 9) + '" y="' + y + '" width="18" height="' + (94 - y) + '" rx="4"/>' +
+      '<path class="docht" d="M' + x + ' ' + y + 'v-5"/>' +
+      '<path class="flamme" d="M' + x + ' ' + (y - 5) + 'c-4.5-3.6-2.6-9.4 0-13 2.6 3.6 4.5 9.4 0 13Z"/>' +
+      '<path class="kern" d="M' + x + ' ' + (y - 5.5) + 'c-2.2-1.8-1.3-5 0-6.6 1.3 1.6 2.2 4.8 0 6.6Z"/></g>';
+  });
+  for(var b = 0; b < 12; b++){
+    var ab = (b / 12) * Math.PI * 2 + 0.3;
+    html += '<circle class="beere" cx="' + (cx + Math.cos(ab) * (rx - 6)).toFixed(1) + '" cy="' + (cy + Math.sin(ab) * (ry - 2) + 2).toFixed(1) + '" r="3.2"/>';
+  }
+  k.innerHTML = html;
+
+  // Herkunft (?quelle=story|newsletter|dm|manychat) an Stripe weitergeben, damit wir sehen, was verkauft
+  var quelle = (new URLSearchParams(location.search).get('quelle') || '').replace(/[^a-z0-9_-]/gi, '').slice(0, 40);
+  var knopf = document.getElementById('kaufen');
+  if(quelle && knopf) knopf.href += (knopf.href.indexOf('?') === -1 ? '?' : '&') + 'client_reference_id=' + quelle;
+})();
+</script>
+<script src="../assets/app.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a664c9414f3c4eb3bcefd966e249e983"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
